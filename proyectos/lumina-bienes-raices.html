@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumina Bienes Raices | Donde encontrar es solo el comienzo</title>
+<meta name="description" content="Agencia inmobiliaria premium en CDMX. Especialistas en propiedades residenciales, comerciales y de inversion. +1,500 operaciones cerradas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+<style>
+:root{
+  --bg:#0e1715;
+  --bg-2:#152220;
+  --card:#1a2925;
+  --line:#2a3833;
+  --gold:#c9a55a;
+  --gold-2:#e8c878;
+  --emerald:#52b788;
+  --emerald-d:#2d6a4f;
+  --text:#f5f0e6;
+  --muted:#8a9a93;
+  --shadow:0 25px 60px rgba(0,0,0,0.5);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6;}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;line-height:1.15;font-weight:600;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.container{max-width:1240px;margin:0 auto;padding:0 24px;}
+
+/* NAVBAR */
+header.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:22px 0;background:transparent;transition:all .3s ease;}
+header.nav.scrolled{background:rgba(14,23,21,.95);backdrop-filter:blur(15px);padding:14px 0;border-bottom:1px solid var(--line);}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;}
+.logo{display:flex;align-items:center;gap:12px;font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;letter-spacing:1px;}
+.logo i{color:var(--gold);font-size:1.4rem;}
+.logo span{color:var(--gold);}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links a{font-size:.92rem;color:#ccc;font-weight:500;letter-spacing:.5px;transition:color .3s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-links a:hover::after{width:100%;}
+.btn-nav{background:var(--gold);color:#0e1715 !important;padding:10px 22px;border-radius:0;font-weight:600;letter-spacing:1px;font-size:.85rem;text-transform:uppercase;transition:all .3s;}
+.btn-nav:hover{background:var(--gold-2);}
+.menu-btn{display:none;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;padding:140px 0 80px;overflow:hidden;}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(14,23,21,0.85) 0%,rgba(14,23,21,0.65) 100%),url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600') center/cover;
+  z-index:-1;
+}
+.hero-content{max-width:780px;}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;color:var(--gold);font-size:.85rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:24px;}
+.hero-tag::before{content:'';width:40px;height:1px;background:var(--gold);}
+.hero h1{font-size:clamp(2.5rem,6vw,5rem);margin-bottom:24px;letter-spacing:-1px;}
+.hero h1 em{color:var(--gold);font-style:italic;}
+.hero p{font-size:1.15rem;color:#d8d2c4;max-width:580px;margin-bottom:40px;}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-primary{background:var(--gold);color:#0e1715;padding:16px 34px;font-weight:600;letter-spacing:1.5px;font-size:.85rem;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;transition:all .3s;border:none;cursor:pointer;}
+.btn-primary:hover{background:var(--gold-2);transform:translateY(-2px);}
+.btn-outline{background:transparent;color:#fff;padding:16px 34px;font-weight:600;letter-spacing:1.5px;font-size:.85rem;text-transform:uppercase;border:1px solid rgba(255,255,255,.3);display:inline-flex;align-items:center;gap:10px;transition:all .3s;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+
+/* BUSCADOR */
+.search-box{margin-top:50px;background:rgba(26,41,37,.85);backdrop-filter:blur(10px);border:1px solid var(--line);padding:24px;display:grid;grid-template-columns:1.4fr 1fr 1fr auto;gap:14px;align-items:end;max-width:900px;}
+.search-box .field{display:flex;flex-direction:column;gap:6px;}
+.search-box label{font-size:.7rem;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;}
+.search-box input,.search-box select{background:transparent;border:none;border-bottom:1px solid var(--line);color:#fff;padding:8px 0;font-family:inherit;font-size:.95rem;}
+.search-box input:focus,.search-box select:focus{outline:none;border-color:var(--gold);}
+.search-box select option{background:var(--card);}
+.search-box button{background:var(--gold);color:#0e1715;border:none;padding:14px 26px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;font-size:.8rem;cursor:pointer;transition:all .3s;}
+.search-box button:hover{background:var(--gold-2);}
+
+/* STATS */
+.stats-bar{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:50px 0;}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:30px;text-align:center;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--gold);font-weight:700;line-height:1;}
+.stat-label{color:var(--muted);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;margin-top:8px;}
+
+/* SECTIONS */
+section{padding:110px 0;}
+.section-tag{display:inline-block;color:var(--gold);font-size:.8rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:14px;}
+.section-title{font-size:clamp(2.2rem,4.5vw,3.6rem);margin-bottom:18px;letter-spacing:-1px;}
+.section-title em{color:var(--gold);font-style:italic;}
+.section-sub{color:var(--muted);font-size:1.05rem;max-width:620px;}
+.section-header{margin-bottom:60px;}
+.section-header.center{text-align:center;}
+.section-header.center .section-sub{margin:0 auto;}
+
+/* PROPIEDADES */
+.props-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:30px;}
+.prop{background:var(--card);border:1px solid var(--line);overflow:hidden;transition:all .4s ease;cursor:pointer;}
+.prop:hover{transform:translateY(-8px);border-color:var(--gold);box-shadow:var(--shadow);}
+.prop-img{height:280px;position:relative;overflow:hidden;background:var(--emerald-d);}
+.prop-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;}
+.prop:hover .prop-img img{transform:scale(1.08);}
+.prop-badge{position:absolute;top:18px;left:18px;background:var(--gold);color:#0e1715;padding:6px 14px;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;}
+.prop-fav{position:absolute;top:18px;right:18px;width:38px;height:38px;background:rgba(14,23,21,.7);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;backdrop-filter:blur(10px);}
+.prop-info{padding:26px;}
+.prop-loc{color:var(--muted);font-size:.85rem;display:flex;align-items:center;gap:6px;margin-bottom:8px;}
+.prop-info h3{font-size:1.5rem;margin-bottom:14px;}
+.prop-price{font-family:'Cormorant Garamond';font-size:1.6rem;color:var(--gold);font-weight:700;margin-bottom:18px;}
+.prop-features{display:flex;gap:20px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem;}
+.prop-features div{display:flex;align-items:center;gap:6px;}
+.prop-features i{color:var(--gold);}
+
+/* SERVICIOS */
+.servicios{background:var(--bg-2);}
+.serv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;}
+.serv{padding:40px 30px;border:1px solid var(--line);background:var(--card);transition:all .4s;text-align:center;}
+.serv:hover{border-color:var(--gold);transform:translateY(-6px);}
+.serv-icon{width:70px;height:70px;border:1px solid var(--gold);color:var(--gold);font-size:1.6rem;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;}
+.serv h3{font-size:1.5rem;margin-bottom:12px;}
+.serv p{color:var(--muted);font-size:.94rem;}
+
+/* PORQUE */
+.por-que{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.por-que-img{height:540px;background:url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=900') center/cover;position:relative;}
+.por-que-img::after{content:'';position:absolute;inset:0;border:1px solid var(--gold);transform:translate(20px,20px);z-index:-1;}
+.por-que-list{list-style:none;}
+.por-que-list li{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid var(--line);}
+.por-que-list li i{color:var(--gold);font-size:1.4rem;min-width:30px;}
+.por-que-list h4{font-size:1.3rem;margin-bottom:6px;}
+.por-que-list p{color:var(--muted);font-size:.92rem;}
+
+/* PROCESO */
+.proc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;}
+.proc{position:relative;padding:30px 24px;border:1px solid var(--line);}
+.proc-num{position:absolute;top:-30px;left:24px;background:var(--gold);color:#0e1715;width:54px;height:54px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond';font-size:1.6rem;font-weight:700;}
+.proc h3{font-size:1.3rem;margin:24px 0 10px;}
+.proc p{color:var(--muted);font-size:.9rem;}
+
+/* EQUIPO */
+.equipo{background:var(--bg-2);}
+.equipo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:30px;}
+.asesor{background:var(--card);border:1px solid var(--line);overflow:hidden;text-align:center;transition:all .4s;}
+.asesor:hover{border-color:var(--gold);transform:translateY(-6px);}
+.asesor-foto{height:300px;background:linear-gradient(135deg,var(--emerald-d),#0e1715);display:flex;align-items:center;justify-content:center;font-size:3.5rem;color:rgba(201,165,90,.3);position:relative;}
+.asesor-info{padding:26px;}
+.asesor h3{font-size:1.5rem;margin-bottom:4px;}
+.asesor-rol{color:var(--gold);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;display:block;}
+.asesor-cert{color:var(--muted);font-size:.85rem;}
+.asesor-redes{display:flex;justify-content:center;gap:12px;margin-top:18px;}
+.asesor-redes a{width:36px;height:36px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all .3s;}
+.asesor-redes a:hover{background:var(--gold);color:#0e1715;border-color:var(--gold);}
+
+/* TESTIMONIOS */
+.test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;}
+.test{background:var(--card);border:1px solid var(--line);padding:34px;position:relative;}
+.test-stars{color:var(--gold);margin-bottom:16px;}
+.test p{color:#d8d2c4;font-style:italic;margin-bottom:24px;font-family:'Cormorant Garamond';font-size:1.15rem;line-height:1.5;}
+.test-author{display:flex;align-items:center;gap:14px;}
+.test-avatar{width:50px;height:50px;background:var(--emerald-d);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:600;}
+.test-author h4{font-size:1rem;margin-bottom:2px;font-family:'Inter';}
+.test-author span{font-size:.82rem;color:var(--muted);}
+
+/* COBERTURA */
+.cobertura{background:var(--bg-2);}
+.cob-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;}
+.cob{padding:24px;border:1px solid var(--line);background:var(--card);text-align:center;transition:all .3s;}
+.cob:hover{border-color:var(--gold);}
+.cob i{color:var(--gold);font-size:1.4rem;margin-bottom:10px;}
+.cob h4{font-size:1.2rem;margin-bottom:4px;}
+.cob span{color:var(--muted);font-size:.8rem;}
+
+/* CTA */
+.cta-final{position:relative;padding:120px 0;text-align:center;background:linear-gradient(rgba(14,23,21,0.88),rgba(14,23,21,0.88)),url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600') center/cover;}
+.cta-final h2{font-size:clamp(2.2rem,5vw,3.8rem);margin-bottom:18px;}
+.cta-final h2 em{color:var(--gold);font-style:italic;}
+.cta-final p{color:#d8d2c4;font-size:1.1rem;max-width:600px;margin:0 auto 36px;}
+
+/* FOOTER */
+footer{background:var(--bg-2);padding:80px 0 30px;border-top:1px solid var(--line);}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px;margin-bottom:50px;}
+.foot-marca p{color:var(--muted);margin-top:18px;font-size:.92rem;}
+.foot h4{font-family:'Cormorant Garamond';font-size:1.3rem;margin-bottom:20px;color:var(--gold);}
+.foot ul{list-style:none;}
+.foot ul li{margin-bottom:10px;}
+.foot ul li a{color:var(--muted);font-size:.9rem;transition:color .3s;}
+.foot ul li a:hover{color:var(--gold);}
+.foot-social{display:flex;gap:12px;margin-top:18px;}
+.foot-social a{width:38px;height:38px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all .3s;}
+.foot-social a:hover{background:var(--gold);color:#0e1715;border-color:var(--gold);}
+.foot-bottom{padding-top:30px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:.82rem;}
+
+/* WHATSAPP */
+.wa{position:fixed;bottom:24px;right:24px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.6rem;box-shadow:0 8px 25px rgba(37,211,102,0.4);z-index:99;animation:pulseWa 2s infinite;}
+@keyframes pulseWa{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .menu-btn{display:block;}
+  .por-que{grid-template-columns:1fr;}
+  .por-que-img{height:380px;}
+  .foot-grid{grid-template-columns:1fr 1fr;}
+  .search-box{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  .foot-grid{grid-template-columns:1fr;}
+}
+
+/* ANIMATIONS */
+.fade{opacity:0;transform:translateY(30px);transition:all .8s ease;}
+.fade.show{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo"><i class="fas fa-gem"></i> Lumina <span>Bienes Raices</span></a>
+    <ul class="nav-links">
+      <li><a href="#propiedades">Propiedades</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#equipo">Asesores</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#contacto" class="btn-nav">Agendar visita</a></li>
+    </ul>
+    <button class="menu-btn"><i class="fas fa-bars"></i></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-content">
+    <div class="hero-tag">Boutique Inmobiliario · Desde 2018</div>
+    <h1>Donde encontrar es <em>solo el comienzo</em></h1>
+    <p>Curamos propiedades excepcionales para clientes que buscan mas que un inmueble: un patrimonio, un estilo de vida, un legado.</p>
+    <div class="hero-cta">
+      <a href="#propiedades" class="btn-primary">Ver propiedades <i class="fas fa-arrow-right"></i></a>
+      <a href="#contacto" class="btn-outline">Hablar con un asesor</a>
+    </div>
+    <div class="search-box">
+      <div class="field">
+        <label>Ubicacion</label>
+        <input type="text" placeholder="Polanco, Condesa, Roma...">
+      </div>
+      <div class="field">
+        <label>Operacion</label>
+        <select><option>Comprar</option><option>Rentar</option><option>Invertir</option></select>
+      </div>
+      <div class="field">
+        <label>Tipo</label>
+        <select><option>Departamento</option><option>Casa</option><option>Penthouse</option><option>Comercial</option><option>Terreno</option></select>
+      </div>
+      <button><i class="fas fa-search"></i> Buscar</button>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="container stats-grid">
+    <div><div class="stat-num">+1,500</div><div class="stat-label">Operaciones</div></div>
+    <div><div class="stat-num">+250</div><div class="stat-label">Propiedades activas</div></div>
+    <div><div class="stat-num">+800</div><div class="stat-label">Clientes felices</div></div>
+    <div><div class="stat-num">8</div><div class="stat-label">Anos de experiencia</div></div>
+  </div>
+</div>
+
+<!-- PROPIEDADES -->
+<section id="propiedades">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Propiedades destacadas</span>
+      <h2 class="section-title">Coleccion <em>exclusiva</em></h2>
+      <p class="section-sub">Inmuebles seleccionados con criterio, ubicacion privilegiada y maxima plusvalia.</p>
+    </div>
+    <div class="props-grid">
+      <div class="prop fade">
+        <div class="prop-img">
+          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800" alt="Penthouse Polanco">
+          <span class="prop-badge">Premium</span>
+          <div class="prop-fav"><i class="far fa-heart"></i></div>
+        </div>
+        <div class="prop-info">
+          <div class="prop-loc"><i class="fas fa-map-marker-alt"></i> Polanco, CDMX</div>
+          <h3>Penthouse Avenida Masaryk</h3>
+          <div class="prop-price">$28,500,000 MXN</div>
+          <div class="prop-features">
+            <div><i class="fas fa-bed"></i> 3 rec</div>
+            <div><i class="fas fa-bath"></i> 4 banos</div>
+            <div><i class="fas fa-vector-square"></i> 320 m²</div>
+          </div>
+        </div>
+      </div>
+      <div class="prop fade">
+        <div class="prop-img">
+          <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800" alt="Casa Bosques">
+          <span class="prop-badge">Nuevo</span>
+          <div class="prop-fav"><i class="far fa-heart"></i></div>
+        </div>
+        <div class="prop-info">
+          <div class="prop-loc"><i class="fas fa-map-marker-alt"></i> Bosques de las Lomas, CDMX</div>
+          <h3>Residencia con jardin privado</h3>
+          <div class="prop-price">$42,800,000 MXN</div>
+          <div class="prop-features">
+            <div><i class="fas fa-bed"></i> 5 rec</div>
+            <div><i class="fas fa-bath"></i> 6 banos</div>
+            <div><i class="fas fa-vector-square"></i> 580 m²</div>
+          </div>
+        </div>
+      </div>
+      <div class="prop fade">
+        <div class="prop-img">
+          <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800" alt="Departamento Condesa">
+          <span class="prop-badge">Renta</span>
+          <div class="prop-fav"><i class="far fa-heart"></i></div>
+        </div>
+        <div class="prop-info">
+          <div class="prop-loc"><i class="fas fa-map-marker-alt"></i> Condesa, CDMX</div>
+          <h3>Loft con terraza panoramica</h3>
+          <div class="prop-price">$58,000 MXN/mes</div>
+          <div class="prop-features">
+            <div><i class="fas fa-bed"></i> 2 rec</div>
+            <div><i class="fas fa-bath"></i> 2 banos</div>
+            <div><i class="fas fa-vector-square"></i> 145 m²</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="servicios" id="servicios">
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-tag">Nuestros servicios</span>
+      <h2 class="section-title">Asesoria <em>integral</em></h2>
+      <p class="section-sub">Acompanamos cada etapa del proceso con expertise legal, fiscal y comercial.</p>
+    </div>
+    <div class="serv-grid">
+      <div class="serv fade"><div class="serv-icon"><i class="fas fa-key"></i></div><h3>Compra-Venta</h3><p>Negociaciones precisas con maxima rentabilidad para vendedores y compradores.</p></div>
+      <div class="serv fade"><div class="serv-icon"><i class="fas fa-home"></i></div><h3>Renta y Administracion</h3><p>Gestion completa de tu propiedad: inquilinos, contratos y mantenimiento.</p></div>
+      <div class="serv fade"><div class="serv-icon"><i class="fas fa-chart-line"></i></div><h3>Inversion Inmobiliaria</h3><p>Identificamos oportunidades de alta plusvalia para hacer crecer tu capital.</p></div>
+      <div class="serv fade"><div class="serv-icon"><i class="fas fa-balance-scale"></i></div><h3>Asesoria Legal</h3><p>Apoyo notarial, fiscal y juridico en cada operacion. Cero riesgos.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUE -->
+<section>
+  <div class="container">
+    <div class="por-que">
+      <div class="por-que-img"></div>
+      <div>
+        <span class="section-tag">Por que Lumina</span>
+        <h2 class="section-title">8 anos cuidando <em>patrimonios</em></h2>
+        <p class="section-sub" style="margin-bottom:30px;">Mas que vender propiedades, construimos relaciones de confianza para toda la vida.</p>
+        <ul class="por-que-list">
+          <li><i class="fas fa-check-circle"></i><div><h4>Cartera curada</h4><p>Cada propiedad pasa por un filtro de calidad antes de entrar a nuestra coleccion.</p></div></li>
+          <li><i class="fas fa-check-circle"></i><div><h4>Asesores certificados</h4><p>Equipo con AMPI, cedula profesional y experiencia comprobada.</p></div></li>
+          <li><i class="fas fa-check-circle"></i><div><h4>Discrecion absoluta</h4><p>Manejamos tu informacion y operaciones con total confidencialidad.</p></div></li>
+          <li><i class="fas fa-check-circle"></i><div><h4>Acompanamiento integral</h4><p>Desde la primera visita hasta la firma y mas alla del cierre.</p></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="servicios">
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-tag">Como trabajamos</span>
+      <h2 class="section-title">El camino al <em>cierre</em></h2>
+    </div>
+    <div class="proc-grid">
+      <div class="proc fade"><div class="proc-num">01</div><h3>Asesoria inicial</h3><p>Conocemos tus objetivos, presupuesto y preferencias en una junta sin compromiso.</p></div>
+      <div class="proc fade"><div class="proc-num">02</div><h3>Seleccion</h3><p>Te presentamos opciones que cumplen exactamente con lo que estas buscando.</p></div>
+      <div class="proc fade"><div class="proc-num">03</div><h3>Visitas guiadas</h3><p>Recorremos contigo cada propiedad y resolvemos todas tus dudas.</p></div>
+      <div class="proc fade"><div class="proc-num">04</div><h3>Cierre</h3><p>Negociacion, papeleo, notaria y entrega de llaves. Todo en orden.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section class="equipo" id="equipo">
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-tag">Nuestro equipo</span>
+      <h2 class="section-title">Asesores <em>de confianza</em></h2>
+    </div>
+    <div class="equipo-grid">
+      <div class="asesor fade">
+        <div class="asesor-foto"><i class="fas fa-user"></i></div>
+        <div class="asesor-info">
+          <h3>Valentina Ortiz</h3>
+          <span class="asesor-rol">Directora General</span>
+          <p class="asesor-cert">AMPI · 12 anos en el mercado</p>
+          <div class="asesor-redes"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-whatsapp"></i></a></div>
+        </div>
+      </div>
+      <div class="asesor fade">
+        <div class="asesor-foto"><i class="fas fa-user"></i></div>
+        <div class="asesor-info">
+          <h3>Roberto Salinas</h3>
+          <span class="asesor-rol">Asesor Senior Polanco</span>
+          <p class="asesor-cert">Especialista en residencial premium</p>
+          <div class="asesor-redes"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-whatsapp"></i></a></div>
+        </div>
+      </div>
+      <div class="asesor fade">
+        <div class="asesor-foto"><i class="fas fa-user"></i></div>
+        <div class="asesor-info">
+          <h3>Camila Reyes</h3>
+          <span class="asesor-rol">Asesora Inversion</span>
+          <p class="asesor-cert">Experta en plusvalia y desarrollo</p>
+          <div class="asesor-redes"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-whatsapp"></i></a></div>
+        </div>
+      </div>
+      <div class="asesor fade">
+        <div class="asesor-foto"><i class="fas fa-user"></i></div>
+        <div class="asesor-info">
+          <h3>Andres Patino</h3>
+          <span class="asesor-rol">Asesor Comercial</span>
+          <p class="asesor-cert">Locales, oficinas y naves industriales</p>
+          <div class="asesor-redes"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-whatsapp"></i></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section>
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-tag">Testimonios</span>
+      <h2 class="section-title">La voz de nuestros <em>clientes</em></h2>
+    </div>
+    <div class="test-grid">
+      <div class="test fade">
+        <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p>"Encontraron la casa de mis suenos en menos de un mes. La atencion fue impecable, profesional y muy humana. Mil gracias Valentina."</p>
+        <div class="test-author"><div class="test-avatar">PG</div><div><h4>Patricia Gomez</h4><span>Compradora · Polanco</span></div></div>
+      </div>
+      <div class="test fade">
+        <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p>"Vendi mi departamento en 6 semanas al precio que pedia. Manejo legal impecable y comunicacion constante. Recomendados al 100%."</p>
+        <div class="test-author"><div class="test-avatar">MH</div><div><h4>Mauricio Herrera</h4><span>Vendedor · Condesa</span></div></div>
+      </div>
+      <div class="test fade">
+        <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p>"Camila me asesoro en mi primera inversion y los numeros fueron exactos. Mi propiedad ya genera renta desde el primer mes."</p>
+        <div class="test-author"><div class="test-avatar">JL</div><div><h4>Juan Larraga</h4><span>Inversionista · Roma Norte</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COBERTURA -->
+<section class="cobertura">
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-tag">Cobertura</span>
+      <h2 class="section-title">Donde <em>operamos</em></h2>
+    </div>
+    <div class="cob-grid">
+      <div class="cob"><i class="fas fa-map-marker-alt"></i><h4>Polanco</h4><span>CDMX</span></div>
+      <div class="cob"><i class="fas fa-map-marker-alt"></i><h4>Condesa</h4><span>CDMX</span></div>
+      <div class="cob"><i class="fas fa-map-marker-alt"></i><h4>Roma Norte</h4><span>CDMX</span></div>
+      <div class="cob"><i class="fas fa-map-marker-alt"></i><h4>Bosques</h4><span>CDMX</span></div>
+      <div class="cob"><i class="fas fa-map-marker-alt"></i><h4>Interlomas</h4><span>Edo. Mex</span></div>
+      <div class="cob"><i class="fas fa-map-marker-alt"></i><h4>Santa Fe</h4><span>CDMX</span></div>
+      <div class="cob"><i class="fas fa-map-marker-alt"></i><h4>Queretaro</h4><span>QRO</span></div>
+      <div class="cob"><i class="fas fa-map-marker-alt"></i><h4>San Pedro</h4><span>Monterrey</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-final" id="contacto">
+  <div class="container">
+    <h2>Tu proxima propiedad <em>te espera</em></h2>
+    <p>Agenda una cita sin compromiso y descubre porque Lumina es la opcion de quienes buscan algo extraordinario.</p>
+    <div class="hero-cta" style="justify-content:center;">
+      <a href="https://wa.me/525512345678" class="btn-primary"><i class="fab fa-whatsapp"></i> Hablar por WhatsApp</a>
+      <a href="tel:+525512345678" class="btn-outline"><i class="fas fa-phone"></i> Llamar ahora</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-marca">
+        <a href="#" class="logo"><i class="fas fa-gem"></i> Lumina <span>Bienes Raices</span></a>
+        <p>Boutique inmobiliario especializado en propiedades premium. Cuidamos tu patrimonio como si fuera el nuestro.</p>
+        <div class="foot-social">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="foot">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#">Compra-Venta</a></li>
+          <li><a href="#">Renta</a></li>
+          <li><a href="#">Inversion</a></li>
+          <li><a href="#">Asesoria Legal</a></li>
+        </ul>
+      </div>
+      <div class="foot">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#">Quienes somos</a></li>
+          <li><a href="#equipo">Equipo</a></li>
+          <li><a href="#propiedades">Propiedades</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="foot">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:contacto@luminabienes.mx"><i class="fas fa-envelope"></i> contacto@luminabienes.mx</a></li>
+          <li><a href="tel:+525512345678"><i class="fas fa-phone"></i> +52 55 1234 5678</a></li>
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i> Polanco, CDMX</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">&copy; 2026 Lumina Bienes Raices. Todos los derechos reservados. · AMPI #4521</div>
+  </div>
+</footer>
+
+<a href="https://wa.me/525512345678" class="wa" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+// Navbar scroll
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  if (window.scrollY > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+// Fade
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

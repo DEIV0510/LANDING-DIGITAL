@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brasa & Roble | Cocina de fuego, alma de roble</title>
+<meta name="description" content="Restaurante premium en Roma Norte. Cocina de lena, cortes premium y cava de autor. Reserva tu mesa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Allura&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+<style>
+:root{
+  --bg:#13090a;
+  --bg-2:#1a0e0f;
+  --card:#241516;
+  --line:#3a2225;
+  --wine:#8b1e2b;
+  --wine-2:#b32d3d;
+  --copper:#c47b4b;
+  --copper-2:#e09850;
+  --cream:#f5e9d3;
+  --cream-d:#d4c5a8;
+  --muted:#9b8674;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--cream);overflow-x:hidden;line-height:1.65;}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;line-height:1.15;font-weight:600;}
+.script{font-family:'Allura',cursive;color:var(--copper-2);font-weight:400;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.container{max-width:1240px;margin:0 auto;padding:0 24px;}
+
+/* GRAIN OVERLAY */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:0.05;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* NAVBAR */
+header.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:24px 0;transition:all .35s ease;}
+header.nav.scrolled{background:rgba(19,9,10,.96);backdrop-filter:blur(15px);padding:14px 0;border-bottom:1px solid var(--line);}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;}
+.logo{display:flex;align-items:center;gap:12px;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;letter-spacing:1px;}
+.logo i{color:var(--wine-2);font-size:1.3rem;}
+.logo span{color:var(--copper-2);font-style:italic;}
+.nav-links{display:flex;gap:34px;list-style:none;}
+.nav-links a{font-size:.85rem;color:var(--cream-d);font-weight:500;letter-spacing:2px;text-transform:uppercase;transition:color .3s;}
+.nav-links a:hover{color:var(--copper-2);}
+.btn-nav{border:1px solid var(--copper);color:var(--copper-2) !important;padding:10px 22px;font-weight:500;letter-spacing:2px;font-size:.78rem;text-transform:uppercase;transition:all .3s;}
+.btn-nav:hover{background:var(--copper);color:#13090a !important;}
+.menu-btn{display:none;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;padding:140px 0 80px;overflow:hidden;}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(19,9,10,0.55) 0%,rgba(19,9,10,0.95) 100%),url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600') center/cover;
+  z-index:-1;
+}
+.hero-content{text-align:center;max-width:920px;margin:0 auto;}
+.hero-orn{font-size:1.4rem;color:var(--copper-2);margin-bottom:18px;letter-spacing:6px;}
+.hero h1{font-size:clamp(3rem,8vw,7rem);margin-bottom:18px;letter-spacing:-1px;font-weight:500;}
+.hero h1 .script{display:block;font-size:0.45em;margin:6px 0;}
+.hero h1 em{font-style:italic;color:var(--copper-2);}
+.hero p{font-size:1.15rem;color:var(--cream-d);margin-bottom:40px;font-style:italic;font-family:'Cormorant Garamond';font-size:1.4rem;}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
+.btn-primary{background:var(--wine);color:var(--cream);padding:16px 36px;font-weight:500;letter-spacing:2.5px;font-size:.8rem;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;transition:all .3s;border:1px solid var(--wine);cursor:pointer;}
+.btn-primary:hover{background:var(--wine-2);transform:translateY(-2px);}
+.btn-outline{background:transparent;color:var(--cream);padding:16px 36px;font-weight:500;letter-spacing:2.5px;font-size:.8rem;text-transform:uppercase;border:1px solid rgba(245,233,211,.3);display:inline-flex;align-items:center;gap:10px;transition:all .3s;}
+.btn-outline:hover{border-color:var(--copper-2);color:var(--copper-2);}
+
+/* SECTIONS */
+section{padding:120px 0;}
+.section-tag{display:inline-block;color:var(--copper-2);font-size:.75rem;letter-spacing:5px;text-transform:uppercase;margin-bottom:16px;}
+.section-title{font-size:clamp(2.4rem,5vw,4rem);margin-bottom:18px;letter-spacing:-1px;font-weight:500;}
+.section-title em{color:var(--copper-2);font-style:italic;}
+.section-sub{color:var(--cream-d);font-size:1.15rem;font-style:italic;font-family:'Cormorant Garamond';max-width:620px;}
+.section-header{margin-bottom:70px;}
+.section-header.center{text-align:center;}
+.section-header.center .section-sub{margin:0 auto;}
+
+/* HISTORIA */
+.historia{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.historia-img{height:600px;background:url('https://images.unsplash.com/photo-1559339352-11d035aa65de?w=900') center/cover;position:relative;}
+.historia-img::after{content:'';position:absolute;inset:0;border:1px solid var(--copper);transform:translate(-20px,-20px);z-index:-1;}
+.historia .firma{margin-top:30px;font-size:2.2rem;}
+
+/* MENU */
+.menu-section{background:var(--bg-2);position:relative;}
+.menu-section::before,.menu-section::after{
+  content:'';position:absolute;left:50%;transform:translateX(-50%);
+  width:120px;height:1px;background:var(--copper);
+}
+.menu-section::before{top:60px;}
+.menu-section::after{bottom:60px;}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:50px 80px;}
+.dish{display:flex;gap:24px;padding-bottom:24px;border-bottom:1px dashed var(--line);}
+.dish-img{width:120px;height:120px;flex-shrink:0;background:var(--card);border:1px solid var(--copper);overflow:hidden;}
+.dish-img img{width:100%;height:100%;object-fit:cover;}
+.dish-content{flex:1;}
+.dish-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px;}
+.dish h3{font-size:1.5rem;font-style:italic;}
+.dish-price{font-family:'Cormorant Garamond';font-size:1.4rem;color:var(--copper-2);font-weight:600;white-space:nowrap;}
+.dish-desc{color:var(--muted);font-size:.92rem;line-height:1.6;}
+.dish-tag{display:inline-block;margin-top:8px;color:var(--wine-2);font-size:.7rem;letter-spacing:2px;text-transform:uppercase;}
+
+/* EXPERIENCIA */
+.experiencia{position:relative;background:linear-gradient(rgba(19,9,10,0.85),rgba(19,9,10,0.85)),url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600') center/cover fixed;padding:140px 0;text-align:center;}
+.experiencia h2{font-size:clamp(2.4rem,5vw,4rem);margin-bottom:24px;}
+.experiencia p{font-size:1.3rem;color:var(--cream-d);font-style:italic;font-family:'Cormorant Garamond';max-width:720px;margin:0 auto 40px;}
+.exp-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:40px;max-width:900px;margin:60px auto 0;}
+.exp-stat .num{font-family:'Cormorant Garamond';font-size:3.4rem;color:var(--copper-2);font-weight:600;line-height:1;}
+.exp-stat .label{color:var(--cream-d);font-size:.78rem;letter-spacing:3px;text-transform:uppercase;margin-top:10px;}
+
+/* CHEF */
+.chef-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:center;}
+.chef-img{height:580px;background:linear-gradient(135deg,var(--card),var(--bg-2));display:flex;align-items:center;justify-content:center;color:var(--copper);font-size:7rem;border:1px solid var(--line);position:relative;overflow:hidden;}
+.chef-img::before{content:'';position:absolute;inset:20px;border:1px solid var(--copper);}
+.chef h2{font-size:clamp(2rem,4vw,3rem);}
+.chef .firma{font-size:2rem;margin:20px 0;}
+.chef-info{display:grid;grid-template-columns:repeat(2,1fr);gap:30px;margin-top:40px;padding-top:30px;border-top:1px solid var(--line);}
+.chef-info .item span{display:block;color:var(--copper-2);font-size:.7rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;}
+.chef-info .item strong{font-family:'Cormorant Garamond';font-size:1.2rem;font-weight:500;}
+
+/* CAVA */
+.cava{background:var(--bg-2);text-align:center;}
+.cava-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;margin-top:60px;}
+.vino{padding:36px 24px;border:1px solid var(--line);background:var(--card);transition:all .4s;}
+.vino:hover{border-color:var(--copper);transform:translateY(-6px);}
+.vino i{color:var(--copper-2);font-size:2.2rem;margin-bottom:18px;}
+.vino h3{font-size:1.4rem;font-style:italic;margin-bottom:10px;}
+.vino p{color:var(--muted);font-size:.92rem;}
+
+/* GALERIA */
+.galeria{padding:0;}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,260px);gap:4px;}
+.gal-item{overflow:hidden;background:var(--card);}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease;filter:saturate(0.85);}
+.gal-item:hover img{transform:scale(1.08);filter:saturate(1.1);}
+.gal-item:nth-child(1){grid-column:span 2;grid-row:span 2;}
+
+/* RESERVA */
+.reserva{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.reserva-img{height:560px;background:url('https://images.unsplash.com/photo-1551218808-94e220e084d2?w=900') center/cover;}
+.reserva-form{background:var(--card);border:1px solid var(--line);padding:48px;}
+.reserva-form h3{font-size:2rem;margin-bottom:8px;}
+.reserva-form p{color:var(--muted);font-size:.92rem;margin-bottom:30px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.form-field{display:flex;flex-direction:column;gap:6px;}
+.form-field label{font-size:.7rem;color:var(--copper-2);letter-spacing:2px;text-transform:uppercase;}
+.form-field input,.form-field select{background:transparent;border:none;border-bottom:1px solid var(--line);color:#fff;padding:10px 0;font-family:inherit;font-size:.95rem;}
+.form-field input:focus,.form-field select:focus{outline:none;border-color:var(--copper-2);}
+.form-field select option{background:var(--card);}
+.reserva-form button{width:100%;background:var(--wine);color:var(--cream);border:none;padding:16px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;font-size:.8rem;margin-top:16px;cursor:pointer;transition:background .3s;}
+.reserva-form button:hover{background:var(--wine-2);}
+
+/* INFO */
+.info-bar{background:var(--bg-2);padding:60px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;text-align:center;}
+.info-item i{color:var(--copper-2);font-size:1.6rem;margin-bottom:14px;}
+.info-item h4{font-size:1.3rem;margin-bottom:6px;font-style:italic;}
+.info-item p{color:var(--muted);font-size:.92rem;line-height:1.6;}
+
+/* FOOTER */
+footer{padding:80px 0 30px;}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px;margin-bottom:50px;}
+.foot-marca p{color:var(--muted);margin-top:18px;font-size:.92rem;font-style:italic;font-family:'Cormorant Garamond';font-size:1.1rem;}
+.foot h4{font-family:'Cormorant Garamond';font-size:1.3rem;margin-bottom:20px;color:var(--copper-2);font-style:italic;}
+.foot ul{list-style:none;}
+.foot ul li{margin-bottom:10px;}
+.foot ul li a{color:var(--muted);font-size:.9rem;transition:color .3s;}
+.foot ul li a:hover{color:var(--copper-2);}
+.foot-social{display:flex;gap:12px;margin-top:18px;}
+.foot-social a{width:40px;height:40px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all .3s;}
+.foot-social a:hover{background:var(--wine);color:var(--cream);border-color:var(--wine);}
+.foot-bottom{padding-top:30px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:.82rem;font-style:italic;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .menu-btn{display:block;}
+  .historia,.chef-grid,.reserva{grid-template-columns:1fr;gap:50px;}
+  .historia-img,.chef-img,.reserva-img{height:380px;}
+  .gal-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,200px);}
+  .gal-item:nth-child(1){grid-column:span 2;grid-row:span 1;}
+  .foot-grid{grid-template-columns:1fr 1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .reserva-form{padding:32px;}
+}
+@media(max-width:600px){.foot-grid{grid-template-columns:1fr;}.dish{flex-direction:column;}.dish-img{width:100%;height:200px;}}
+
+.fade{opacity:0;transform:translateY(30px);transition:all .9s ease;}
+.fade.show{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo"><i class="fas fa-fire"></i> Brasa &amp; <span>Roble</span></a>
+    <ul class="nav-links">
+      <li><a href="#historia">Historia</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#chef">Chef</a></li>
+      <li><a href="#galeria">Galeria</a></li>
+      <li><a href="#reserva" class="btn-nav">Reservar</a></li>
+    </ul>
+    <button class="menu-btn"><i class="fas fa-bars"></i></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-content">
+    <div class="hero-orn">&bull; &bull; &bull;</div>
+    <h1>Cocina de fuego<br><span class="script">alma de</span><em>roble</em></h1>
+    <p>Una experiencia gastronomica donde la lena, el vino y el tiempo son los verdaderos chefs.</p>
+    <div class="hero-cta">
+      <a href="#reserva" class="btn-primary"><i class="far fa-calendar"></i> Reservar mesa</a>
+      <a href="#menu" class="btn-outline">Ver menu</a>
+    </div>
+  </div>
+</section>
+
+<!-- INFO BAR -->
+<div class="info-bar">
+  <div class="container info-grid">
+    <div class="info-item"><i class="fas fa-map-marker-alt"></i><h4>Ubicacion</h4><p>Calle Orizaba 145<br>Roma Norte, CDMX</p></div>
+    <div class="info-item"><i class="far fa-clock"></i><h4>Horario</h4><p>Mar-Sab: 13:00 - 23:00<br>Dom: 13:00 - 18:00</p></div>
+    <div class="info-item"><i class="fas fa-phone"></i><h4>Reservaciones</h4><p>+52 55 4422 8090<br>reservas@brasayroble.mx</p></div>
+    <div class="info-item"><i class="fas fa-users"></i><h4>Capacidad</h4><p>40 comensales<br>Salon privado disponible</p></div>
+  </div>
+</div>
+
+<!-- HISTORIA -->
+<section id="historia">
+  <div class="container">
+    <div class="historia">
+      <div class="historia-img"></div>
+      <div class="fade">
+        <span class="section-tag">Nuestra historia</span>
+        <h2 class="section-title">Una <em>cocina con memoria</em></h2>
+        <p class="section-sub" style="margin-bottom:24px;">Brasa &amp; Roble nacio en 2019 como tributo a la cocina mas antigua del mundo: la del fuego. Cada platillo se prepara sobre brasas de encino y mezquite, en un ritual que respeta el tiempo y los ingredientes.</p>
+        <p style="color:var(--muted);">Trabajamos con productores locales, carnes maduradas en cava propia y vinos seleccionados grano a grano. Aqui no hay prisa, hay propósito.</p>
+        <div class="firma script">— Mateo Aguilar, Chef</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-tag">Carta</span>
+      <h2 class="section-title">Platillos <em>de autor</em></h2>
+      <p class="section-sub">Una seleccion que cambia con la estacion. Ingredientes de temporada, tecnica ancestral, presentacion contemporanea.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="dish fade">
+        <div class="dish-img"><img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400" alt="Tartar"></div>
+        <div class="dish-content">
+          <div class="dish-head"><h3>Tartar de res Wagyu</h3><span class="dish-price">$420</span></div>
+          <p class="dish-desc">Wagyu A5, yema curada en sal de mar, alcaparras y aceite de trufa negra sobre crujiente de pan rustico.</p>
+          <span class="dish-tag">Entrada · Crudo</span>
+        </div>
+      </div>
+      <div class="dish fade">
+        <div class="dish-img"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=400" alt="Costilla"></div>
+        <div class="dish-content">
+          <div class="dish-head"><h3>Short rib a la lena</h3><span class="dish-price">$680</span></div>
+          <p class="dish-desc">Costilla braseada 18 horas en horno de mezquite, glaseada con jugo de roble ahumado y pure de raiz dulce.</p>
+          <span class="dish-tag">Principal · Brasa</span>
+        </div>
+      </div>
+      <div class="dish fade">
+        <div class="dish-img"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400" alt="Pulpo"></div>
+        <div class="dish-content">
+          <div class="dish-head"><h3>Pulpo de roca</h3><span class="dish-price">$520</span></div>
+          <p class="dish-desc">Pulpo cocido lento, terminado al carbon con pimenton de la Vera, papas confitadas y aioli de azafran.</p>
+          <span class="dish-tag">Principal · Mar</span>
+        </div>
+      </div>
+      <div class="dish fade">
+        <div class="dish-img"><img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400" alt="Ensalada"></div>
+        <div class="dish-content">
+          <div class="dish-head"><h3>Ensalada del huerto</h3><span class="dish-price">$280</span></div>
+          <p class="dish-desc">Vegetales asados de temporada, hojas baby, queso de cabra ahumado y vinagreta de aceite de oliva con miel.</p>
+          <span class="dish-tag">Entrada · Vegetal</span>
+        </div>
+      </div>
+      <div class="dish fade">
+        <div class="dish-img"><img src="https://images.unsplash.com/photo-1432139509613-5c4255815697?w=400" alt="Cordero"></div>
+        <div class="dish-content">
+          <div class="dish-head"><h3>Cordero al sarmiento</h3><span class="dish-price">$720</span></div>
+          <p class="dish-desc">Pierna de cordero asada con sarmientos de vid, romero fresco y reduccion de vino tinto Malbec.</p>
+          <span class="dish-tag">Principal · Brasa</span>
+        </div>
+      </div>
+      <div class="dish fade">
+        <div class="dish-img"><img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=400" alt="Tarta"></div>
+        <div class="dish-content">
+          <div class="dish-head"><h3>Tarta de chocolate y mezcal</h3><span class="dish-price">$240</span></div>
+          <p class="dish-desc">Ganache de chocolate 72%, helado de mezcal artesanal y tierra de cacao tostado en lena.</p>
+          <span class="dish-tag">Postre · Firma</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCIA -->
+<section class="experiencia">
+  <div class="container">
+    <span class="section-tag">La experiencia</span>
+    <h2>El fuego es solo el <em>principio</em></h2>
+    <p>Cada visita es un viaje: aromas de lena, la cava de roble respirando, el sonido tenue del jazz en vivo los jueves y viernes, y un equipo que cuida cada detalle como si fueras el unico comensal.</p>
+    <div class="exp-stats">
+      <div class="exp-stat"><div class="num">7</div><div class="label">Anos cocinando</div></div>
+      <div class="exp-stat"><div class="num">+150</div><div class="label">Etiquetas en cava</div></div>
+      <div class="exp-stat"><div class="num">28</div><div class="label">Dias de maduracion</div></div>
+      <div class="exp-stat"><div class="num">3★</div><div class="label">Guia gourmet</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEF -->
+<section id="chef">
+  <div class="container">
+    <div class="chef-grid">
+      <div class="chef-img"><i class="fas fa-user-chef"></i></div>
+      <div class="chef fade">
+        <span class="section-tag">El chef</span>
+        <h2>Mateo <em>Aguilar</em></h2>
+        <div class="firma script">"El fuego no engana, solo revela."</div>
+        <p style="color:var(--cream-d);font-size:1.05rem;">Formado en San Sebastian y curtido en cocinas de Buenos Aires y Lima, Mateo regreso a Mexico con una mision: rescatar la cocina al fuego como acto de respeto al producto y al tiempo.</p>
+        <div class="chef-info">
+          <div class="item"><span>Formacion</span><strong>Basque Culinary Center</strong></div>
+          <div class="item"><span>Experiencia</span><strong>15 anos en alta cocina</strong></div>
+          <div class="item"><span>Especialidad</span><strong>Cocina al carbon &amp; brasas</strong></div>
+          <div class="item"><span>Premio</span><strong>Mejor chef emergente 2022</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAVA -->
+<section class="cava">
+  <div class="container">
+    <span class="section-tag">Cava de autor</span>
+    <h2 class="section-title">Mas de <em>150 etiquetas</em></h2>
+    <p class="section-sub" style="margin:0 auto;">Una coleccion cuidada de vinos del viejo y nuevo mundo, con maridajes pensados por nuestro sommelier.</p>
+    <div class="cava-grid">
+      <div class="vino"><i class="fas fa-wine-glass-alt"></i><h3>Tintos de cuerpo</h3><p>Malbec, Cabernet, Tempranillo y Syrah de bodegas premium.</p></div>
+      <div class="vino"><i class="fas fa-wine-bottle"></i><h3>Blancos de altura</h3><p>Chardonnay, Albarino y Sauvignon Blanc del Valle de Guadalupe.</p></div>
+      <div class="vino"><i class="fas fa-glass-cheers"></i><h3>Espumosos</h3><p>Champagne frances y cavas espanoles para celebraciones especiales.</p></div>
+      <div class="vino"><i class="fas fa-pepper-hot"></i><h3>Mezcales raros</h3><p>Destilados artesanales de Oaxaca, Guerrero y Durango.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="galeria" id="galeria">
+  <div class="gal-grid">
+    <div class="gal-item"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900" alt="Ambiente"></div>
+    <div class="gal-item"><img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600" alt="Plato"></div>
+    <div class="gal-item"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600" alt="Brasa"></div>
+    <div class="gal-item"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600" alt="Mesa"></div>
+    <div class="gal-item"><img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=600" alt="Detalle"></div>
+  </div>
+</section>
+
+<!-- RESERVA -->
+<section id="reserva">
+  <div class="container">
+    <div class="reserva">
+      <div class="reserva-img"></div>
+      <div>
+        <span class="section-tag">Reservaciones</span>
+        <h2 class="section-title">Tu mesa <em>te espera</em></h2>
+        <p class="section-sub" style="margin-bottom:30px;">Reserva con anticipacion. Preferimos pocas mesas, bien atendidas.</p>
+        <form class="reserva-form" onsubmit="event.preventDefault();alert('Gracias! Confirmaremos tu reservacion por correo en menos de 2 horas.');">
+          <h3>Reservar mesa</h3>
+          <p>Te confirmamos disponibilidad en menos de 2 horas.</p>
+          <div class="form-row">
+            <div class="form-field"><label>Nombre completo</label><input type="text" required></div>
+            <div class="form-field"><label>Telefono</label><input type="tel" required></div>
+          </div>
+          <div class="form-row">
+            <div class="form-field"><label>Fecha</label><input type="date" required></div>
+            <div class="form-field"><label>Hora</label><select><option>13:00</option><option>14:00</option><option>20:00</option><option>21:00</option><option>22:00</option></select></div>
+          </div>
+          <div class="form-row">
+            <div class="form-field"><label>Comensales</label><select><option>2 personas</option><option>4 personas</option><option>6 personas</option><option>8+ personas</option></select></div>
+            <div class="form-field"><label>Ocasion</label><select><option>Cena casual</option><option>Aniversario</option><option>Cumpleanos</option><option>Negocios</option></select></div>
+          </div>
+          <button type="submit">Confirmar reserva</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-marca">
+        <a href="#" class="logo"><i class="fas fa-fire"></i> Brasa &amp; <span>Roble</span></a>
+        <p>"Donde el tiempo se convierte en sabor."</p>
+        <div class="foot-social">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-tripadvisor"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="foot">
+        <h4>Carta</h4>
+        <ul>
+          <li><a href="#menu">Menu de autor</a></li>
+          <li><a href="#">Menu degustacion</a></li>
+          <li><a href="#">Carta de vinos</a></li>
+          <li><a href="#">Maridaje</a></li>
+        </ul>
+      </div>
+      <div class="foot">
+        <h4>Eventos</h4>
+        <ul>
+          <li><a href="#">Cenas privadas</a></li>
+          <li><a href="#">Bodas</a></li>
+          <li><a href="#">Empresariales</a></li>
+          <li><a href="#">Catas guiadas</a></li>
+        </ul>
+      </div>
+      <div class="foot">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:reservas@brasayroble.mx"><i class="fas fa-envelope"></i> reservas@brasayroble.mx</a></li>
+          <li><a href="tel:+525544228090"><i class="fas fa-phone"></i> +52 55 4422 8090</a></li>
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i> Orizaba 145, Roma Norte</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">&copy; 2026 Brasa &amp; Roble · Roma Norte, CDMX · Todos los derechos reservados</div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  if (window.scrollY > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

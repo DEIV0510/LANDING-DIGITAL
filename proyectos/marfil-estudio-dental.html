@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marfil Estudio Dental | Diseno de sonrisas</title>
+<meta name="description" content="Clinica dental boutique en Polanco. Diseno de sonrisa, ortodoncia invisible, implantes y odontologia estetica de alta gama.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+<style>
+:root{
+  --bg:#fafaf7;
+  --bg-2:#f0eae0;
+  --bg-3:#f5f1e8;
+  --card:#ffffff;
+  --line:#e6dfd1;
+  --text:#1a2a2c;
+  --text-2:#3a4a4d;
+  --muted:#6f7d7e;
+  --teal:#246b6b;
+  --teal-2:#1a5454;
+  --mint:#a8d5cc;
+  --mint-soft:#d9eae5;
+  --gold:#c4a06a;
+  --gold-2:#a88748;
+  --shadow:0 25px 60px rgba(36,107,107,0.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.65;}
+h1,h2,h3,h4{font-family:'DM Serif Display',serif;line-height:1.15;font-weight:400;letter-spacing:-0.5px;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.container{max-width:1240px;margin:0 auto;padding:0 24px;}
+
+/* NAVBAR */
+header.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:22px 0;background:transparent;transition:all .35s ease;}
+header.nav.scrolled{background:rgba(250,250,247,.96);backdrop-filter:blur(15px);padding:14px 0;border-bottom:1px solid var(--line);}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;}
+.logo{display:flex;align-items:center;gap:12px;font-family:'DM Serif Display',serif;font-size:1.6rem;font-weight:400;color:var(--teal);}
+.logo i{color:var(--gold);font-size:1.3rem;}
+.logo em{font-style:italic;color:var(--gold-2);}
+.nav-links{display:flex;gap:34px;list-style:none;}
+.nav-links a{font-size:.92rem;color:var(--text-2);font-weight:500;transition:color .3s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s;}
+.nav-links a:hover{color:var(--teal);}
+.nav-links a:hover::after{width:100%;}
+.btn-nav{background:var(--teal);color:#fff !important;padding:11px 24px;border-radius:50px;font-weight:500;font-size:.88rem;transition:all .3s;}
+.btn-nav:hover{background:var(--teal-2);}
+.menu-btn{display:none;background:none;border:none;color:var(--teal);font-size:1.4rem;cursor:pointer;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:140px 0 80px;background:linear-gradient(135deg,var(--bg) 0%,var(--bg-3) 100%);position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,var(--mint-soft) 0%,transparent 70%);}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:70px;align-items:center;position:relative;z-index:2;}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;color:var(--teal);font-size:.82rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:24px;}
+.hero-tag::before{content:'';width:36px;height:1px;background:var(--gold);}
+.hero h1{font-size:clamp(2.6rem,5.5vw,5rem);margin-bottom:24px;color:var(--text);}
+.hero h1 em{color:var(--teal);font-style:italic;}
+.hero p{font-size:1.15rem;color:var(--text-2);margin-bottom:38px;max-width:520px;}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-primary{background:var(--teal);color:#fff;padding:16px 32px;border-radius:50px;font-weight:600;font-size:.95rem;display:inline-flex;align-items:center;gap:10px;transition:all .3s;border:none;cursor:pointer;}
+.btn-primary:hover{background:var(--teal-2);transform:translateY(-2px);box-shadow:0 12px 30px rgba(36,107,107,0.25);}
+.btn-outline{background:transparent;color:var(--text);padding:16px 32px;border-radius:50px;font-weight:600;font-size:.95rem;border:1.5px solid var(--line);display:inline-flex;align-items:center;gap:10px;transition:all .3s;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold-2);}
+.hero-trust{display:flex;align-items:center;gap:18px;margin-top:42px;padding-top:30px;border-top:1px solid var(--line);}
+.trust-avs{display:flex;}
+.trust-avs span{width:42px;height:42px;border-radius:50%;background:var(--mint);border:2px solid var(--bg);margin-left:-10px;display:flex;align-items:center;justify-content:center;color:var(--teal);font-weight:600;font-size:.85rem;}
+.trust-avs span:first-child{margin-left:0;}
+.trust-text strong{display:block;color:var(--text);font-weight:600;}
+.trust-text span{color:var(--muted);font-size:.85rem;}
+.trust-text i{color:var(--gold);}
+
+.hero-visual{position:relative;}
+.hero-photo{height:580px;border-radius:200px 200px 30px 30px;background:url('https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=900') center/cover;box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.hero-photo::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(36,107,107,0.1) 100%);}
+.float-card{position:absolute;background:var(--card);padding:18px 22px;border-radius:18px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px;}
+.float-card-1{top:50px;left:-30px;}
+.float-card-2{bottom:60px;right:-20px;}
+.float-card i{width:44px;height:44px;background:var(--mint-soft);color:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
+.float-card div strong{display:block;font-weight:600;font-size:.95rem;}
+.float-card div span{color:var(--muted);font-size:.78rem;}
+
+/* TRUST */
+.trust-bar{padding:40px 0;background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:30px;text-align:center;}
+.trust-item .num{font-family:'DM Serif Display';font-size:2.6rem;color:var(--teal);}
+.trust-item .lbl{color:var(--muted);font-size:.82rem;letter-spacing:2px;text-transform:uppercase;margin-top:4px;}
+
+/* SECTIONS */
+section{padding:110px 0;}
+.section-tag{display:inline-block;color:var(--teal);font-size:.78rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:14px;}
+.section-title{font-size:clamp(2.2rem,4.5vw,3.6rem);margin-bottom:18px;color:var(--text);}
+.section-title em{color:var(--teal);font-style:italic;}
+.section-sub{color:var(--text-2);font-size:1.05rem;max-width:620px;}
+.section-header{margin-bottom:60px;}
+.section-header.center{text-align:center;}
+.section-header.center .section-sub{margin:0 auto;}
+
+/* TRATAMIENTOS */
+.trat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
+.trat{background:var(--card);border:1px solid var(--line);padding:36px 30px;border-radius:24px;transition:all .4s;}
+.trat:hover{transform:translateY(-8px);border-color:var(--mint);box-shadow:var(--shadow);}
+.trat-icon{width:64px;height:64px;background:var(--mint-soft);color:var(--teal);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:24px;}
+.trat h3{font-size:1.5rem;margin-bottom:12px;font-family:'DM Serif Display';}
+.trat p{color:var(--muted);font-size:.92rem;margin-bottom:18px;}
+.trat ul{list-style:none;}
+.trat ul li{padding:6px 0;color:var(--text-2);font-size:.88rem;display:flex;align-items:center;gap:8px;}
+.trat ul li i{color:var(--gold);font-size:.7rem;}
+
+/* TECNOLOGIA */
+.tecno{background:var(--bg-2);}
+.tecno-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.tecno-img{height:540px;border-radius:30px;background:url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=900') center/cover;box-shadow:var(--shadow);}
+.tecno-list{list-style:none;}
+.tecno-list li{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid var(--line);}
+.tecno-list li:last-child{border:none;}
+.tecno-list .num{flex-shrink:0;width:46px;height:46px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display';font-size:1.1rem;}
+.tecno-list h4{font-size:1.3rem;margin-bottom:6px;}
+.tecno-list p{color:var(--muted);font-size:.92rem;}
+
+/* PROCESO */
+.proc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;}
+.proc{padding:34px 28px;background:var(--card);border:1px solid var(--line);border-radius:20px;text-align:center;position:relative;}
+.proc-num{font-family:'DM Serif Display';font-size:3rem;color:var(--gold);font-style:italic;line-height:1;}
+.proc h3{font-size:1.3rem;margin:14px 0 10px;}
+.proc p{color:var(--muted);font-size:.9rem;}
+
+/* DOCTORES */
+.doctores{background:var(--bg-2);}
+.doc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;}
+.doctor{background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;transition:all .4s;}
+.doctor:hover{transform:translateY(-6px);box-shadow:var(--shadow);}
+.doc-foto{height:340px;background:linear-gradient(135deg,var(--mint-soft),var(--bg-3));display:flex;align-items:center;justify-content:center;font-size:5rem;color:var(--teal);position:relative;}
+.doc-foto i{opacity:0.4;}
+.doc-info{padding:28px;text-align:center;}
+.doctor h3{font-size:1.5rem;margin-bottom:4px;}
+.doc-rol{color:var(--gold-2);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;display:block;}
+.doc-cert{color:var(--muted);font-size:.88rem;line-height:1.7;}
+.doc-redes{display:flex;justify-content:center;gap:12px;margin-top:18px;}
+.doc-redes a{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all .3s;}
+.doc-redes a:hover{background:var(--teal);color:#fff;border-color:var(--teal);}
+
+/* ANTES DESPUES */
+.casos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
+.caso{background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;}
+.caso-imgs{display:grid;grid-template-columns:1fr 1fr;}
+.caso-imgs .lado{height:240px;position:relative;display:flex;align-items:flex-start;justify-content:center;padding-top:14px;}
+.caso-imgs .lado.antes{background:linear-gradient(135deg,#e6dfd1,#d4c8b3);}
+.caso-imgs .lado.despues{background:linear-gradient(135deg,var(--mint-soft),var(--mint));}
+.caso-imgs .lado img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;}
+.caso-imgs .lado span{position:absolute;top:14px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.95);padding:5px 14px;border-radius:30px;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--teal);font-weight:600;z-index:2;}
+.caso-info{padding:24px;}
+.caso-info h3{font-size:1.3rem;margin-bottom:6px;}
+.caso-info p{color:var(--muted);font-size:.88rem;}
+
+/* TESTIMONIOS */
+.test-section{background:var(--teal);color:#fff;border-radius:40px;margin:0 24px;padding:90px 40px;text-align:center;}
+.test-section .section-tag{color:var(--mint);}
+.test-section h2{color:#fff;}
+.test-section h2 em{color:var(--gold-2);}
+.test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:50px;text-align:left;}
+.test{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);padding:30px;border-radius:20px;backdrop-filter:blur(10px);}
+.test-stars{color:var(--gold-2);margin-bottom:14px;}
+.test p{font-style:italic;color:#e8efee;margin-bottom:22px;font-size:.98rem;}
+.test-author{display:flex;align-items:center;gap:14px;}
+.test-avatar{width:46px;height:46px;background:var(--mint);color:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;}
+.test-author h4{font-size:.98rem;font-family:'Inter';font-weight:600;color:#fff;}
+.test-author span{font-size:.8rem;color:var(--mint);}
+
+/* FAQ */
+.faq-list{max-width:780px;margin:0 auto;}
+.faq-item{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:14px;overflow:hidden;transition:all .3s;}
+.faq-item.open{border-color:var(--mint);}
+.faq-q{padding:24px 28px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:600;color:var(--text);}
+.faq-q i{color:var(--teal);transition:transform .3s;}
+.faq-item.open .faq-q i{transform:rotate(180deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s;color:var(--text-2);}
+.faq-a-in{padding:0 28px 22px;font-size:.95rem;}
+.faq-item.open .faq-a{max-height:200px;}
+
+/* CITA */
+.cita{background:var(--bg-2);}
+.cita-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.cita h2{font-size:clamp(2.2rem,4.5vw,3.4rem);margin-bottom:18px;}
+.cita p{color:var(--text-2);font-size:1.05rem;margin-bottom:30px;}
+.cita-info{display:grid;gap:18px;}
+.cita-info .item{display:flex;gap:16px;align-items:flex-start;}
+.cita-info i{width:46px;height:46px;background:var(--mint-soft);color:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cita-info h4{font-size:1.1rem;margin-bottom:4px;font-family:'Inter';font-weight:600;}
+.cita-info span{color:var(--muted);font-size:.92rem;}
+.cita-form{background:var(--card);padding:40px;border-radius:24px;border:1px solid var(--line);box-shadow:var(--shadow);}
+.cita-form h3{font-size:1.6rem;margin-bottom:6px;}
+.cita-form > p{font-size:.92rem;color:var(--muted);margin-bottom:24px;}
+.cita-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.cita-field{display:flex;flex-direction:column;gap:6px;}
+.cita-field label{font-size:.78rem;color:var(--text-2);font-weight:500;}
+.cita-field input,.cita-field select,.cita-field textarea{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-family:inherit;font-size:.95rem;color:var(--text);}
+.cita-field input:focus,.cita-field select:focus,.cita-field textarea:focus{outline:none;border-color:var(--teal);}
+.cita-form button{width:100%;background:var(--teal);color:#fff;border:none;padding:16px;border-radius:50px;font-weight:600;font-size:1rem;margin-top:14px;cursor:pointer;transition:all .3s;}
+.cita-form button:hover{background:var(--teal-2);}
+
+/* FOOTER */
+footer{padding:80px 0 30px;background:var(--text);color:#cfd6d3;}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px;margin-bottom:50px;}
+.foot-marca .logo{color:#fff;}
+.foot-marca .logo em{color:var(--gold);}
+.foot-marca p{margin-top:18px;font-size:.92rem;color:#9ba8a5;max-width:300px;}
+.foot h4{font-family:'DM Serif Display';font-size:1.3rem;margin-bottom:20px;color:#fff;}
+.foot ul{list-style:none;}
+.foot ul li{margin-bottom:10px;}
+.foot ul li a{font-size:.9rem;color:#9ba8a5;transition:color .3s;}
+.foot ul li a:hover{color:var(--gold);}
+.foot-social{display:flex;gap:12px;margin-top:18px;}
+.foot-social a{width:40px;height:40px;border:1px solid #2a3a3c;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#9ba8a5;transition:all .3s;}
+.foot-social a:hover{background:var(--gold);color:var(--text);border-color:var(--gold);}
+.foot-bottom{padding-top:30px;border-top:1px solid #2a3a3c;text-align:center;font-size:.82rem;color:#7a8987;}
+
+/* WHATSAPP */
+.wa{position:fixed;bottom:24px;right:24px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.6rem;box-shadow:0 8px 25px rgba(37,211,102,0.4);z-index:99;animation:pulseWa 2s infinite;}
+@keyframes pulseWa{0%,100%{transform:scale(1);}50%{transform:scale(1.1);}}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .menu-btn{display:block;}
+  .hero-grid,.tecno-grid,.cita-grid{grid-template-columns:1fr;gap:50px;}
+  .hero-photo,.tecno-img{height:380px;}
+  .float-card-1{display:none;}
+  .foot-grid{grid-template-columns:1fr 1fr;}
+  .test-section{margin:0;border-radius:0;}
+}
+@media(max-width:600px){.foot-grid{grid-template-columns:1fr;}.cita-row{grid-template-columns:1fr;}}
+
+.fade{opacity:0;transform:translateY(30px);transition:all .9s ease;}
+.fade.show{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo"><i class="fas fa-tooth"></i> Marfil <em>Studio</em></a>
+    <ul class="nav-links">
+      <li><a href="#tratamientos">Tratamientos</a></li>
+      <li><a href="#tecnologia">Tecnologia</a></li>
+      <li><a href="#equipo">Doctores</a></li>
+      <li><a href="#casos">Casos</a></li>
+      <li><a href="#cita" class="btn-nav">Agendar cita</a></li>
+    </ul>
+    <button class="menu-btn"><i class="fas fa-bars"></i></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-tag">Clinica Boutique · Polanco</div>
+        <h1>Tu sonrisa,<br><em>nuestra firma</em></h1>
+        <p>Odontologia estetica de alta gama con tecnologia digital, atencion personalizada y resultados que se sienten tanto como se ven.</p>
+        <div class="hero-cta">
+          <a href="#cita" class="btn-primary"><i class="far fa-calendar-check"></i> Agendar valoracion</a>
+          <a href="#tratamientos" class="btn-outline">Ver tratamientos</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-avs">
+            <span>JV</span><span>RM</span><span>SC</span>
+          </div>
+          <div class="trust-text">
+            <strong><i class="fas fa-star"></i> 4.9/5 · +1,200 pacientes</strong>
+            <span>Recomendados en Doctoralia y Google</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-photo"></div>
+        <div class="float-card float-card-1">
+          <i class="fas fa-shield-heart"></i>
+          <div><strong>+15 anos</strong><span>de experiencia</span></div>
+        </div>
+        <div class="float-card float-card-2">
+          <i class="fas fa-tooth"></i>
+          <div><strong>Garantia</strong><span>en cada trabajo</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust-bar">
+  <div class="container trust-grid">
+    <div class="trust-item"><div class="num">+1,200</div><div class="lbl">Sonrisas creadas</div></div>
+    <div class="trust-item"><div class="num">15</div><div class="lbl">Anos de experiencia</div></div>
+    <div class="trust-item"><div class="num">12</div><div class="lbl">Especialistas</div></div>
+    <div class="trust-item"><div class="num">4.9★</div><div class="lbl">Calificacion promedio</div></div>
+  </div>
+</div>
+
+<!-- TRATAMIENTOS -->
+<section id="tratamientos">
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-tag">Tratamientos</span>
+      <h2 class="section-title">Soluciones <em>personalizadas</em></h2>
+      <p class="section-sub">Cada sonrisa es unica. Disenamos planes a la medida combinando estetica, funcion y salud bucal.</p>
+    </div>
+    <div class="trat-grid">
+      <div class="trat fade">
+        <div class="trat-icon"><i class="fas fa-magic"></i></div>
+        <h3>Diseno de Sonrisa</h3>
+        <p>Planeacion digital 3D para sonrisas armonicas con tu rostro y personalidad.</p>
+        <ul>
+          <li><i class="fas fa-circle"></i> Carillas de porcelana</li>
+          <li><i class="fas fa-circle"></i> Resinas esteticas</li>
+          <li><i class="fas fa-circle"></i> Mock-up previo</li>
+        </ul>
+      </div>
+      <div class="trat fade">
+        <div class="trat-icon"><i class="fas fa-tooth"></i></div>
+        <h3>Ortodoncia Invisible</h3>
+        <p>Alineadores transparentes Invisalign certificados para alinear tus dientes con discrecion.</p>
+        <ul>
+          <li><i class="fas fa-circle"></i> Invisalign Full</li>
+          <li><i class="fas fa-circle"></i> Brackets esteticos</li>
+          <li><i class="fas fa-circle"></i> Plan digital 3D</li>
+        </ul>
+      </div>
+      <div class="trat fade">
+        <div class="trat-icon"><i class="fas fa-screwdriver-wrench"></i></div>
+        <h3>Implantes Dentales</h3>
+        <p>Implantes de titanio premium con tecnica de cirugia guiada y minima invasion.</p>
+        <ul>
+          <li><i class="fas fa-circle"></i> Implante unitario</li>
+          <li><i class="fas fa-circle"></i> All-on-4 / All-on-6</li>
+          <li><i class="fas fa-circle"></i> Carga inmediata</li>
+        </ul>
+      </div>
+      <div class="trat fade">
+        <div class="trat-icon"><i class="fas fa-sun"></i></div>
+        <h3>Blanqueamiento Pro</h3>
+        <p>Blanqueamiento profesional en consultorio o en casa con resultados desde la primera sesion.</p>
+        <ul>
+          <li><i class="fas fa-circle"></i> Lampara LED</li>
+          <li><i class="fas fa-circle"></i> Geles de carbamida</li>
+          <li><i class="fas fa-circle"></i> Sin sensibilidad</li>
+        </ul>
+      </div>
+      <div class="trat fade">
+        <div class="trat-icon"><i class="fas fa-stethoscope"></i></div>
+        <h3>Endodoncia</h3>
+        <p>Tratamientos de conducto en una sola sesion con microscopio dental de alta precision.</p>
+        <ul>
+          <li><i class="fas fa-circle"></i> Microscopia avanzada</li>
+          <li><i class="fas fa-circle"></i> Sin dolor</li>
+          <li><i class="fas fa-circle"></i> Restauracion incluida</li>
+        </ul>
+      </div>
+      <div class="trat fade">
+        <div class="trat-icon"><i class="fas fa-child"></i></div>
+        <h3>Odontopediatria</h3>
+        <p>Atencion dental para los mas pequenos en un ambiente seguro, divertido y libre de miedos.</p>
+        <ul>
+          <li><i class="fas fa-circle"></i> Primera consulta</li>
+          <li><i class="fas fa-circle"></i> Selladores</li>
+          <li><i class="fas fa-circle"></i> Ortodoncia temprana</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECNOLOGIA -->
+<section class="tecno" id="tecnologia">
+  <div class="container">
+    <div class="tecno-grid">
+      <div class="tecno-img"></div>
+      <div class="fade">
+        <span class="section-tag">Tecnologia</span>
+        <h2 class="section-title">Precision <em>digital</em></h2>
+        <p class="section-sub" style="margin-bottom:30px;">Cada paciente recibe un plan disenado con la tecnologia mas avanzada en odontologia.</p>
+        <ul class="tecno-list">
+          <li><div class="num">01</div><div><h4>Escaner intraoral 3D</h4><p>Eliminamos las molestas impresiones de pasta. Modelado digital exacto en minutos.</p></div></li>
+          <li><div class="num">02</div><div><h4>Tomografia CBCT</h4><p>Imagenes 3D para diagnosticos precisos en endodoncia, implantes y cirugia.</p></div></li>
+          <li><div class="num">03</div><div><h4>Diseno digital de sonrisa</h4><p>Mock-up previo para que veas tu nueva sonrisa antes de comenzar el tratamiento.</p></div></li>
+          <li><div class="num">04</div><div><h4>Esterilizacion clase B</h4><p>Protocolos hospitalarios de esterilizacion. Tu seguridad es nuestra prioridad.</p></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section>
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-tag">Como trabajamos</span>
+      <h2 class="section-title">El camino a tu <em>nueva sonrisa</em></h2>
+    </div>
+    <div class="proc-grid">
+      <div class="proc fade"><div class="proc-num">01</div><h3>Valoracion</h3><p>Estudio clinico y radiografico completo para entender tus necesidades.</p></div>
+      <div class="proc fade"><div class="proc-num">02</div><h3>Plan digital</h3><p>Disenamos tu tratamiento con simulacion 3D antes de tocar tus dientes.</p></div>
+      <div class="proc fade"><div class="proc-num">03</div><h3>Tratamiento</h3><p>Ejecutamos cada paso con tecnologia y maxima atencion al detalle.</p></div>
+      <div class="proc fade"><div class="proc-num">04</div><h3>Seguimiento</h3><p>Revisiones periodicas para que tu sonrisa dure toda la vida.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTORES -->
+<section class="doctores" id="equipo">
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-tag">Nuestro equipo</span>
+      <h2 class="section-title">Especialistas <em>en cada area</em></h2>
+      <p class="section-sub">Cada doctor en Marfil es certificado y experto en su especialidad.</p>
+    </div>
+    <div class="doc-grid">
+      <div class="doctor fade">
+        <div class="doc-foto"><i class="fas fa-user-doctor"></i></div>
+        <div class="doc-info">
+          <h3>Dr. Javier Vargas</h3>
+          <span class="doc-rol">Director Clinico</span>
+          <p class="doc-cert">Cirujano dentista<br>Maestria en Estetica Dental<br>Certificado Invisalign</p>
+          <div class="doc-redes"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-whatsapp"></i></a></div>
+        </div>
+      </div>
+      <div class="doctor fade">
+        <div class="doc-foto"><i class="fas fa-user-doctor"></i></div>
+        <div class="doc-info">
+          <h3>Dra. Renata Marin</h3>
+          <span class="doc-rol">Ortodoncia</span>
+          <p class="doc-cert">Especialista en Ortodoncia<br>Invisalign Diamond Provider<br>UNAM</p>
+          <div class="doc-redes"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-whatsapp"></i></a></div>
+        </div>
+      </div>
+      <div class="doctor fade">
+        <div class="doc-foto"><i class="fas fa-user-doctor"></i></div>
+        <div class="doc-info">
+          <h3>Dr. Sebastian Cano</h3>
+          <span class="doc-rol">Implantologia</span>
+          <p class="doc-cert">Cirujano oral y maxilofacial<br>Especialista en implantes<br>Universidad de Barcelona</p>
+          <div class="doc-redes"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-whatsapp"></i></a></div>
+        </div>
+      </div>
+      <div class="doctor fade">
+        <div class="doc-foto"><i class="fas fa-user-doctor"></i></div>
+        <div class="doc-info">
+          <h3>Dra. Lucia Fernandez</h3>
+          <span class="doc-rol">Odontopediatria</span>
+          <p class="doc-cert">Especialista en odontopediatria<br>Manejo de conducta infantil<br>10+ anos con ninos</p>
+          <div class="doc-redes"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-whatsapp"></i></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASOS -->
+<section id="casos">
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-tag">Antes y despues</span>
+      <h2 class="section-title">Resultados <em>reales</em></h2>
+      <p class="section-sub">Algunos casos de transformacion de pacientes que confiaron en nosotros.</p>
+    </div>
+    <div class="casos-grid">
+      <div class="caso fade">
+        <div class="caso-imgs">
+          <div class="lado antes"><span>Antes</span></div>
+          <div class="lado despues"><span>Despues</span></div>
+        </div>
+        <div class="caso-info">
+          <h3>Diseno de Sonrisa</h3>
+          <p>10 carillas de porcelana e.max · Tratamiento de 3 semanas</p>
+        </div>
+      </div>
+      <div class="caso fade">
+        <div class="caso-imgs">
+          <div class="lado antes"><span>Antes</span></div>
+          <div class="lado despues"><span>Despues</span></div>
+        </div>
+        <div class="caso-info">
+          <h3>Ortodoncia Invisible</h3>
+          <p>Invisalign Full · 14 meses de tratamiento</p>
+        </div>
+      </div>
+      <div class="caso fade">
+        <div class="caso-imgs">
+          <div class="lado antes"><span>Antes</span></div>
+          <div class="lado despues"><span>Despues</span></div>
+        </div>
+        <div class="caso-info">
+          <h3>Implantes All-on-4</h3>
+          <p>Rehabilitacion completa con carga inmediata</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section style="padding-top:0;">
+  <div class="test-section">
+    <span class="section-tag">Testimonios</span>
+    <h2 class="section-title">Pacientes que <em>nos eligieron</em></h2>
+    <div class="container">
+      <div class="test-grid">
+        <div class="test fade">
+          <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p>"Le tenia panico al dentista hasta que vine a Marfil. La atencion del Dr. Vargas y todo el equipo es excepcional. Mi diseno de sonrisa quedo perfecto."</p>
+          <div class="test-author"><div class="test-avatar">PC</div><div><h4>Paola Cardenas</h4><span>Diseno de sonrisa</span></div></div>
+        </div>
+        <div class="test fade">
+          <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p>"Termine mi Invisalign con la Dra. Renata. El proceso fue comodo, profesional y los resultados increibles. Ahora sonrio sin pena."</p>
+          <div class="test-author"><div class="test-avatar">DR</div><div><h4>Daniel Romero</h4><span>Ortodoncia invisible</span></div></div>
+        </div>
+        <div class="test fade">
+          <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p>"Mis hijos van con la Dra. Lucia y siempre salen felices. Hizo que se enamoraran del dentista. Es magica con los ninos."</p>
+          <div class="test-author"><div class="test-avatar">MS</div><div><h4>Mariana Soto</h4><span>Odontopediatria</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-tag">Preguntas frecuentes</span>
+      <h2 class="section-title">Resolvemos tus <em>dudas</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Cuanto cuesta una valoracion inicial? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a"><div class="faq-a-in">La primera valoracion incluye revision clinica, radiografia panoramica digital y plan de tratamiento. Tiene un costo de $750 MXN, deducible si decides tratarte con nosotros.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Aceptan pagos a meses sin intereses? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a"><div class="faq-a-in">Si. Aceptamos todas las tarjetas y manejamos meses sin intereses con BBVA, Banamex, Santander y HSBC. Tambien tenemos planes de financiamiento dental.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Cuanto dura un tratamiento de Invisalign? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a"><div class="faq-a-in">Depende de cada caso, pero en promedio entre 8 y 18 meses. Casos simples pueden resolverse en 4-6 meses con Invisalign Lite.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Las carillas son permanentes? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a"><div class="faq-a-in">Las carillas de porcelana tienen una duracion de 10 a 15 anos con cuidado adecuado. Damos garantia de 3 anos en todos nuestros tratamientos esteticos.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CITA -->
+<section class="cita" id="cita">
+  <div class="container">
+    <div class="cita-grid">
+      <div>
+        <span class="section-tag">Agendar valoracion</span>
+        <h2 class="section-title">Tu sonrisa <em>te espera</em></h2>
+        <p>Agenda tu primera cita y conoce el plan personalizado para transformar tu sonrisa.</p>
+        <div class="cita-info">
+          <div class="item"><i class="fas fa-map-marker-alt"></i><div><h4>Direccion</h4><span>Av. Presidente Masaryk 412, Polanco, CDMX</span></div></div>
+          <div class="item"><i class="far fa-clock"></i><div><h4>Horario</h4><span>Lun-Vie: 9:00 - 20:00 / Sab: 9:00 - 14:00</span></div></div>
+          <div class="item"><i class="fas fa-phone"></i><div><h4>Telefono</h4><span>+52 55 6677 4488</span></div></div>
+          <div class="item"><i class="fas fa-envelope"></i><div><h4>Email</h4><span>citas@marfilstudio.mx</span></div></div>
+        </div>
+      </div>
+      <form class="cita-form" onsubmit="event.preventDefault();alert('Gracias! Te contactaremos en menos de 24 horas para confirmar tu cita.');">
+        <h3>Agenda tu valoracion</h3>
+        <p>Te respondemos en menos de 24 horas.</p>
+        <div class="cita-row">
+          <div class="cita-field"><label>Nombre completo</label><input type="text" required></div>
+          <div class="cita-field"><label>Telefono</label><input type="tel" required></div>
+        </div>
+        <div class="cita-row">
+          <div class="cita-field"><label>Email</label><input type="email" required></div>
+          <div class="cita-field"><label>Tratamiento</label><select><option>Diseno de sonrisa</option><option>Ortodoncia invisible</option><option>Implantes</option><option>Blanqueamiento</option><option>Odontopediatria</option><option>Otra consulta</option></select></div>
+        </div>
+        <div class="cita-field" style="margin-bottom:14px;"><label>Mensaje (opcional)</label><textarea rows="3" placeholder="Cuentanos sobre tu caso..."></textarea></div>
+        <button type="submit">Solicitar cita</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-marca">
+        <a href="#" class="logo"><i class="fas fa-tooth"></i> Marfil <em>Studio</em></a>
+        <p>Clinica boutique de odontologia estetica. Sonrisas con caracter, hechas a tu medida.</p>
+        <div class="foot-social">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="foot">
+        <h4>Tratamientos</h4>
+        <ul>
+          <li><a href="#">Diseno de sonrisa</a></li>
+          <li><a href="#">Ortodoncia invisible</a></li>
+          <li><a href="#">Implantes</a></li>
+          <li><a href="#">Blanqueamiento</a></li>
+          <li><a href="#">Odontopediatria</a></li>
+        </ul>
+      </div>
+      <div class="foot">
+        <h4>Clinica</h4>
+        <ul>
+          <li><a href="#equipo">Doctores</a></li>
+          <li><a href="#tecnologia">Tecnologia</a></li>
+          <li><a href="#casos">Casos</a></li>
+          <li><a href="#">Garantias</a></li>
+        </ul>
+      </div>
+      <div class="foot">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:citas@marfilstudio.mx"><i class="fas fa-envelope"></i> citas@marfilstudio.mx</a></li>
+          <li><a href="tel:+525566774488"><i class="fas fa-phone"></i> +52 55 6677 4488</a></li>
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i> Masaryk 412, Polanco</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">&copy; 2026 Marfil Estudio Dental · Polanco, CDMX · Cedula profesional 5489721</div>
+  </div>
+</footer>
+
+<a href="https://wa.me/525566774488" class="wa" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  if (window.scrollY > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
+});
+</script>
+</body>
+</html>

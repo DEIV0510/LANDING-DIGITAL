@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Petalo Spa & Wellness | El arte de cuidarte</title>
+<meta name="description" content="Spa boutique en Condesa. Masajes, faciales, rituales corporales y experiencias de bienestar premium en un santuario urbano.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=Italianno&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+<style>
+:root{
+  --bg:#faf6f1;
+  --bg-2:#f3eae1;
+  --bg-3:#ede1d3;
+  --card:#ffffff;
+  --line:#e5d8c8;
+  --text:#2a1f1c;
+  --text-2:#4a3d36;
+  --muted:#8a7565;
+  --terra:#c97a6e;
+  --terra-d:#a85e54;
+  --terra-soft:#f5d5cd;
+  --sage:#8a9b7a;
+  --sage-d:#6b8060;
+  --gold:#c4a06a;
+  --gold-2:#a88748;
+  --shadow:0 25px 60px rgba(168,94,84,0.12);
+  --shadow-soft:0 8px 25px rgba(168,94,84,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.7;}
+h1,h2,h3,h4{font-family:'Fraunces',serif;line-height:1.15;font-weight:400;letter-spacing:-0.5px;}
+.script{font-family:'Italianno',cursive;font-weight:400;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.container{max-width:1240px;margin:0 auto;padding:0 24px;}
+
+/* NAVBAR */
+header.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:24px 0;background:transparent;transition:all .35s ease;}
+header.nav.scrolled{background:rgba(250,246,241,.96);backdrop-filter:blur(15px);padding:14px 0;border-bottom:1px solid var(--line);}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-size:1.6rem;font-weight:500;color:var(--text);font-style:italic;}
+.logo i{color:var(--terra);font-size:1.2rem;font-style:normal;}
+.logo b{color:var(--terra);font-weight:500;}
+.nav-links{display:flex;gap:34px;list-style:none;}
+.nav-links a{font-size:.9rem;color:var(--text-2);font-weight:400;transition:color .3s;letter-spacing:.5px;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:1px;background:var(--terra);transition:width .3s;}
+.nav-links a:hover{color:var(--terra);}
+.nav-links a:hover::after{width:100%;}
+.btn-nav{background:var(--terra);color:#fff !important;padding:11px 26px;border-radius:50px;font-weight:500;font-size:.85rem;transition:all .3s;}
+.btn-nav:hover{background:var(--terra-d);}
+.menu-btn{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:140px 0 80px;background:linear-gradient(135deg,var(--bg) 0%,var(--bg-2) 100%);position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-150px;left:-150px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,var(--terra-soft) 0%,transparent 70%);}
+.hero::after{content:'';position:absolute;bottom:-200px;right:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(138,155,122,0.2) 0%,transparent 70%);}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:2;}
+.hero-tag{color:var(--terra);font-style:italic;font-size:1.6rem;display:block;margin-bottom:14px;}
+.hero h1{font-size:clamp(2.8rem,6vw,5.4rem);margin-bottom:26px;font-weight:300;color:var(--text);}
+.hero h1 em{font-style:italic;color:var(--terra);font-weight:400;}
+.hero p{font-size:1.18rem;color:var(--text-2);margin-bottom:40px;max-width:520px;}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-primary{background:var(--terra);color:#fff;padding:16px 34px;border-radius:50px;font-weight:500;font-size:.92rem;display:inline-flex;align-items:center;gap:10px;transition:all .3s;border:none;cursor:pointer;letter-spacing:.5px;}
+.btn-primary:hover{background:var(--terra-d);transform:translateY(-2px);box-shadow:var(--shadow-soft);}
+.btn-outline{background:transparent;color:var(--text);padding:16px 34px;border-radius:50px;font-weight:500;font-size:.92rem;border:1px solid var(--line);display:inline-flex;align-items:center;gap:10px;transition:all .3s;letter-spacing:.5px;}
+.btn-outline:hover{border-color:var(--terra);color:var(--terra);}
+
+.hero-visual{position:relative;}
+.hero-photo{height:620px;border-radius:300px 300px 40px 40px;background:url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=900') center/cover;box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.float-pill{position:absolute;background:var(--card);padding:14px 22px;border-radius:50px;box-shadow:var(--shadow-soft);display:flex;align-items:center;gap:10px;font-size:.88rem;}
+.float-pill i{color:var(--terra);}
+.float-pill-1{top:60px;left:-40px;}
+.float-pill-2{bottom:80px;right:-30px;}
+.float-pill-3{top:50%;right:-50px;}
+
+/* DIVIDER ORNAMENT */
+.divider{display:flex;align-items:center;justify-content:center;gap:14px;margin:70px 0 30px;color:var(--terra);}
+.divider::before,.divider::after{content:'';width:60px;height:1px;background:var(--terra);}
+.divider i{font-size:1.1rem;}
+
+/* SECTIONS */
+section{padding:120px 0;}
+.section-tag{display:inline-block;color:var(--terra);font-size:1.4rem;font-style:italic;font-family:'Fraunces';margin-bottom:14px;}
+.section-title{font-size:clamp(2.4rem,5vw,4rem);margin-bottom:18px;font-weight:300;color:var(--text);}
+.section-title em{color:var(--terra);font-style:italic;}
+.section-sub{color:var(--text-2);font-size:1.08rem;max-width:620px;font-style:italic;font-family:'Fraunces';font-weight:300;}
+.section-header{margin-bottom:70px;}
+.section-header.center{text-align:center;}
+.section-header.center .section-sub{margin:0 auto;}
+
+/* TRUST BAR */
+.trust-bar{background:var(--bg-2);padding:50px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:30px;text-align:center;}
+.trust-item .num{font-family:'Fraunces';font-size:2.8rem;color:var(--terra);font-weight:400;font-style:italic;line-height:1;}
+.trust-item .lbl{color:var(--muted);font-size:.78rem;letter-spacing:3px;text-transform:uppercase;margin-top:6px;}
+
+/* SERVICIOS */
+.serv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
+.serv{background:var(--card);border:1px solid var(--line);padding:38px 32px;border-radius:24px;transition:all .4s;text-align:center;}
+.serv:hover{transform:translateY(-8px);border-color:var(--terra);box-shadow:var(--shadow);}
+.serv-icon{width:68px;height:68px;background:var(--terra-soft);color:var(--terra-d);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 22px;}
+.serv h3{font-size:1.6rem;margin-bottom:12px;font-style:italic;}
+.serv p{color:var(--muted);font-size:.95rem;margin-bottom:18px;}
+.serv-precio{display:inline-block;color:var(--terra);font-family:'Fraunces';font-size:1.2rem;font-weight:500;font-style:italic;padding-top:14px;border-top:1px solid var(--line);width:80%;}
+.serv-precio span{font-size:.75rem;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;display:block;font-style:normal;font-family:'Inter';}
+
+/* RITUALES */
+.rituales{background:var(--bg-2);}
+.rit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;}
+.ritual{background:var(--card);border-radius:24px;overflow:hidden;border:1px solid var(--line);transition:all .4s;}
+.ritual:hover{transform:translateY(-6px);box-shadow:var(--shadow);}
+.ritual-img{height:280px;position:relative;overflow:hidden;}
+.ritual-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s;}
+.ritual:hover .ritual-img img{transform:scale(1.06);}
+.ritual-tag{position:absolute;top:18px;left:18px;background:var(--terra);color:#fff;padding:6px 16px;border-radius:50px;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;}
+.ritual-info{padding:30px;}
+.ritual-info h3{font-size:1.6rem;margin-bottom:8px;font-style:italic;}
+.ritual-duracion{color:var(--gold-2);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;display:block;}
+.ritual-info p{color:var(--muted);font-size:.92rem;margin-bottom:20px;}
+.ritual-precio{display:flex;justify-content:space-between;align-items:center;padding-top:18px;border-top:1px solid var(--line);}
+.ritual-precio span{font-family:'Fraunces';font-size:1.6rem;color:var(--terra);font-style:italic;}
+.ritual-precio a{color:var(--terra);font-size:.85rem;font-weight:500;display:flex;align-items:center;gap:6px;transition:gap .3s;}
+.ritual-precio a:hover{gap:10px;}
+
+/* FILOSOFIA */
+.filosofia{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.filosofia-img{height:580px;border-radius:30px;background:url('https://images.unsplash.com/photo-1591343395082-e120087004b4?w=900') center/cover;position:relative;}
+.filosofia-img::after{content:'';position:absolute;inset:0;border:1px solid var(--terra);border-radius:30px;transform:translate(20px,20px);z-index:-1;}
+.filosofia .quote{font-family:'Italianno';font-size:3rem;color:var(--terra);line-height:1;margin:30px 0 20px;}
+.fil-lista{list-style:none;margin-top:30px;}
+.fil-lista li{display:flex;gap:18px;padding:18px 0;border-bottom:1px solid var(--line);}
+.fil-lista li:last-child{border:none;}
+.fil-lista i{width:44px;height:44px;background:var(--terra-soft);color:var(--terra-d);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.fil-lista h4{font-size:1.2rem;margin-bottom:4px;font-style:italic;}
+.fil-lista p{color:var(--muted);font-size:.92rem;}
+
+/* TERAPEUTAS */
+.terapeutas{background:var(--bg-2);}
+.tera-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:30px;}
+.tera{background:var(--card);border-radius:24px;overflow:hidden;border:1px solid var(--line);transition:all .4s;text-align:center;}
+.tera:hover{transform:translateY(-6px);box-shadow:var(--shadow);}
+.tera-foto{height:320px;background:linear-gradient(135deg,var(--terra-soft),var(--bg-3));display:flex;align-items:center;justify-content:center;font-size:5rem;color:var(--terra-d);position:relative;}
+.tera-foto i{opacity:0.45;}
+.tera-info{padding:28px;}
+.tera h3{font-size:1.5rem;margin-bottom:4px;font-style:italic;}
+.tera-rol{color:var(--gold-2);font-size:.78rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;display:block;}
+.tera-bio{color:var(--muted);font-size:.88rem;}
+
+/* AMBIENTE */
+.ambiente{padding:0;}
+.amb-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,260px);gap:6px;}
+.amb-item{overflow:hidden;background:var(--bg-3);}
+.amb-item img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease;}
+.amb-item:hover img{transform:scale(1.08);}
+.amb-item:nth-child(1){grid-column:span 2;grid-row:span 2;}
+
+/* PRODUCTOS */
+.productos{background:var(--bg-2);}
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;}
+.prod{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px 24px;text-align:center;transition:all .3s;}
+.prod:hover{border-color:var(--terra);transform:translateY(-4px);}
+.prod-circle{width:140px;height:140px;background:linear-gradient(135deg,var(--terra-soft),var(--bg-3));border-radius:50%;margin:0 auto 24px;display:flex;align-items:center;justify-content:center;color:var(--terra-d);font-size:2.6rem;}
+.prod h3{font-size:1.2rem;margin-bottom:6px;font-style:italic;}
+.prod span{color:var(--muted);font-size:.85rem;}
+
+/* TESTIMONIOS */
+.test-bg{background:var(--terra);color:#fff;border-radius:0;padding:90px 24px;text-align:center;position:relative;overflow:hidden;}
+.test-bg::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,0.06);}
+.test-bg::after{content:'';position:absolute;bottom:-150px;left:-150px;width:500px;height:500px;border-radius:50%;background:rgba(255,255,255,0.04);}
+.test-bg .section-tag{color:#f5d5cd;}
+.test-bg h2{color:#fff;}
+.test-bg h2 em{color:#fde0d8;}
+.test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:50px;text-align:left;position:relative;z-index:2;}
+.test{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);padding:32px;border-radius:24px;backdrop-filter:blur(10px);}
+.test-stars{color:var(--gold);margin-bottom:14px;}
+.test p{font-style:italic;font-family:'Fraunces';color:#fff;margin-bottom:22px;font-size:1.05rem;line-height:1.6;}
+.test-author{display:flex;align-items:center;gap:14px;}
+.test-avatar{width:48px;height:48px;background:var(--terra-soft);color:var(--terra-d);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:500;}
+.test-author h4{font-size:1rem;font-family:'Fraunces';font-weight:500;color:#fff;font-style:italic;}
+.test-author span{font-size:.82rem;color:#fde0d8;}
+
+/* RESERVA */
+.reserva-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.reserva-info h2{font-size:clamp(2.2rem,4.5vw,3.4rem);margin-bottom:18px;font-weight:300;}
+.reserva-info p{color:var(--text-2);font-size:1.05rem;margin-bottom:30px;}
+.reserva-info .item{display:flex;gap:16px;align-items:flex-start;margin-bottom:22px;}
+.reserva-info .item i{width:46px;height:46px;background:var(--terra-soft);color:var(--terra-d);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.reserva-info .item h4{font-size:1.1rem;margin-bottom:4px;font-style:italic;}
+.reserva-info .item span{color:var(--muted);font-size:.92rem;}
+
+.reserva-form{background:var(--bg-2);padding:46px;border-radius:30px;border:1px solid var(--line);}
+.reserva-form h3{font-size:1.8rem;margin-bottom:6px;font-style:italic;}
+.reserva-form > p{font-size:.92rem;color:var(--muted);margin-bottom:24px;}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.f-field{display:flex;flex-direction:column;gap:6px;}
+.f-field label{font-size:.78rem;color:var(--text-2);font-weight:500;letter-spacing:.5px;}
+.f-field input,.f-field select,.f-field textarea{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;font-family:inherit;font-size:.95rem;color:var(--text);}
+.f-field input:focus,.f-field select:focus,.f-field textarea:focus{outline:none;border-color:var(--terra);}
+.reserva-form button{width:100%;background:var(--terra);color:#fff;border:none;padding:16px;border-radius:50px;font-weight:500;font-size:1rem;margin-top:14px;cursor:pointer;transition:all .3s;}
+.reserva-form button:hover{background:var(--terra-d);}
+
+/* FOOTER */
+footer{padding:80px 0 30px;background:var(--text);color:#cdc1b8;}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px;margin-bottom:50px;}
+.foot-marca .logo{color:#fff;}
+.foot-marca .logo b{color:var(--terra-soft);}
+.foot-marca p{margin-top:18px;font-size:.95rem;color:#a89b91;font-style:italic;font-family:'Fraunces';font-weight:300;font-size:1.05rem;max-width:300px;}
+.foot h4{font-family:'Fraunces';font-size:1.3rem;font-style:italic;margin-bottom:20px;color:#fff;font-weight:400;}
+.foot ul{list-style:none;}
+.foot ul li{margin-bottom:10px;}
+.foot ul li a{font-size:.9rem;color:#a89b91;transition:color .3s;}
+.foot ul li a:hover{color:var(--terra-soft);}
+.foot-social{display:flex;gap:12px;margin-top:18px;}
+.foot-social a{width:40px;height:40px;border:1px solid #4a3d36;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#a89b91;transition:all .3s;}
+.foot-social a:hover{background:var(--terra);color:#fff;border-color:var(--terra);}
+.foot-bottom{padding-top:30px;border-top:1px solid #4a3d36;text-align:center;font-size:.82rem;color:#867a72;font-style:italic;}
+
+/* WHATSAPP */
+.wa{position:fixed;bottom:24px;right:24px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.6rem;box-shadow:0 8px 25px rgba(37,211,102,0.4);z-index:99;animation:pulseWa 2s infinite;}
+@keyframes pulseWa{0%,100%{transform:scale(1);}50%{transform:scale(1.1);}}
+
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .menu-btn{display:block;}
+  .hero-grid,.filosofia,.reserva-grid{grid-template-columns:1fr;gap:50px;}
+  .hero-photo,.filosofia-img{height:400px;}
+  .float-pill-1,.float-pill-3{display:none;}
+  .amb-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,200px);}
+  .amb-item:nth-child(1){grid-column:span 2;grid-row:span 1;}
+  .foot-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){.foot-grid{grid-template-columns:1fr;}.f-row{grid-template-columns:1fr;}.reserva-form{padding:32px;}}
+
+.fade{opacity:0;transform:translateY(30px);transition:all .9s ease;}
+.fade.show{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo"><i class="fas fa-spa"></i> P<b>e</b>talo <em>Spa</em></a>
+    <ul class="nav-links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#rituales">Rituales</a></li>
+      <li><a href="#equipo">Terapeutas</a></li>
+      <li><a href="#ambiente">Espacio</a></li>
+      <li><a href="#reserva" class="btn-nav">Reservar</a></li>
+    </ul>
+    <button class="menu-btn"><i class="fas fa-bars"></i></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <span class="hero-tag script">El arte de cuidarte</span>
+        <h1>Belleza que se siente <em>desde adentro</em></h1>
+        <p>Un santuario urbano dedicado al bienestar integral. Rituales ancestrales, productos naturales y manos expertas en un espacio pensado para reconectar.</p>
+        <div class="hero-cta">
+          <a href="#reserva" class="btn-primary"><i class="far fa-calendar-check"></i> Reservar mi ritual</a>
+          <a href="#rituales" class="btn-outline">Ver experiencias</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-photo"></div>
+        <div class="float-pill float-pill-1"><i class="fas fa-leaf"></i> 100% Natural</div>
+        <div class="float-pill float-pill-2"><i class="fas fa-spa"></i> Productos artesanales</div>
+        <div class="float-pill float-pill-3"><i class="fas fa-heart"></i> +5,000 clientas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust-bar">
+  <div class="container trust-grid">
+    <div class="trust-item"><div class="num">+5,000</div><div class="lbl">Clientas felices</div></div>
+    <div class="trust-item"><div class="num">9</div><div class="lbl">Anos de experiencia</div></div>
+    <div class="trust-item"><div class="num">8</div><div class="lbl">Terapeutas certificadas</div></div>
+    <div class="trust-item"><div class="num">5★</div><div class="lbl">Tripadvisor &amp; Google</div></div>
+  </div>
+</div>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-tag script">Nuestros servicios</span>
+      <h2 class="section-title">Tratamientos <em>que sanan</em></h2>
+      <p class="section-sub">Una carta cuidadosamente curada de servicios para tu cuerpo, rostro y alma.</p>
+    </div>
+    <div class="serv-grid">
+      <div class="serv fade">
+        <div class="serv-icon"><i class="fas fa-hand-holding-heart"></i></div>
+        <h3>Masajes</h3>
+        <p>Sueco, descontracturante, piedras calientes, deportivo y aromaterapia.</p>
+        <div class="serv-precio">Desde $850<span>60 minutos</span></div>
+      </div>
+      <div class="serv fade">
+        <div class="serv-icon"><i class="fas fa-face-smile-beam"></i></div>
+        <h3>Faciales</h3>
+        <p>Hidratantes, anti-edad, limpieza profunda y peelings con productos naturales.</p>
+        <div class="serv-precio">Desde $980<span>75 minutos</span></div>
+      </div>
+      <div class="serv fade">
+        <div class="serv-icon"><i class="fas fa-hand-sparkles"></i></div>
+        <h3>Manos &amp; Pies</h3>
+        <p>Manicure y pedicure spa, parafina, gel semipermanente y diseno de unas.</p>
+        <div class="serv-precio">Desde $480<span>45 minutos</span></div>
+      </div>
+      <div class="serv fade">
+        <div class="serv-icon"><i class="fas fa-fire"></i></div>
+        <h3>Corporales</h3>
+        <p>Exfoliaciones, envolturas de chocolate, lodo termal y reductivos.</p>
+        <div class="serv-precio">Desde $1,200<span>90 minutos</span></div>
+      </div>
+      <div class="serv fade">
+        <div class="serv-icon"><i class="fas fa-eye"></i></div>
+        <h3>Estetica</h3>
+        <p>Diseno de cejas, henna brows, lifting de pestanas y depilacion con cera tibia.</p>
+        <div class="serv-precio">Desde $350<span>30 minutos</span></div>
+      </div>
+      <div class="serv fade">
+        <div class="serv-icon"><i class="fas fa-leaf"></i></div>
+        <h3>Bienestar</h3>
+        <p>Reiki, meditacion guiada, terapia con cristales y banos sonoros.</p>
+        <div class="serv-precio">Desde $750<span>60 minutos</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RITUALES -->
+<section class="rituales" id="rituales">
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-tag script">Experiencias firma</span>
+      <h2 class="section-title">Rituales <em>de autor</em></h2>
+      <p class="section-sub">Paquetes disenados para una desconexion total. Una experiencia completa para regalarte un dia entero.</p>
+    </div>
+    <div class="rit-grid">
+      <div class="ritual fade">
+        <div class="ritual-img">
+          <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800" alt="Ritual Romance">
+          <span class="ritual-tag">Mas popular</span>
+        </div>
+        <div class="ritual-info">
+          <h3>Ritual Petalo</h3>
+          <span class="ritual-duracion">3 horas &middot; Recomendado</span>
+          <p>Bano de petalos, masaje de aromaterapia, facial hidratante y manicure express. Te recibimos con tisana caliente y chocolate artesanal.</p>
+          <div class="ritual-precio"><span>$2,890</span><a href="#reserva">Reservar <i class="fas fa-arrow-right"></i></a></div>
+        </div>
+      </div>
+      <div class="ritual fade">
+        <div class="ritual-img">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800" alt="Ritual Renacer">
+          <span class="ritual-tag">Couple</span>
+        </div>
+        <div class="ritual-info">
+          <h3>Ritual Renacer</h3>
+          <span class="ritual-duracion">4 horas &middot; Para dos</span>
+          <p>Para dos personas: jacuzzi privado, masaje a cuatro manos, facial de oro 24K y cena ligera con vino. Una experiencia inolvidable.</p>
+          <div class="ritual-precio"><span>$5,490</span><a href="#reserva">Reservar <i class="fas fa-arrow-right"></i></a></div>
+        </div>
+      </div>
+      <div class="ritual fade">
+        <div class="ritual-img">
+          <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=800" alt="Ritual Detox">
+          <span class="ritual-tag">Detox</span>
+        </div>
+        <div class="ritual-info">
+          <h3>Ritual Renovacion</h3>
+          <span class="ritual-duracion">2.5 horas &middot; Detox</span>
+          <p>Sauna seca, exfoliacion de sal del Himalaya, envoltura de algas y masaje drenaje linfatico. Sales totalmente renovada.</p>
+          <div class="ritual-precio"><span>$2,290</span><a href="#reserva">Reservar <i class="fas fa-arrow-right"></i></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILOSOFIA -->
+<section>
+  <div class="container">
+    <div class="filosofia">
+      <div class="filosofia-img"></div>
+      <div class="fade">
+        <span class="section-tag script">Nuestra filosofia</span>
+        <h2 class="section-title">Belleza con <em>conciencia</em></h2>
+        <div class="quote">"Cuidarte no es un lujo, es una forma de vida."</div>
+        <p style="color:var(--text-2);">En Petalo creemos en una belleza que respeta tu cuerpo, tu tiempo y al planeta. Por eso elegimos cada producto, cada gesto y cada espacio con intencion.</p>
+        <ul class="fil-lista">
+          <li><i class="fas fa-leaf"></i><div><h4>Productos naturales</h4><p>Trabajamos solo con marcas organicas, cruelty-free y biodegradables.</p></div></li>
+          <li><i class="fas fa-spa"></i><div><h4>Tecnicas ancestrales</h4><p>Combinamos saberes tradicionales con tecnologia moderna y protocolos seguros.</p></div></li>
+          <li><i class="fas fa-heart"></i><div><h4>Atencion personalizada</h4><p>Cada cliente recibe un plan a medida, nada de tratamientos genericos.</p></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TERAPEUTAS -->
+<section class="terapeutas" id="equipo">
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-tag script">Nuestras manos expertas</span>
+      <h2 class="section-title">Terapeutas <em>certificadas</em></h2>
+    </div>
+    <div class="tera-grid">
+      <div class="tera fade">
+        <div class="tera-foto"><i class="fas fa-user"></i></div>
+        <div class="tera-info">
+          <h3>Sofia Mendez</h3>
+          <span class="tera-rol">Directora &middot; Cosmetologa</span>
+          <p class="tera-bio">12 anos de trayectoria. Formada en Paris y Bali. Especialista en faciales antiedad.</p>
+        </div>
+      </div>
+      <div class="tera fade">
+        <div class="tera-foto"><i class="fas fa-user"></i></div>
+        <div class="tera-info">
+          <h3>Valeria Cruz</h3>
+          <span class="tera-rol">Masoterapeuta</span>
+          <p class="tera-bio">Tecnica thai, sueca y deportiva. Maestra en piedras calientes y aromaterapia.</p>
+        </div>
+      </div>
+      <div class="tera fade">
+        <div class="tera-foto"><i class="fas fa-user"></i></div>
+        <div class="tera-info">
+          <h3>Nadia Robles</h3>
+          <span class="tera-rol">Esteticista</span>
+          <p class="tera-bio">Especialista en cejas, pestanas y cuidado integral del rostro. 8 anos de experiencia.</p>
+        </div>
+      </div>
+      <div class="tera fade">
+        <div class="tera-foto"><i class="fas fa-user"></i></div>
+        <div class="tera-info">
+          <h3>Aurora Pena</h3>
+          <span class="tera-rol">Reiki &middot; Bienestar</span>
+          <p class="tera-bio">Maestra reiki nivel III. Certificada en cuencos tibetanos y meditacion guiada.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AMBIENTE -->
+<section class="ambiente" id="ambiente">
+  <div class="amb-grid">
+    <div class="amb-item"><img src="https://images.unsplash.com/photo-1610501693680-7411cf25410f?w=900" alt="Sala principal"></div>
+    <div class="amb-item"><img src="https://images.unsplash.com/photo-1598901986229-91f0f7b48d61?w=600" alt="Detalles"></div>
+    <div class="amb-item"><img src="https://images.unsplash.com/photo-1583416750470-965b2707b355?w=600" alt="Velas"></div>
+    <div class="amb-item"><img src="https://images.unsplash.com/photo-1620733723572-11c53f73a416?w=600" alt="Productos"></div>
+    <div class="amb-item"><img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=600" alt="Aromas"></div>
+  </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section class="productos">
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-tag script">Marcas que usamos</span>
+      <h2 class="section-title">Productos <em>premium</em></h2>
+      <p class="section-sub">Solo las mejores firmas de cosmetica natural y de alta gama.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod fade"><div class="prod-circle"><i class="fas fa-leaf"></i></div><h3>Aromatherapy Associates</h3><span>Reino Unido</span></div>
+      <div class="prod fade"><div class="prod-circle"><i class="fas fa-spa"></i></div><h3>Natura Bisse</h3><span>Espana</span></div>
+      <div class="prod fade"><div class="prod-circle"><i class="fas fa-heart"></i></div><h3>Comfort Zone</h3><span>Italia</span></div>
+      <div class="prod fade"><div class="prod-circle"><i class="fas fa-feather"></i></div><h3>Susanne Kaufmann</h3><span>Austria</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<div class="test-bg">
+  <div class="container">
+    <span class="section-tag script">Lo que dicen</span>
+    <h2 class="section-title">Clientas que se <em>enamoraron</em></h2>
+    <div class="test-grid">
+      <div class="test fade">
+        <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p>"Petalo es mi escape semanal. El masaje con piedras calientes de Vale es magia pura. Salgo nueva cada vez."</p>
+        <div class="test-author"><div class="test-avatar">CR</div><div><h4>Catalina Rios</h4><span>Cliente desde 2022</span></div></div>
+      </div>
+      <div class="test fade">
+        <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p>"El Ritual Renacer con mi pareja para nuestro aniversario fue uno de los mejores regalos que nos hemos dado. Atencion impecable de principio a fin."</p>
+        <div class="test-author"><div class="test-avatar">IM</div><div><h4>Isabela Moreno</h4><span>Ritual Renacer</span></div></div>
+      </div>
+      <div class="test fade">
+        <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p>"Llegue por un facial y sali enamorada del lugar. La energia, los aromas, la atencion de Sofia... un sueno. Recomendadisimo."</p>
+        <div class="test-author"><div class="test-avatar">RC</div><div><h4>Renata Camacho</h4><span>Facial antiedad</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESERVA -->
+<section id="reserva">
+  <div class="container">
+    <div class="reserva-grid">
+      <div class="reserva-info">
+        <span class="section-tag script">Reservar</span>
+        <h2>Tu santuario <em>te espera</em></h2>
+        <p>Agenda tu cita y vive una experiencia hecha a tu medida.</p>
+        <div class="item"><i class="fas fa-map-marker-alt"></i><div><h4>Direccion</h4><span>Av. Amsterdam 215, Condesa, CDMX</span></div></div>
+        <div class="item"><i class="far fa-clock"></i><div><h4>Horario</h4><span>Lun-Sab: 10:00 - 21:00 / Dom: 11:00 - 18:00</span></div></div>
+        <div class="item"><i class="fas fa-phone"></i><div><h4>Telefono</h4><span>+52 55 8899 4422</span></div></div>
+        <div class="item"><i class="fas fa-envelope"></i><div><h4>Email</h4><span>hola@petalospa.mx</span></div></div>
+      </div>
+      <form class="reserva-form" onsubmit="event.preventDefault();alert('Gracias! Confirmaremos tu reservacion por WhatsApp en menos de 2 horas.');">
+        <h3>Reservar mi ritual</h3>
+        <p>Te confirmamos tu cita en menos de 2 horas.</p>
+        <div class="f-row">
+          <div class="f-field"><label>Nombre</label><input type="text" required></div>
+          <div class="f-field"><label>Telefono</label><input type="tel" required></div>
+        </div>
+        <div class="f-row">
+          <div class="f-field"><label>Servicio</label><select><option>Masaje</option><option>Facial</option><option>Manos &amp; pies</option><option>Ritual Petalo</option><option>Ritual Renacer</option><option>Ritual Renovacion</option><option>Otro</option></select></div>
+          <div class="f-field"><label>Fecha</label><input type="date" required></div>
+        </div>
+        <div class="f-field" style="margin-bottom:14px;"><label>Mensaje (opcional)</label><textarea rows="3" placeholder="Cuentanos si tienes alguna preferencia..."></textarea></div>
+        <button type="submit">Solicitar reservacion</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-marca">
+        <a href="#" class="logo"><i class="fas fa-spa"></i> P<b>e</b>talo <em>Spa</em></a>
+        <p>"Un santuario urbano para reconectar contigo misma."</p>
+        <div class="foot-social">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+          <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+      </div>
+      <div class="foot">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#">Masajes</a></li>
+          <li><a href="#">Faciales</a></li>
+          <li><a href="#">Corporales</a></li>
+          <li><a href="#">Estetica</a></li>
+          <li><a href="#">Bienestar</a></li>
+        </ul>
+      </div>
+      <div class="foot">
+        <h4>Spa</h4>
+        <ul>
+          <li><a href="#equipo">Terapeutas</a></li>
+          <li><a href="#rituales">Rituales firma</a></li>
+          <li><a href="#">Tienda online</a></li>
+          <li><a href="#">Gift cards</a></li>
+        </ul>
+      </div>
+      <div class="foot">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:hola@petalospa.mx"><i class="fas fa-envelope"></i> hola@petalospa.mx</a></li>
+          <li><a href="tel:+525588994422"><i class="fas fa-phone"></i> +52 55 8899 4422</a></li>
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i> Amsterdam 215, Condesa</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">&copy; 2026 Petalo Spa &amp; Wellness &middot; Condesa, CDMX &middot; Hecho con amor</div>
+  </div>
+</footer>
+
+<a href="https://wa.me/525588994422" class="wa" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  if (window.scrollY > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

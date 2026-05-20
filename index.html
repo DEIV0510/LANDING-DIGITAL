@@ -1,0 +1,2958 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Creamos landing pages profesionales que convierten visitantes en clientes. Diseño moderno, rapido y optimizado.">
+<title>Landing Digital | Landing Pages Profesionales que Convierten</title>
+<link rel="icon" type="image/png" sizes="32x32" href="images/logo/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/logo/favicon.png">
+<link rel="icon" type="image/png" href="images/logo/favicon.png">
+<link rel="icon" type="image/svg+xml" href="images/logo/logo.svg">
+<link rel="shortcut icon" href="images/logo/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/logo/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+<style>
+:root{
+  --azul-primario:#0066ff;
+  --azul-medio:#0044cc;
+  --azul-oscuro:#001f5c;
+  --azul-electrico:#00aaff;
+  --negro:#0a0a0a;
+  --negro-suave:#141414;
+  --negro-card:#1a1a1f;
+  --gris-borde:#2a2a35;
+  --texto:#ffffff;
+  --texto-suave:#b0b0c0;
+  --gradiente:linear-gradient(135deg,#0066ff 0%,#0044cc 50%,#001f5c 100%);
+  --gradiente-electrico:linear-gradient(135deg,#00aaff 0%,#0066ff 100%);
+  --shadow-azul:0 0 40px rgba(0,102,255,0.4);
+  --shadow-card:0 20px 50px rgba(0,0,0,0.5);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:#0066ff #0a0a0a;}
+html::-webkit-scrollbar{width:8px;}
+html::-webkit-scrollbar-track{background:#0a0a0a;}
+html::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#00aaff 0%,#0066ff 50%,#0033aa 100%);border-radius:10px;}
+
+/* ===== BARRA DE PROGRESO DE SCROLL ===== */
+.scroll-progress{
+  position:fixed;top:0;left:0;height:3px;width:0%;
+  background:linear-gradient(90deg,#00aaff 0%,#0066ff 50%,#a855f7 100%);
+  z-index:99998;
+  box-shadow:0 0 10px rgba(0,170,255,0.8);
+  transition:width 0.1s linear;
+}
+
+/* ===== SPOTLIGHT QUE SIGUE AL MOUSE ===== */
+.mouse-spotlight{
+  position:fixed;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,170,255,0.18) 0%,rgba(0,102,255,0.08) 25%,transparent 60%);
+  pointer-events:none;
+  z-index:1;
+  transform:translate(-50%,-50%);
+  transition:opacity 0.3s ease;
+  mix-blend-mode:screen;
+  filter:blur(20px);
+  opacity:0;
+}
+
+/* ===== AURORAS DE FONDO POR SECCION ===== */
+section{position:relative;}
+.aurora{
+  position:absolute;
+  pointer-events:none;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:0.5;
+  z-index:0;
+}
+.aurora-blue{background:radial-gradient(circle,rgba(0,102,255,0.55) 0%,transparent 70%);}
+.aurora-cyan{background:radial-gradient(circle,rgba(0,212,255,0.4) 0%,transparent 70%);}
+.aurora-violet{background:radial-gradient(circle,rgba(150,80,255,0.35) 0%,transparent 70%);}
+.aurora-top-left{top:-200px;left:-200px;width:600px;height:600px;}
+.aurora-top-right{top:-150px;right:-200px;width:500px;height:500px;}
+.aurora-bottom{bottom:-200px;left:50%;transform:translateX(-50%);width:700px;height:400px;}
+.aurora-anim{animation:auroraFloat 14s ease-in-out infinite;}
+@keyframes auroraFloat{
+  0%,100%{transform:translate(0,0) scale(1);}
+  33%{transform:translate(40px,-30px) scale(1.1);}
+  66%{transform:translate(-30px,40px) scale(0.95);}
+}
+
+/* Wrapper para que el contenido este encima */
+section > .contenedor{position:relative;z-index:2;}
+
+/* ===== ANIMACIONES DE ENTRADA AVANZADAS ===== */
+.reveal{opacity:0;transform:translateY(40px);transition:all 0.9s cubic-bezier(0.16,1,0.3,1);}
+.reveal.activo{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-50px);transition:all 0.9s cubic-bezier(0.16,1,0.3,1);}
+.reveal-left.activo{opacity:1;transform:translateX(0);}
+.reveal-right{opacity:0;transform:translateX(50px);transition:all 0.9s cubic-bezier(0.16,1,0.3,1);}
+.reveal-right.activo{opacity:1;transform:translateX(0);}
+.reveal-scale{opacity:0;transform:scale(0.85);transition:all 0.9s cubic-bezier(0.16,1,0.3,1);}
+.reveal-scale.activo{opacity:1;transform:scale(1);}
+
+/* Stagger - delays escalonados */
+.stagger-1{transition-delay:0.1s;}
+.stagger-2{transition-delay:0.2s;}
+.stagger-3{transition-delay:0.3s;}
+.stagger-4{transition-delay:0.4s;}
+.stagger-5{transition-delay:0.5s;}
+
+/* ===== TEXTO GRADIENTE ANIMADO ===== */
+.gradient-text-anim{
+  background:linear-gradient(135deg,#00aaff 0%,#5fc4ff 25%,#0066ff 50%,#a855f7 75%,#00aaff 100%);
+  background-size:200% 200%;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:gradientShift 6s ease-in-out infinite;
+}
+@keyframes gradientShift{
+  0%,100%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+}
+
+/* ===== TILT 3D EN TARJETAS ===== */
+.tilt-card{
+  transition:transform 0.4s cubic-bezier(0.16,1,0.3,1),box-shadow 0.4s ease;
+  transform-style:preserve-3d;
+}
+
+/* ===== EFECTO GLOW EN HOVER ===== */
+.glow-on-hover{position:relative;overflow:hidden;}
+.glow-on-hover::before{
+  content:'';position:absolute;
+  inset:-2px;
+  background:linear-gradient(135deg,#00aaff,#0066ff,#a855f7);
+  border-radius:inherit;
+  opacity:0;
+  z-index:-1;
+  transition:opacity 0.4s ease;
+  filter:blur(8px);
+}
+.glow-on-hover:hover::before{opacity:0.7;}
+
+/* ===== DECORACIONES GEOMETRICAS POR SECCION ===== */
+.section-deco{
+  position:absolute;
+  width:120px;height:120px;
+  border:1px solid rgba(0,170,255,0.15);
+  pointer-events:none;
+  z-index:1;
+}
+.deco-square{border-radius:24px;transform:rotate(15deg);}
+.deco-circle{border-radius:50%;}
+.deco-dot{
+  width:8px;height:8px;background:#00aaff;border-radius:50%;
+  border:none;box-shadow:0 0 20px #00aaff;
+}
+.deco-line{
+  width:200px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(0,170,255,0.4),transparent);
+  border:none;
+}
+
+/* ===== HOVER MEJORADO EN BOTONES ===== */
+.btn-primario,.btn-secundario,.btn-nav,.plan-unico-btn,.plan-btn,.faq-item,.servicio-card,.miembro,.test,.proyecto{
+  position:relative;
+  transition:transform 0.4s cubic-bezier(0.16,1,0.3,1),box-shadow 0.4s ease,border-color 0.4s ease;
+}
+
+/* ===== SHINE EN BOTONES PRIMARIOS ===== */
+.btn-primario::after{
+  content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,0.25) 50%,transparent 70%);
+  transition:left 0.6s ease;
+  pointer-events:none;
+}
+.btn-primario:hover::after{left:100%;}
+
+/* ===== EFECTO MAGNETICO EN ICONOS DE SERVICIOS ===== */
+.servicio-icon{transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1);}
+.servicio-card:hover .servicio-icon{transform:scale(1.15) rotate(-8deg);}
+
+/* ===== NUMEROS DE STATS ===== */
+.stat .num{
+  background:linear-gradient(135deg,#00aaff 0%,#0066ff 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--negro);
+  color:var(--texto);
+  overflow-x:hidden;
+  line-height:1.6;
+}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;font-weight:700;line-height:1.2;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+.contenedor{max-width:1280px;margin:0 auto;padding:0 24px;}
+
+/* ===== NAVBAR ===== */
+.navbar{
+  position:fixed;top:0;left:0;width:100%;z-index:1000;
+  background:rgba(10,10,10,0.85);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(0,102,255,0.15);
+  transition:all 0.3s ease;
+}
+.nav-content{display:flex;justify-content:space-between;align-items:center;padding:14px 0;}
+.logo{display:flex;align-items:center;gap:14px;font-size:1.25rem;font-weight:700;font-family:'Space Grotesk';white-space:nowrap;letter-spacing:-0.3px;line-height:1;transition:opacity 0.3s ease;}
+.logo:hover{opacity:0.85;}
+.logo-icon{width:52px;height:52px;display:flex;align-items:center;justify-content:center;flex-shrink:0;filter:drop-shadow(0 4px 14px rgba(0,170,255,0.55));background:transparent;}
+.logo-icon img{width:100%;height:100%;object-fit:contain;display:block;}
+.logo-text{display:flex;flex-direction:column;gap:2px;}
+.logo-text .marca{background:linear-gradient(135deg,#ffffff 0%,#a8d4ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-size:1.15rem;font-weight:700;}
+.logo-text .tag{font-size:0.62rem;font-weight:500;color:var(--azul-electrico);letter-spacing:3px;text-transform:uppercase;font-family:'Inter',sans-serif;}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links a{color:var(--texto-suave);font-weight:500;transition:color 0.3s;position:relative;}
+.nav-links a:hover{color:var(--azul-electrico);}
+.nav-links a::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:2px;background:var(--gradiente-electrico);transition:width 0.3s;}
+.nav-links a:hover::after{width:100%;}
+.btn-nav{background:var(--gradiente);padding:11px 26px;border-radius:50px;color:#fff !important;font-weight:600;box-shadow:var(--shadow-azul);transition:transform 0.3s;}
+.btn-nav:hover{transform:translateY(-2px);}
+.menu-toggle{display:none;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer;}
+
+/* ===== HERO ===== */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  position:relative;overflow:hidden;
+  padding:140px 0 80px;
+  background:radial-gradient(ellipse at top right,rgba(0,102,255,0.25) 0%,transparent 50%),radial-gradient(ellipse at bottom left,rgba(0,170,255,0.15) 0%,transparent 50%),var(--negro);
+}
+.hero::before{
+  content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+  background-image:linear-gradient(rgba(0,102,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,102,255,0.05) 1px,transparent 1px);
+  background-size:50px 50px;
+  mask-image:radial-gradient(ellipse at center,black 0%,transparent 70%);
+  -webkit-mask-image:radial-gradient(ellipse at center,black 0%,transparent 70%);
+}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center;position:relative;z-index:2;}
+.badge{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(0,170,255,0.45);
+  padding:8px 18px;border-radius:50px;
+  font-size:0.72rem;font-weight:600;color:#fff;
+  letter-spacing:2.5px;text-transform:uppercase;
+  margin-bottom:22px;
+  font-family:'Inter',sans-serif;
+}
+.badge-dot{width:8px;height:8px;border-radius:50%;background:var(--azul-electrico);box-shadow:0 0 10px var(--azul-electrico);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+.hero h1{
+  font-family:'Anton','Bebas Neue',sans-serif;
+  font-size:clamp(3rem,9vw,6.5rem);
+  margin-bottom:18px;
+  letter-spacing:-0.5px;
+  line-height:0.95;
+  text-transform:uppercase;
+  font-weight:400;
+  color:#fff;
+}
+.hero h1 .acento{
+  color:var(--azul-electrico);
+  background:none;-webkit-text-fill-color:#00aaff;
+  display:inline;
+  position:relative;
+  text-shadow:0 0 30px rgba(0,170,255,0.5);
+}
+.hero p{
+  font-family:'Inter',sans-serif;
+  font-size:1.05rem;
+  color:var(--texto-suave);
+  margin-bottom:32px;
+  max-width:520px;
+  line-height:1.55;
+}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap;}
+.btn-primario{
+  background:#00aaff;color:#000;
+  padding:14px 28px;border-radius:50px;
+  font-family:'Inter',sans-serif;
+  font-weight:700;font-size:0.92rem;
+  display:inline-flex;align-items:center;gap:10px;
+  transition:all 0.3s ease;cursor:pointer;border:none;
+  box-shadow:0 0 30px rgba(0,170,255,0.45);
+}
+.btn-primario:hover{transform:translateY(-3px);box-shadow:0 0 50px rgba(0,170,255,0.7),0 10px 30px rgba(0,0,0,0.4);background:#5fc4ff;}
+.btn-secundario{
+  background:#25D366;color:#fff;
+  padding:14px 28px;border-radius:50px;
+  font-family:'Inter',sans-serif;
+  font-weight:700;font-size:0.92rem;border:none;
+  display:inline-flex;align-items:center;gap:10px;
+  transition:all 0.3s;cursor:pointer;
+  box-shadow:0 0 24px rgba(37,211,102,0.4);
+}
+.btn-secundario:hover{transform:translateY(-3px);background:#1ebe5a;}
+
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:36px;padding-top:0;border-top:none;}
+.stat{
+  background:var(--negro-card);
+  border:1px solid rgba(0,170,255,0.25);
+  padding:16px 18px;border-radius:18px;
+  box-shadow:0 0 20px rgba(0,170,255,0.12);
+  transition:all 0.3s ease;
+}
+.stat:first-child{
+  background:#00aaff;border-color:#00aaff;
+  box-shadow:0 0 25px rgba(0,170,255,0.5);
+}
+.stat:first-child .num{color:#000;background:none;-webkit-text-fill-color:#000;font-family:'Anton';}
+.stat:first-child .label{color:rgba(0,0,0,0.65);font-weight:600;}
+
+/* Stat de Facebook clickeable */
+.stat-facebook{
+  text-decoration:none;
+  background:#1877F2 !important;border-color:#1877F2 !important;
+  box-shadow:0 0 25px rgba(24,119,242,0.5) !important;
+  cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
+  transition:all 0.3s ease;
+}
+.stat-facebook:hover{
+  transform:translateY(-3px);
+  background:#0d65d9 !important;
+  box-shadow:0 0 40px rgba(24,119,242,0.75) !important;
+}
+.stat-facebook .num{
+  color:#fff !important;background:none !important;
+  -webkit-text-fill-color:#fff !important;
+  font-family:'Inter' !important;
+  font-size:1.7rem !important;
+  display:flex;align-items:center;justify-content:center;
+}
+.stat-facebook .label{
+  color:rgba(255,255,255,0.92) !important;font-weight:700 !important;
+  font-size:0.65rem !important;
+}
+.stat .num{
+  font-family:'Anton','Bebas Neue',sans-serif;
+  font-size:1.8rem;font-weight:400;
+  letter-spacing:-0.5px;line-height:1;
+  background:none;color:#fff;
+  -webkit-text-fill-color:#fff;
+  margin-bottom:4px;
+}
+.stat .label{
+  font-family:'Inter';font-size:0.65rem;
+  color:var(--texto-suave);letter-spacing:1.5px;
+  text-transform:uppercase;font-weight:500;
+}
+
+/* ===== HERO VISUAL (DRAMATIC PREMIUM) ===== */
+.hero-visual{position:relative;min-height:680px;display:flex;align-items:center;justify-content:center;overflow:visible;}
+
+/* Spotlight cinematografico */
+.hero-spotlight{
+  position:absolute;width:700px;height:700px;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(0,170,255,0.3) 0%,rgba(0,102,255,0.12) 30%,transparent 60%);
+  filter:blur(60px);pointer-events:none;
+  animation:spotPulse 6s ease-in-out infinite;
+}
+@keyframes spotPulse{
+  0%,100%{opacity:0.7;transform:translate(-50%,-50%) scale(1);}
+  50%{opacity:1;transform:translate(-50%,-50%) scale(1.08);}
+}
+
+/* Formas geometricas flotantes (premium, no genericas) */
+.hero-shape{
+  position:absolute;
+  border:1.5px solid rgba(0,170,255,0.25);
+  pointer-events:none;
+}
+.hero-shape-1{
+  width:80px;height:80px;
+  top:15%;right:8%;
+  border-radius:18px;
+  transform:rotate(15deg);
+  animation:shapeFloat1 7s ease-in-out infinite;
+  background:linear-gradient(135deg,rgba(0,170,255,0.08),rgba(0,102,255,0.02));
+  backdrop-filter:blur(8px);
+}
+.hero-shape-2{
+  width:50px;height:50px;
+  bottom:20%;left:5%;
+  border-radius:50%;
+  animation:shapeFloat2 9s ease-in-out infinite;
+  border-color:rgba(100,200,255,0.35);
+  background:radial-gradient(circle,rgba(100,200,255,0.15) 0%,transparent 70%);
+}
+.hero-shape-3{
+  width:30px;height:30px;
+  top:30%;left:8%;
+  background:#00aaff;
+  border-radius:6px;
+  transform:rotate(45deg);
+  animation:shapeFloat3 8s ease-in-out infinite;
+  box-shadow:0 0 30px #00aaff,0 0 60px rgba(0,170,255,0.5);
+  border:none;
+}
+.hero-shape-4{
+  width:70px;height:70px;
+  bottom:10%;right:18%;
+  border-radius:14px;
+  transform:rotate(-25deg);
+  animation:shapeFloat1 7s ease-in-out infinite 2s;
+  border-color:rgba(100,50,255,0.3);
+  background:linear-gradient(135deg,rgba(100,50,255,0.08),transparent);
+}
+@keyframes shapeFloat1{
+  0%,100%{transform:rotate(15deg) translateY(0);}
+  50%{transform:rotate(20deg) translateY(-20px);}
+}
+@keyframes shapeFloat2{
+  0%,100%{transform:translateY(0) scale(1);}
+  50%{transform:translateY(-25px) scale(1.1);}
+}
+@keyframes shapeFloat3{
+  0%,100%{transform:rotate(45deg) translateY(0);}
+  50%{transform:rotate(135deg) translateY(-18px);}
+}
+
+/* Lineas conectoras animadas */
+.hero-line{
+  position:absolute;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(0,170,255,0.5),transparent);
+  pointer-events:none;
+}
+.hero-line-1{
+  width:180px;top:30%;left:-20px;
+  transform:rotate(-15deg);
+  animation:lineDraw 4s ease-in-out infinite;
+}
+.hero-line-2{
+  width:140px;bottom:25%;right:-10px;
+  transform:rotate(20deg);
+  animation:lineDraw 4s ease-in-out infinite 2s;
+}
+@keyframes lineDraw{
+  0%,100%{opacity:0.2;transform-origin:left;transform:rotate(var(--rot,0)) scaleX(0.6);}
+  50%{opacity:1;transform:rotate(var(--rot,0)) scaleX(1);}
+}
+
+/* Mesh gradient animado de fondo */
+.hero-mesh{
+  position:absolute;inset:-40px;
+  background:
+    radial-gradient(ellipse 480px 360px at 20% 30%,rgba(0,170,255,0.4) 0%,transparent 60%),
+    radial-gradient(ellipse 420px 320px at 80% 20%,rgba(0,102,255,0.35) 0%,transparent 60%),
+    radial-gradient(ellipse 380px 280px at 70% 80%,rgba(100,50,255,0.28) 0%,transparent 60%),
+    radial-gradient(ellipse 340px 240px at 30% 70%,rgba(0,212,255,0.22) 0%,transparent 60%);
+  animation:meshShift 18s ease-in-out infinite;
+  filter:blur(20px);
+  pointer-events:none;
+}
+@keyframes meshShift{
+  0%,100%{transform:scale(1) rotate(0deg);}
+  25%{transform:scale(1.1) rotate(3deg);}
+  50%{transform:scale(0.95) rotate(-2deg);}
+  75%{transform:scale(1.05) rotate(2deg);}
+}
+
+/* Textura de grano premium */
+.hero-grain{
+  position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:0.07;mix-blend-mode:overlay;
+  pointer-events:none;
+}
+
+/* Grid sutil de fondo (estilo Linear) */
+.hero-grid-bg{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(0,170,255,0.08) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,170,255,0.08) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse at center,black 30%,transparent 70%);
+  -webkit-mask-image:radial-gradient(ellipse at center,black 30%,transparent 70%);
+  pointer-events:none;
+  animation:gridMove 20s linear infinite;
+}
+@keyframes gridMove{
+  0%{background-position:0 0;}
+  100%{background-position:60px 60px;}
+}
+
+/* Stack realista de dispositivos - mas grande y dramatico */
+.hero-stack{
+  position:relative;width:100%;max-width:620px;
+  transform:perspective(2000px) rotateY(-9deg) rotateX(4deg);
+  animation:stackFloat 8s ease-in-out infinite;
+  z-index:2;
+}
+@keyframes stackFloat{
+  0%,100%{transform:perspective(2000px) rotateY(-7deg) rotateX(3deg) translateY(0);}
+  50%{transform:perspective(2000px) rotateY(-7deg) rotateX(3deg) translateY(-14px);}
+}
+
+/* Sombra realista en el suelo */
+.hero-stack::after{
+  content:'';position:absolute;
+  bottom:-50px;left:8%;width:84%;height:40px;
+  background:radial-gradient(ellipse at center,rgba(0,0,0,0.55) 0%,transparent 70%);
+  filter:blur(22px);
+  z-index:-1;
+}
+
+/* Browser realista con BORDE ANIMADO ROTATIVO */
+.browser-frame{
+  background:#1a1a1f;
+  border-radius:14px;
+  box-shadow:
+    0 50px 100px rgba(0,0,0,0.5),
+    0 30px 60px rgba(0,102,255,0.2),
+    0 0 0 1px rgba(255,255,255,0.06) inset;
+  overflow:hidden;
+  position:relative;
+}
+/* Conic gradient rotando alrededor del browser - efecto borde luminoso */
+.browser-frame::before{
+  content:'';position:absolute;
+  inset:-2px;
+  background:conic-gradient(from 0deg,transparent 0%,rgba(0,170,255,0.9) 8%,rgba(100,200,255,1) 12%,transparent 20%,transparent 50%,rgba(0,102,255,0.6) 58%,rgba(0,170,255,0.8) 62%,transparent 70%,transparent 100%);
+  border-radius:16px;
+  animation:borderRotate 6s linear infinite;
+  z-index:0;
+  filter:blur(1px);
+}
+.browser-frame::after{
+  content:'';position:absolute;
+  inset:1.5px;
+  background:#1a1a1f;
+  border-radius:13px;
+  z-index:1;
+}
+@keyframes borderRotate{
+  0%{transform:rotate(0deg);}
+  100%{transform:rotate(360deg);}
+}
+.browser-bar,.browser-screen{position:relative;z-index:2;}
+
+.browser-bar{
+  background:#13131a;
+  padding:14px 18px;
+  display:flex;align-items:center;gap:8px;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+}
+.browser-dot{width:12px;height:12px;border-radius:50%;}
+.browser-dot:nth-child(1){background:#ff5f57;}
+.browser-dot:nth-child(2){background:#ffbd2e;}
+.browser-dot:nth-child(3){background:#28ca42;}
+.browser-url{
+  flex:1;margin-left:14px;
+  background:#0d0d12;
+  border-radius:8px;
+  padding:7px 14px;
+  font-size:0.75rem;color:#6b7280;
+  display:flex;align-items:center;gap:8px;
+  font-family:'Inter','SF Mono',monospace;
+  position:relative;overflow:hidden;
+}
+.browser-url i{color:#28ca42;font-size:0.7rem;}
+.browser-url span.dominio{color:#a8b3c0;}
+.browser-url .cursor-blink{
+  display:inline-block;width:1.5px;height:11px;background:#a8b3c0;
+  margin-left:2px;animation:cursorBlink 1s step-end infinite;
+}
+@keyframes cursorBlink{
+  0%,50%{opacity:1;}
+  51%,100%{opacity:0;}
+}
+
+/* Indicador de progreso/scroll dentro del browser */
+.browser-scroll-indicator{
+  position:absolute;
+  right:8px;top:60px;bottom:20px;
+  width:3px;background:rgba(255,255,255,0.03);
+  border-radius:10px;z-index:3;
+}
+.browser-scroll-indicator::before{
+  content:'';position:absolute;
+  top:0;left:0;width:100%;height:30%;
+  background:linear-gradient(180deg,#c9a55a 0%,rgba(201,165,90,0.3) 100%);
+  border-radius:10px;
+  animation:scrollMove 5s ease-in-out infinite;
+}
+@keyframes scrollMove{
+  0%,100%{top:5%;}
+  50%{top:60%;}
+}
+
+/* PANTALLA - mockup de landing real estilo Lumina */
+.browser-screen{
+  background:linear-gradient(180deg,#0e1715 0%,#152220 100%);
+  padding:36px 38px;
+  position:relative;
+  min-height:340px;
+  font-family:'Inter',sans-serif;
+}
+
+.screen-nav{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:34px;font-size:0.7rem;
+}
+.screen-nav-logo{color:#c9a55a;font-family:'Cormorant Garamond',Georgia,serif;font-size:1rem;font-weight:600;letter-spacing:1px;}
+.screen-nav ul{display:flex;gap:18px;list-style:none;color:#8a9a93;font-weight:500;}
+
+.screen-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  color:#c9a55a;font-size:0.62rem;letter-spacing:3px;
+  text-transform:uppercase;margin-bottom:12px;
+}
+.screen-tag::before{content:'';width:24px;height:1px;background:#c9a55a;}
+
+.screen-title{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:2.1rem;color:#f5f0e6;
+  line-height:1.1;font-weight:500;
+  margin-bottom:14px;letter-spacing:-0.5px;
+}
+.screen-title em{color:#c9a55a;font-style:italic;font-weight:500;}
+
+.screen-desc{
+  color:#8a9a93;font-size:0.78rem;
+  line-height:1.6;max-width:280px;margin-bottom:22px;
+}
+
+.screen-cta-row{display:flex;gap:10px;}
+.screen-cta-1{
+  background:#c9a55a;color:#0e1715;
+  padding:10px 22px;
+  font-size:0.7rem;font-weight:600;
+  letter-spacing:1.5px;text-transform:uppercase;
+}
+.screen-cta-2{
+  border:1px solid rgba(245,240,230,0.2);color:#f5f0e6;
+  padding:10px 22px;
+  font-size:0.7rem;font-weight:600;
+  letter-spacing:1.5px;text-transform:uppercase;
+}
+
+/* Imagen lateral en la pantalla */
+.screen-img-side{
+  position:absolute;
+  right:38px;top:90px;
+  width:160px;height:220px;
+  background:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400') center/cover;
+  border-radius:4px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* Phone mockup pequeño */
+.hero-phone{
+  position:absolute;
+  right:-30px;bottom:-40px;
+  width:155px;
+  transform:rotate(6deg);
+  z-index:3;
+}
+.phone-frame{
+  background:linear-gradient(180deg,#2a2a35 0%,#1a1a1f 100%);
+  padding:5px;
+  border-radius:26px;
+  box-shadow:
+    0 30px 60px rgba(0,0,0,0.55),
+    0 0 0 1.5px rgba(255,255,255,0.08) inset,
+    0 0 30px rgba(0,170,255,0.2);
+  position:relative;
+}
+/* Dynamic Island estilo iPhone */
+.phone-frame::before{
+  content:'';position:absolute;top:14px;left:50%;transform:translateX(-50%);
+  width:62px;height:18px;background:#000;border-radius:50px;z-index:5;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,0.05);
+}
+.phone-frame::after{
+  content:'';position:absolute;top:20px;right:50%;margin-right:-22px;
+  width:5px;height:5px;background:#1a1a1f;border-radius:50%;z-index:6;
+  box-shadow:inset 0 0 0 1px rgba(0,170,255,0.4);
+}
+.phone-screen-inner{
+  border-radius:18px;
+  height:300px;
+  overflow:hidden;
+  background:linear-gradient(180deg,#1a0e0f 0%,#241516 100%);
+  padding:24px 16px 16px;
+  font-family:'Cormorant Garamond',serif;
+  display:flex;flex-direction:column;
+  position:relative;
+}
+.phone-screen-inner::after{
+  content:'';position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400') center/cover;
+  opacity:0.35;
+  border-radius:18px;
+}
+.phone-content{position:relative;z-index:2;}
+.phone-tag{color:#c47b4b;font-family:'Inter';font-size:0.55rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;margin-top:18px;}
+.phone-title{color:#f5e9d3;font-size:1.2rem;line-height:1.1;font-style:italic;margin-bottom:8px;}
+.phone-btn{
+  position:absolute;bottom:14px;left:16px;right:16px;z-index:3;
+  background:#8b1e2b;color:#f5e9d3;
+  padding:9px;text-align:center;
+  font-family:'Inter';font-size:0.55rem;
+  letter-spacing:2px;text-transform:uppercase;font-weight:500;
+}
+
+/* Notificacion toast premium - slide in/out */
+.hero-toast{
+  position:absolute;top:30px;left:-40px;z-index:5;
+  background:rgba(255,255,255,0.98);
+  padding:14px 18px;
+  border-radius:14px;
+  font-family:'Inter';font-size:0.82rem;
+  color:#1a2528;font-weight:600;
+  display:flex;align-items:center;gap:12px;
+  box-shadow:0 25px 50px rgba(0,0,0,0.25),0 0 0 1px rgba(255,255,255,0.5) inset;
+  backdrop-filter:blur(20px);
+  animation:toastSlide 7s ease-in-out infinite;
+}
+@keyframes toastSlide{
+  0%,100%{transform:translateX(-30px);opacity:0;}
+  10%,90%{transform:translateX(0);opacity:1;}
+  50%{transform:translateX(-2px);opacity:1;}
+}
+.hero-toast .toast-icon{
+  width:36px;height:36px;flex-shrink:0;
+  background:linear-gradient(135deg,#28ca42 0%,#1ea832 100%);
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:0.95rem;
+  box-shadow:0 8px 20px rgba(40,202,66,0.4);
+}
+.hero-toast .toast-body{line-height:1.3;}
+.hero-toast .toast-body small{display:block;font-size:0.68rem;color:#6b7280;font-weight:500;margin-top:2px;}
+
+/* Stat card con contador animado */
+.hero-stat-card{
+  position:absolute;bottom:60px;left:-50px;z-index:5;
+  background:linear-gradient(180deg,rgba(20,20,30,0.95) 0%,rgba(10,10,20,0.95) 100%);
+  border:1px solid rgba(0,170,255,0.35);
+  padding:18px 22px;border-radius:16px;
+  box-shadow:0 25px 50px rgba(0,0,0,0.45),0 0 30px rgba(0,170,255,0.25);
+  backdrop-filter:blur(20px);
+  animation:statFloat 6s ease-in-out infinite 1s;
+}
+@keyframes statFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.hero-stat-card .stat-label{
+  font-size:0.62rem;color:rgba(255,255,255,0.55);
+  letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:6px;font-family:'Inter';font-weight:600;
+}
+.hero-stat-card .stat-value{
+  font-family:'Space Grotesk';font-weight:800;
+  font-size:1.7rem;line-height:1;
+  background:linear-gradient(135deg,#5fc4ff 0%,#0066ff 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  display:flex;align-items:baseline;gap:4px;
+}
+.hero-stat-card .stat-value sup{
+  font-size:0.85rem;color:#28ca42;-webkit-text-fill-color:#28ca42;
+  font-weight:600;
+}
+.hero-stat-card .stat-mini-chart{
+  display:flex;align-items:flex-end;gap:3px;
+  margin-top:10px;height:24px;
+}
+.hero-stat-card .stat-mini-chart i{
+  width:5px;background:linear-gradient(180deg,#00aaff,#0066ff);
+  border-radius:2px;
+  animation:barGrow 2s ease-out forwards;
+  transform-origin:bottom;
+}
+.hero-stat-card .stat-mini-chart i:nth-child(1){height:30%;animation-delay:0.1s;}
+.hero-stat-card .stat-mini-chart i:nth-child(2){height:50%;animation-delay:0.2s;}
+.hero-stat-card .stat-mini-chart i:nth-child(3){height:40%;animation-delay:0.3s;}
+.hero-stat-card .stat-mini-chart i:nth-child(4){height:75%;animation-delay:0.4s;}
+.hero-stat-card .stat-mini-chart i:nth-child(5){height:65%;animation-delay:0.5s;}
+.hero-stat-card .stat-mini-chart i:nth-child(6){height:90%;animation-delay:0.6s;}
+.hero-stat-card .stat-mini-chart i:nth-child(7){height:100%;animation-delay:0.7s;background:linear-gradient(180deg,#5fc4ff,#00aaff);}
+@keyframes barGrow{
+  from{transform:scaleY(0);}
+  to{transform:scaleY(1);}
+}
+
+/* Mini card de testimonio */
+.hero-mini-test{
+  position:absolute;top:50%;right:-70px;z-index:5;
+  background:rgba(255,255,255,0.97);
+  padding:12px 14px;border-radius:14px;
+  box-shadow:0 20px 45px rgba(0,0,0,0.22);
+  display:flex;align-items:center;gap:10px;
+  max-width:200px;
+  animation:miniTestFloat 7s ease-in-out infinite 2.5s;
+  backdrop-filter:blur(20px);
+}
+@keyframes miniTestFloat{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+}
+.hero-mini-test .mini-avatar{
+  width:36px;height:36px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,#c97a6e,#e09d92);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:600;font-size:0.8rem;font-family:'Inter';
+}
+.hero-mini-test .mini-body{font-family:'Inter';font-size:0.72rem;line-height:1.4;color:#1a2528;}
+.hero-mini-test .mini-body .stars{color:#ffb800;font-size:0.65rem;margin-bottom:2px;}
+.hero-mini-test .mini-body em{color:#6b7280;font-style:normal;font-weight:500;font-size:0.62rem;display:block;margin-top:2px;}
+
+/* Card de visitantes en vivo */
+.hero-live-visitors{
+  position:absolute;top:130px;right:-50px;z-index:5;
+  background:linear-gradient(180deg,rgba(15,15,25,0.97) 0%,rgba(5,5,15,0.97) 100%);
+  border:1px solid rgba(40,202,66,0.4);
+  padding:12px 16px;border-radius:14px;
+  display:flex;align-items:center;gap:10px;
+  font-family:'Inter';
+  box-shadow:0 20px 45px rgba(0,0,0,0.5),0 0 25px rgba(40,202,66,0.25);
+  backdrop-filter:blur(20px);
+  animation:visitorsFloat 6s ease-in-out infinite 1.5s;
+}
+@keyframes visitorsFloat{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-8px);}
+}
+.hero-live-visitors .visitor-icon{
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(40,202,66,0.18);
+  color:#28ca42;
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.85rem;position:relative;
+}
+.hero-live-visitors .visitor-icon::after{
+  content:'';position:absolute;top:-2px;right:-2px;
+  width:9px;height:9px;background:#28ca42;border-radius:50%;
+  border:2px solid #0f0f19;
+  animation:visitorPulse 1.5s infinite;
+}
+@keyframes visitorPulse{
+  0%,100%{transform:scale(1);opacity:1;}
+  50%{transform:scale(1.4);opacity:0.6;}
+}
+.hero-live-visitors .visitor-info{line-height:1.2;}
+.hero-live-visitors .visitor-num{font-size:1.1rem;font-weight:800;color:#fff;font-family:'Space Grotesk';}
+.hero-live-visitors .visitor-label{font-size:0.62rem;color:#8a9bb5;letter-spacing:0.5px;}
+
+/* Card vertical de ranking/trust */
+.hero-trust-card{
+  position:absolute;bottom:-30px;right:60px;z-index:5;
+  background:linear-gradient(180deg,rgba(15,15,25,0.97) 0%,rgba(5,5,15,0.97) 100%);
+  border:1px solid rgba(0,170,255,0.3);
+  padding:12px 16px;border-radius:12px;
+  display:flex;align-items:center;gap:12px;
+  font-family:'Inter';
+  box-shadow:0 20px 45px rgba(0,0,0,0.5);
+  backdrop-filter:blur(20px);
+  animation:trustFloat 7s ease-in-out infinite 3s;
+}
+@keyframes trustFloat{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-8px);}
+}
+.hero-trust-card .trust-logos{display:flex;}
+.hero-trust-card .trust-logo{
+  width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(135deg,#0066ff,#00aaff);
+  border:2px solid #0f0f19;
+  margin-left:-8px;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:0.62rem;font-weight:700;
+}
+.hero-trust-card .trust-logo:first-child{margin-left:0;background:linear-gradient(135deg,#c47b4b,#e09850);}
+.hero-trust-card .trust-logo:nth-child(2){background:linear-gradient(135deg,#246b6b,#8fc4bc);}
+.hero-trust-card .trust-logo:nth-child(3){background:linear-gradient(135deg,#c97a6e,#e09d92);}
+.hero-trust-card .trust-info{line-height:1.2;}
+.hero-trust-card .trust-num{font-size:0.92rem;font-weight:700;color:#fff;}
+.hero-trust-card .trust-label{font-size:0.62rem;color:#8a9bb5;}
+
+/* Responsive */
+@media(max-width:1100px){
+  .hero-stack{transform:perspective(2000px) rotateY(-5deg) rotateX(2deg);}
+  .screen-img-side{display:none;}
+  .hero-phone{width:130px;right:-20px;}
+}
+@media(max-width:900px){
+  .hero-visual{min-height:auto;padding:20px 0;}
+  .hero-stack{transform:none;animation:none;max-width:480px;}
+  .screen-title{font-size:1.7rem;}
+  .hero-phone{display:none;}
+}
+
+/* ===== MARQUEE (tira animada estilo DYMARCAS) ===== */
+.marquee{
+  position:relative;overflow:hidden;
+  background:#00aaff;
+  padding:14px 0;
+  border-top:1px solid rgba(0,0,0,0.3);
+  border-bottom:1px solid rgba(0,0,0,0.3);
+}
+.marquee-track{
+  display:flex;gap:50px;
+  white-space:nowrap;
+  animation:marqueeRun 25s linear infinite;
+  width:max-content;
+}
+.marquee span{
+  font-family:'Inter',sans-serif;
+  font-weight:800;font-size:0.9rem;
+  letter-spacing:3px;text-transform:uppercase;
+  color:#000;
+  display:flex;align-items:center;gap:50px;
+}
+.marquee span::after{
+  content:'★';color:#000;font-size:0.9rem;
+}
+@keyframes marqueeRun{
+  0%{transform:translateX(0);}
+  100%{transform:translateX(-50%);}
+}
+
+/* ===== DIVISOR ZEBRA (caution tape estilo DYMARCAS) ===== */
+.divisor-zebra{
+  height:24px;
+  background:repeating-linear-gradient(135deg,#00aaff 0,#00aaff 20px,#000 20px,#000 40px);
+}
+
+/* ===== SECCIONES GENERAL ===== */
+section{padding:100px 0;position:relative;}
+.section-header{text-align:center;margin-bottom:64px;}
+.section-tag{
+  display:inline-block;
+  color:var(--azul-electrico);
+  font-size:0.7rem;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:12px;
+  font-family:'Inter';
+}
+.section-titulo{
+  font-family:'Anton','Bebas Neue',sans-serif;
+  font-size:clamp(2.2rem,7vw,4.5rem);
+  margin-bottom:18px;
+  letter-spacing:-0.5px;
+  text-transform:uppercase;
+  line-height:1;
+  font-weight:400;
+  color:#fff;
+}
+.section-titulo .acento{
+  color:var(--azul-electrico);
+  background:none;
+  -webkit-text-fill-color:#00aaff;
+  text-shadow:0 0 25px rgba(0,170,255,0.45);
+  display:inline;
+}
+.section-subtitulo{font-size:1.1rem;color:var(--texto-suave);max-width:640px;margin:0 auto;}
+
+/* ===== SERVICIOS ===== */
+.servicios{background:var(--negro-suave);}
+.servicios-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px;}
+.servicio-card{
+  background:linear-gradient(180deg,rgba(20,20,30,0.85) 0%,rgba(10,10,15,0.95) 100%);
+  border:1px solid var(--gris-borde);
+  padding:40px 32px 34px;
+  border-radius:22px;
+  transition:all 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+  position:relative;overflow:hidden;
+  cursor:default;
+}
+.servicio-card::before{
+  content:'';position:absolute;top:0;left:0;width:100%;height:100%;
+  background:radial-gradient(circle at 50% 0%,rgba(0,170,255,0.18) 0%,transparent 60%);
+  opacity:0;transition:opacity 0.5s ease;pointer-events:none;
+}
+.servicio-card::after{
+  content:'';position:absolute;top:0;left:0;width:100%;height:2px;
+  background:var(--gradiente-electrico);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 0.5s ease;
+}
+.servicio-card:hover{
+  border-color:rgba(0,170,255,0.55);
+  transform:translateY(-10px);
+  box-shadow:0 25px 50px rgba(0,0,0,0.5),0 0 30px rgba(0,102,255,0.25);
+}
+.servicio-card:hover::before{opacity:1;}
+.servicio-card:hover::after{transform:scaleX(1);}
+.servicio-card:hover .servicio-icon{transform:scale(1.08) rotate(-5deg);background:var(--gradiente);color:#fff;}
+.servicio-card:hover .servicio-numero{color:var(--azul-electrico);transform:translateX(4px);}
+.servicio-numero{
+  position:absolute;top:24px;right:28px;
+  font-family:'Space Grotesk';font-size:1.1rem;font-weight:700;
+  color:rgba(176,176,192,0.35);letter-spacing:1px;
+  transition:all 0.4s ease;
+}
+.servicio-icon{
+  width:62px;height:62px;
+  background:rgba(0,102,255,0.12);
+  border:1px solid rgba(0,170,255,0.18);
+  border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.55rem;color:var(--azul-electrico);
+  margin-bottom:24px;
+  transition:all 0.5s cubic-bezier(0.34,1.56,0.64,1);
+}
+.servicio-card h3{font-size:1.35rem;margin-bottom:12px;letter-spacing:-0.3px;}
+.servicio-card p{color:var(--texto-suave);font-size:0.94rem;line-height:1.65;margin-bottom:20px;}
+.servicio-promesa{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:0.78rem;color:var(--azul-electrico);
+  padding-top:18px;border-top:1px solid rgba(0,102,255,0.12);
+  width:100%;font-weight:500;letter-spacing:0.3px;
+}
+.servicio-promesa i{font-size:0.7rem;}
+.servicios-banner{
+  margin-top:50px;padding:36px 40px;
+  background:linear-gradient(135deg,rgba(0,102,255,0.08) 0%,rgba(0,170,255,0.04) 100%);
+  border:1px solid rgba(0,170,255,0.25);
+  border-radius:24px;
+  display:flex;justify-content:space-between;align-items:center;gap:30px;
+  position:relative;overflow:hidden;
+}
+.servicios-banner::before{
+  content:'';position:absolute;top:-50%;right:-10%;
+  width:50%;height:200%;
+  background:radial-gradient(ellipse at center,rgba(0,170,255,0.15) 0%,transparent 60%);
+  pointer-events:none;
+}
+.servicios-banner-texto{position:relative;z-index:2;}
+.servicios-banner h4{font-family:'Space Grotesk';font-size:1.35rem;margin-bottom:6px;color:#fff;}
+.servicios-banner h4 span{color:var(--azul-electrico);}
+.servicios-banner p{color:var(--texto-suave);font-size:0.94rem;margin:0;max-width:580px;}
+.servicios-banner a{
+  flex-shrink:0;display:inline-flex;align-items:center;gap:10px;
+  background:#25D366;color:#fff;padding:14px 26px;border-radius:50px;
+  font-weight:600;font-size:0.92rem;text-decoration:none;
+  box-shadow:0 8px 25px rgba(37,211,102,0.35);
+  transition:all 0.3s ease;position:relative;z-index:2;
+}
+.servicios-banner a:hover{transform:translateY(-2px);background:#1ebe5a;box-shadow:0 12px 35px rgba(37,211,102,0.5);}
+@media(max-width:700px){
+  .servicios-banner{flex-direction:column;text-align:center;padding:30px 24px;}
+}
+
+/* ===== PROCESO ===== */
+.proceso-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;position:relative;}
+.proceso-step{text-align:center;position:relative;padding:20px;}
+.step-num{
+  width:70px;height:70px;
+  background:var(--gradiente);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.6rem;font-weight:800;font-family:'Space Grotesk';
+  margin:0 auto 20px;
+  box-shadow:var(--shadow-azul);
+  position:relative;z-index:2;
+}
+.proceso-step h3{font-size:1.2rem;margin-bottom:10px;}
+.proceso-step p{color:var(--texto-suave);font-size:0.92rem;}
+
+/* ===== PORTAFOLIO ===== */
+.portafolio{background:var(--negro-suave);}
+.portafolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;}
+.proyecto{
+  border-radius:18px;overflow:hidden;
+  position:relative;cursor:pointer;
+  border:1px solid var(--gris-borde);
+  transition:all 0.4s ease;
+  background:var(--negro-card);
+  display:block;
+}
+.proyecto:hover{transform:translateY(-6px);box-shadow:var(--shadow-azul);}
+.proyecto-img{height:240px;background:var(--gradiente);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.proyecto-img img{width:100%;height:100%;object-fit:cover;}
+.proyecto-img-placeholder{font-size:3rem;color:rgba(255,255,255,0.3);}
+.proyecto-img-eve{
+  background:radial-gradient(ellipse at top right,rgba(255,46,77,0.5) 0%,transparent 60%),linear-gradient(135deg,#1a0a0a 0%,#000 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:'Space Grotesk',sans-serif;text-align:center;padding:20px;
+}
+.proyecto-img-eve .marca{font-size:1.8rem;font-weight:800;letter-spacing:2px;color:#fff;text-transform:uppercase;}
+.proyecto-img-eve .marca em{color:#ff2e4d;font-style:normal;}
+.proyecto-img-eve .sub{font-size:0.75rem;color:rgba(255,255,255,0.6);letter-spacing:3px;margin-top:6px;text-transform:uppercase;}
+.proyecto-img-eve .stats{display:flex;gap:20px;margin-top:18px;}
+.proyecto-img-eve .stats div{font-size:0.7rem;color:rgba(255,255,255,0.5);}
+.proyecto-img-eve .stats b{display:block;color:#ff6b3d;font-size:1.2rem;}
+.proyecto-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,0.85) 100%);
+  display:flex;align-items:flex-end;justify-content:center;
+  padding:20px;opacity:0;transition:opacity 0.3s;
+}
+.proyecto:hover .proyecto-overlay{opacity:1;}
+.proyecto-ver{
+  background:rgba(255,255,255,0.95);color:#000;
+  padding:10px 22px;border-radius:50px;
+  font-size:0.85rem;font-weight:600;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.proyecto-info{padding:24px;}
+.proyecto-info h3{font-size:1.2rem;margin-bottom:8px;}
+.proyecto-info p{color:var(--texto-suave);font-size:0.9rem;}
+.proyecto-tag{display:inline-block;background:rgba(0,102,255,0.15);color:var(--azul-electrico);padding:4px 12px;border-radius:20px;font-size:0.75rem;margin-top:10px;}
+.proyecto-tag.destacado{background:rgba(255,46,77,0.15);color:#ff6b3d;}
+.proyecto-tag.dorado{background:rgba(201,162,74,0.15);color:#e6c478;}
+.proyecto-tag.esmeralda{background:rgba(82,183,136,0.15);color:#e8c878;}
+.proyecto-tag.cobre{background:rgba(196,123,75,0.15);color:#e09850;}
+.proyecto-tag.menta{background:rgba(168,213,204,0.15);color:#a8d5cc;}
+.proyecto-tag.rosa{background:rgba(201,122,110,0.18);color:#e09d92;}
+.proyecto-img-petalo{
+  background:radial-gradient(ellipse at top right,rgba(201,122,110,0.5) 0%,transparent 60%),radial-gradient(ellipse at bottom left,rgba(138,155,122,0.3) 0%,transparent 60%),linear-gradient(135deg,#f3eae1 0%,#faf6f1 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:20px;font-family:'Fraunces',Georgia,serif;
+  color:#2a1f1c;
+}
+.proyecto-img-petalo .icono{color:#c97a6e;font-size:1.8rem;margin-bottom:10px;}
+.proyecto-img-petalo .marca{font-size:2.1rem;font-weight:300;color:#2a1f1c;letter-spacing:0.5px;line-height:1;}
+.proyecto-img-petalo .marca em{color:#c97a6e;font-style:italic;font-size:0.7em;display:block;margin-top:4px;}
+.proyecto-img-petalo .marca b{color:#c97a6e;font-weight:400;}
+.proyecto-img-petalo .sub{font-family:'Italianno',cursive;font-size:1.4rem;color:#a85e54;margin-top:6px;}
+.proyecto-img-petalo .stats{display:flex;gap:22px;margin-top:14px;}
+.proyecto-img-petalo .stats div{font-size:0.65rem;color:rgba(42,31,28,0.6);letter-spacing:1px;font-family:'Inter';}
+.proyecto-img-petalo .stats b{display:block;color:#c97a6e;font-size:1.2rem;font-family:'Fraunces';font-style:italic;font-weight:400;}
+.proyecto-img-marfil{
+  background:radial-gradient(ellipse at top,rgba(168,213,204,0.4) 0%,transparent 60%),linear-gradient(135deg,#f5f1e8 0%,#fafaf7 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:20px;font-family:'DM Serif Display',Georgia,serif;
+  color:#1a2a2c;
+}
+.proyecto-img-marfil .icono{color:#246b6b;font-size:1.8rem;margin-bottom:12px;}
+.proyecto-img-marfil .marca{font-size:2rem;font-weight:400;color:#246b6b;letter-spacing:0.5px;line-height:1;}
+.proyecto-img-marfil .marca em{color:#a88748;font-style:italic;font-size:0.85em;}
+.proyecto-img-marfil .sub{font-size:0.7rem;color:rgba(26,42,44,0.55);letter-spacing:5px;margin-top:10px;text-transform:uppercase;font-family:'Inter';}
+.proyecto-img-marfil .stats{display:flex;gap:22px;margin-top:18px;}
+.proyecto-img-marfil .stats div{font-size:0.65rem;color:rgba(26,42,44,0.55);letter-spacing:1px;font-family:'Inter';}
+.proyecto-img-marfil .stats b{display:block;color:#246b6b;font-size:1.2rem;font-family:'DM Serif Display';font-style:italic;}
+.proyecto-img-brasa{
+  background:radial-gradient(ellipse at bottom,rgba(196,123,75,0.4) 0%,transparent 60%),linear-gradient(135deg,#241516 0%,#13090a 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:20px;font-family:'Cormorant Garamond',Georgia,serif;
+}
+.proyecto-img-brasa .icono{color:#b32d3d;font-size:1.6rem;margin-bottom:12px;letter-spacing:8px;}
+.proyecto-img-brasa .marca{font-size:2rem;font-weight:600;color:#f5e9d3;letter-spacing:1px;line-height:1;}
+.proyecto-img-brasa .marca em{color:#e09850;font-style:italic;font-size:0.6em;display:block;margin:4px 0;}
+.proyecto-img-brasa .marca b{color:#e09850;font-style:italic;font-weight:600;}
+.proyecto-img-brasa .sub{font-size:0.7rem;color:rgba(245,233,211,0.5);letter-spacing:5px;margin-top:10px;text-transform:uppercase;font-family:'Inter';}
+.proyecto-img-brasa .stats{display:flex;gap:22px;margin-top:18px;}
+.proyecto-img-brasa .stats div{font-size:0.65rem;color:rgba(245,233,211,0.5);letter-spacing:1px;font-family:'Inter';}
+.proyecto-img-brasa .stats b{display:block;color:#e09850;font-size:1.2rem;font-family:'Cormorant Garamond';font-style:italic;}
+.proyecto-img-lumina{
+  background:radial-gradient(ellipse at top,rgba(82,183,136,0.25) 0%,transparent 60%),linear-gradient(135deg,#152220 0%,#0e1715 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:20px;font-family:'Cormorant Garamond',Georgia,serif;
+}
+.proyecto-img-lumina .icono{color:#c9a55a;font-size:1.8rem;margin-bottom:14px;}
+.proyecto-img-lumina .marca{font-size:1.9rem;font-weight:700;color:#fff;letter-spacing:1px;line-height:1;}
+.proyecto-img-lumina .marca em{color:#c9a55a;font-style:italic;}
+.proyecto-img-lumina .sub{font-size:0.7rem;color:rgba(255,255,255,0.5);letter-spacing:4px;margin-top:8px;text-transform:uppercase;font-family:'Inter';}
+.proyecto-img-lumina .stats{display:flex;gap:22px;margin-top:18px;}
+.proyecto-img-lumina .stats div{font-size:0.65rem;color:rgba(255,255,255,0.5);letter-spacing:1px;font-family:'Inter';}
+.proyecto-img-lumina .stats b{display:block;color:#e8c878;font-size:1.2rem;font-family:'Cormorant Garamond';}
+.proyecto-img-sharp{
+  background:radial-gradient(ellipse at bottom,rgba(201,162,74,0.35) 0%,transparent 60%),linear-gradient(135deg,#161616 0%,#0d0d0d 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:'Space Grotesk',serif;text-align:center;padding:20px;position:relative;
+}
+.proyecto-img-sharp::before{
+  content:'';position:absolute;top:20px;left:50%;transform:translateX(-50%);
+  width:50px;height:80px;border-radius:25px;
+  background:repeating-linear-gradient(45deg,#fff 0 8px,#b8252b 8px 16px,#fff 16px 24px,#1f4f80 24px 32px);
+  background-size:100% 32px;
+  border:2px solid #c9a24a;opacity:0.4;
+}
+.proyecto-img-sharp .marca{font-size:1.6rem;font-weight:900;letter-spacing:3px;color:#fff;text-transform:uppercase;font-family:Georgia,serif;margin-top:30px;}
+.proyecto-img-sharp .marca em{color:#c9a24a;font-style:normal;}
+.proyecto-img-sharp .sub{font-size:0.7rem;color:rgba(255,255,255,0.5);letter-spacing:4px;margin-top:6px;text-transform:uppercase;}
+.proyecto-img-sharp .stats{display:flex;gap:18px;margin-top:16px;}
+.proyecto-img-sharp .stats div{font-size:0.65rem;color:rgba(255,255,255,0.5);letter-spacing:1px;}
+.proyecto-img-sharp .stats b{display:block;color:#e6c478;font-size:1.1rem;font-family:'Space Grotesk';}
+
+/* ===== EQUIPO ===== */
+.equipo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;max-width:1100px;margin:0 auto;}
+.swipe-hint{display:none;}
+.miembro{
+  background:var(--negro-card);
+  border:1px solid var(--gris-borde);
+  border-radius:24px;
+  overflow:visible;
+  transition:all 0.4s ease;
+  position:relative;
+  padding:55px 32px 38px;
+  text-align:center;
+}
+.miembro:hover{transform:translateY(-10px);border-color:rgba(0,170,255,0.4);box-shadow:var(--shadow-azul);}
+.miembro-foto{
+  width:220px;height:220px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#0a0a0a 0%,#001f5c 100%);
+  position:relative;overflow:hidden;
+  margin:0 auto 26px;
+  box-shadow:0 0 0 2px rgba(0,170,255,0.25),0 15px 40px rgba(0,102,255,0.35);
+}
+.miembro-foto::before{
+  content:'';position:absolute;inset:0;
+  border-radius:50%;
+  padding:3px;
+  background:linear-gradient(135deg,#00aaff 0%,#0066ff 50%,#001f5c 100%);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  z-index:3;pointer-events:none;
+}
+.miembro-foto::after{
+  content:'';position:absolute;inset:-8px;
+  border-radius:50%;
+  background:conic-gradient(from 0deg,transparent 0deg,rgba(0,170,255,0.5) 90deg,transparent 180deg,rgba(0,170,255,0.3) 270deg,transparent 360deg);
+  z-index:-1;
+  filter:blur(10px);
+  opacity:0.7;
+  animation:girarRing 8s linear infinite;
+}
+@keyframes girarRing{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+.miembro-foto-inner{
+  width:100%;height:100%;border-radius:50%;
+  overflow:hidden;position:relative;
+  background:linear-gradient(135deg,#0a0a0a 0%,#001f5c 100%);
+}
+.miembro-foto img{width:100%;height:100%;object-fit:cover;object-position:center 20%;}
+.miembro-foto.solo .solo-img{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center 22%;
+  display:block;z-index:2;
+  border-radius:50%;
+}
+/* Ajustes finos por miembro para que todas las caras queden centradas */
+.miembro-foto.solo.foto-jaime .solo-img{
+  object-position:38% 12%;
+  transform:scale(1.55);
+  transform-origin:38% 28%;
+}
+.miembro-foto.solo.foto-david .solo-img{
+  object-position:center 20%;
+  transform:scale(1.05);
+}
+.miembro-foto.solo.foto-diego .solo-img{
+  object-position:center 20%;
+  transform:scale(1.05);
+}
+.miembro-foto .combo-placeholder{
+  position:absolute;inset:0;z-index:1;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:18px;border-radius:50%;
+  background:radial-gradient(ellipse at center,rgba(0,102,255,0.25) 0%,transparent 70%);
+}
+.miembro-foto .combo-placeholder i{
+  font-size:2rem;color:var(--azul-electrico);margin-bottom:8px;opacity:0.85;
+}
+.miembro-foto .combo-placeholder strong{
+  font-size:1.1rem;font-family:'Space Grotesk';color:#fff;margin-bottom:4px;
+}
+.miembro-foto .combo-placeholder span{
+  font-size:0.7rem;color:var(--texto-suave);letter-spacing:0.5px;line-height:1.4;
+}
+.miembro-foto .combo-placeholder code{display:none;}
+.miembro-foto-placeholder{
+  width:130px;height:130px;
+  background:rgba(255,255,255,0.1);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:3rem;color:#fff;
+  border:3px solid rgba(255,255,255,0.2);
+}
+.miembro-info{padding:0;text-align:center;}
+.miembro-info h3{font-size:1.5rem;margin-bottom:6px;}
+.miembro-rol{color:var(--azul-electrico);font-size:0.85rem;font-weight:500;margin-bottom:14px;display:block;letter-spacing:1.5px;text-transform:uppercase;}
+.miembro-bio{color:var(--texto-suave);font-size:0.92rem;margin-bottom:0;}
+
+/* ===== TESTIMONIOS ===== */
+.testimonios{background:var(--negro-suave);}
+.testimonios-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;}
+.testimonio{
+  background:var(--negro-card);
+  border:1px solid var(--gris-borde);
+  padding:32px;
+  border-radius:18px;
+  position:relative;
+  transition:all 0.3s;
+}
+.testimonio:hover{border-color:rgba(0,170,255,0.4);}
+.testimonio-comillas{font-size:3rem;color:var(--azul-electrico);opacity:0.3;line-height:1;font-family:Georgia;}
+.testimonio-texto{color:var(--texto-suave);font-style:italic;margin-bottom:24px;font-size:0.98rem;}
+.testimonio-autor{display:flex;align-items:center;gap:14px;}
+.testimonio-avatar{
+  width:50px;height:50px;
+  background:var(--gradiente);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;
+}
+.testimonio-autor h4{font-size:1rem;margin-bottom:2px;}
+.testimonio-autor span{font-size:0.85rem;color:var(--texto-suave);}
+.estrellas{color:#ffd700;margin-bottom:14px;}
+
+/* ===== PRECIOS ===== */
+.precios-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;max-width:1100px;margin:0 auto;}
+
+/* ===== PLAN UNICO ===== */
+.plan-unico{
+  max-width:1100px;margin:0 auto;
+  background:linear-gradient(180deg,rgba(0,102,255,0.08) 0%,var(--negro-card) 60%);
+  border:1px solid rgba(0,170,255,0.35);
+  border-radius:28px;
+  padding:50px 50px 46px;
+  position:relative;
+  box-shadow:0 30px 80px rgba(0,102,255,0.15),var(--shadow-azul);
+  overflow:hidden;
+}
+.plan-unico::before{
+  content:'';position:absolute;top:-50%;right:-20%;
+  width:60%;height:200%;
+  background:radial-gradient(ellipse at center,rgba(0,170,255,0.18) 0%,transparent 60%);
+  pointer-events:none;
+}
+.plan-unico-cinta{
+  position:absolute;top:22px;right:-44px;
+  background:var(--gradiente-electrico);
+  color:#fff;padding:7px 56px;
+  font-size:0.72rem;font-weight:700;letter-spacing:2.5px;
+  transform:rotate(35deg);
+  box-shadow:0 6px 18px rgba(0,170,255,0.4);
+}
+.plan-unico-grid{
+  display:grid;grid-template-columns:1.05fr 1fr;
+  gap:50px;align-items:center;position:relative;z-index:2;
+}
+.plan-unico-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(0,170,255,0.15);
+  color:var(--azul-electrico);
+  padding:8px 18px;border-radius:50px;
+  font-size:0.78rem;font-weight:600;letter-spacing:1.5px;
+  margin-bottom:20px;
+}
+.plan-unico-info h3{font-size:clamp(1.6rem,3vw,2.1rem);margin-bottom:14px;line-height:1.2;}
+.plan-unico-info > p{color:var(--texto-suave);font-size:0.98rem;margin-bottom:30px;}
+
+.plan-unico-precio{
+  background:linear-gradient(135deg,rgba(0,102,255,0.12) 0%,rgba(0,170,255,0.05) 100%);
+  border:1px solid rgba(0,170,255,0.25);
+  border-radius:18px;
+  padding:24px 26px;
+  margin-bottom:24px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:6px;
+}
+.precio-actual{display:flex;align-items:baseline;gap:8px;}
+.precio-actual .moneda{
+  font-size:1rem;color:var(--texto-suave);
+  font-weight:600;letter-spacing:1px;
+}
+.precio-actual .num{
+  font-family:'Space Grotesk';font-size:clamp(2.4rem,5vw,3.4rem);
+  font-weight:800;letter-spacing:-1.5px;
+  background:var(--gradiente-electrico);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;line-height:1;
+}
+.plan-unico-precio .periodo{
+  color:var(--texto-suave);font-size:0.85rem;
+  letter-spacing:0.3px;
+}
+
+.plan-unico-btn{
+  display:inline-flex;align-items:center;gap:12px;
+  background:#25D366;color:#fff;
+  padding:17px 30px;border-radius:50px;
+  font-weight:700;font-size:0.98rem;
+  text-decoration:none;
+  box-shadow:0 12px 35px rgba(37,211,102,0.4);
+  transition:all 0.3s ease;
+  margin-bottom:14px;
+}
+.plan-unico-btn:hover{transform:translateY(-3px);box-shadow:0 18px 45px rgba(37,211,102,0.55);background:#1ebe5a;}
+.plan-unico-btn i{font-size:1.4rem;}
+.plan-unico-nota{
+  font-size:0.82rem;color:var(--texto-suave);
+  display:flex;align-items:center;gap:8px;
+  margin:0;
+}
+.plan-unico-nota i{color:var(--azul-electrico);}
+
+.plan-unico-features{
+  background:rgba(10,10,10,0.55);
+  border:1px solid var(--gris-borde);
+  border-radius:18px;padding:30px 28px;
+}
+.plan-unico-features h4{
+  font-size:0.85rem;color:var(--azul-electrico);
+  letter-spacing:2.5px;text-transform:uppercase;
+  margin-bottom:20px;
+}
+.plan-unico-features ul{list-style:none;margin-bottom:24px;}
+.plan-unico-features ul li{
+  padding:9px 0;color:var(--texto-suave);
+  display:flex;align-items:flex-start;gap:11px;
+  font-size:0.92rem;
+}
+.plan-unico-features ul li i{
+  color:var(--azul-electrico);font-size:0.78rem;
+  margin-top:5px;flex-shrink:0;
+}
+.plan-unico-features ul li i.fa-gift{color:#ffd700;}
+.plan-unico-features ul li strong{color:#fff;}
+
+.plan-unico-extra{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:20px;
+  background:linear-gradient(135deg,rgba(255,215,0,0.06) 0%,transparent 100%);
+  border:1px dashed rgba(255,215,0,0.3);
+  border-radius:14px;
+}
+.extra-icon{
+  width:44px;height:44px;flex-shrink:0;
+  background:rgba(0,170,255,0.15);
+  color:var(--azul-electrico);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.05rem;
+}
+.plan-unico-extra h5{
+  font-size:0.95rem;margin-bottom:5px;color:#fff;
+  font-family:'Space Grotesk';font-weight:600;
+}
+.plan-unico-extra p{
+  font-size:0.85rem;color:var(--texto-suave);
+  line-height:1.55;
+}
+.plan-unico-extra strong{color:var(--azul-electrico);}
+
+@media(max-width:850px){
+  .plan-unico{padding:40px 28px 36px;}
+  .plan-unico-grid{grid-template-columns:1fr;gap:30px;}
+  .plan-unico-cinta{right:-50px;top:18px;font-size:0.65rem;padding:6px 48px;}
+}
+.plan{
+  background:var(--negro-card);
+  border:1px solid var(--gris-borde);
+  padding:40px 32px;
+  border-radius:20px;
+  position:relative;
+  transition:all 0.4s ease;
+}
+.plan:hover{transform:translateY(-8px);}
+.plan.destacado{
+  border:1px solid var(--azul-electrico);
+  background:linear-gradient(180deg,rgba(0,102,255,0.08) 0%,var(--negro-card) 100%);
+  box-shadow:var(--shadow-azul);
+  transform:scale(1.03);
+}
+.plan-badge{
+  position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+  background:var(--gradiente-electrico);
+  padding:6px 18px;border-radius:30px;
+  font-size:0.75rem;font-weight:600;letter-spacing:1px;
+}
+.plan h3{font-size:1.4rem;margin-bottom:8px;}
+.plan-desc{color:var(--texto-suave);font-size:0.9rem;margin-bottom:22px;}
+.plan-precio{margin-bottom:26px;}
+.plan-precio .moneda{font-size:1.2rem;color:var(--texto-suave);vertical-align:top;}
+.plan-precio .num{font-size:3rem;font-weight:800;font-family:'Space Grotesk';background:var(--gradiente-electrico);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.plan-precio .periodo{color:var(--texto-suave);font-size:0.9rem;}
+.plan ul{list-style:none;margin-bottom:30px;}
+.plan ul li{padding:10px 0;color:var(--texto-suave);display:flex;align-items:center;gap:10px;font-size:0.93rem;border-bottom:1px solid rgba(255,255,255,0.05);}
+.plan ul li i{color:var(--azul-electrico);font-size:0.9rem;}
+.plan ul li:last-child{border:none;}
+.plan-btn{
+  width:100%;padding:14px;
+  background:transparent;color:#fff;
+  border:1.5px solid var(--gris-borde);
+  border-radius:50px;font-weight:600;cursor:pointer;
+  transition:all 0.3s;
+}
+.plan-btn:hover,.plan.destacado .plan-btn{background:var(--gradiente);border-color:transparent;}
+
+/* ===== FAQ ===== */
+.faq{background:var(--negro-suave);}
+.faq-lista{max-width:780px;margin:0 auto;}
+.faq-item{
+  background:var(--negro-card);
+  border:1px solid var(--gris-borde);
+  border-radius:14px;
+  margin-bottom:14px;
+  overflow:hidden;
+  transition:all 0.3s;
+}
+.faq-item.activa{border-color:rgba(0,170,255,0.4);}
+.faq-pregunta{
+  padding:22px 26px;
+  display:flex;justify-content:space-between;align-items:center;
+  cursor:pointer;font-weight:600;font-size:1.05rem;
+}
+.faq-pregunta i{color:var(--azul-electrico);transition:transform 0.3s;}
+.faq-item.activa .faq-pregunta i{transform:rotate(180deg);}
+.faq-respuesta{max-height:0;overflow:hidden;transition:max-height 0.3s ease;color:var(--texto-suave);}
+.faq-respuesta-inner{padding:0 26px 22px;}
+.faq-item.activa .faq-respuesta{max-height:200px;}
+
+/* ===== CONTACTO / CTA ===== */
+.contacto{position:relative;}
+.cta-box{
+  background:var(--gradiente);
+  border-radius:30px;
+  padding:64px 40px;
+  text-align:center;
+  position:relative;overflow:hidden;
+  box-shadow:var(--shadow-azul);
+}
+.cta-box::before{
+  content:'';position:absolute;top:-50%;right:-30%;
+  width:80%;height:200%;
+  background:radial-gradient(circle,rgba(255,255,255,0.15) 0%,transparent 50%);
+  animation:girar 20s linear infinite;
+}
+.cta-box h2{font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:16px;position:relative;z-index:2;}
+.cta-box p{font-size:1.15rem;margin-bottom:32px;opacity:0.95;position:relative;z-index:2;max-width:600px;margin-left:auto;margin-right:auto;}
+.cta-acciones{display:flex;justify-content:center;position:relative;z-index:2;}
+.cta-btn-whatsapp{
+  display:inline-flex;align-items:center;gap:18px;
+  background:#25D366;color:#fff;
+  padding:18px 32px;border-radius:60px;
+  text-decoration:none;
+  box-shadow:0 12px 40px rgba(37,211,102,0.4);
+  transition:all 0.3s ease;
+}
+.cta-btn-whatsapp:hover{transform:translateY(-3px);box-shadow:0 18px 50px rgba(37,211,102,0.55);background:#1ebe5a;}
+.cta-btn-whatsapp i{font-size:2.4rem;}
+.cta-btn-whatsapp div{display:flex;flex-direction:column;text-align:left;line-height:1.3;}
+.cta-btn-whatsapp strong{font-size:1.1rem;font-weight:700;}
+.cta-btn-whatsapp span{font-size:0.82rem;opacity:0.9;font-weight:400;}
+
+.btn-whatsapp-flotante{
+  position:fixed;bottom:24px;right:24px;
+  width:62px;height:62px;background:#25D366;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:1.7rem;
+  box-shadow:0 10px 30px rgba(37,211,102,0.45);
+  z-index:999;text-decoration:none;
+  animation:pulseWA 2.5s ease-in-out infinite;
+}
+.btn-whatsapp-flotante:hover{transform:scale(1.08);}
+@keyframes pulseWA{
+  0%,100%{box-shadow:0 10px 30px rgba(37,211,102,0.45);}
+  50%{box-shadow:0 10px 40px rgba(37,211,102,0.75),0 0 0 12px rgba(37,211,102,0.15);}
+}
+@media(max-width:600px){
+  .cta-btn-whatsapp{padding:16px 22px;gap:14px;}
+  .cta-btn-whatsapp i{font-size:1.8rem;}
+  .cta-btn-whatsapp strong{font-size:0.95rem;}
+}
+
+/* ===== FOOTER ===== */
+.footer{background:var(--negro-suave);padding:70px 0 30px;border-top:1px solid var(--gris-borde);}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px;}
+.footer-marca p{color:var(--texto-suave);margin-top:18px;font-size:0.95rem;max-width:300px;}
+.footer h4{font-size:1rem;margin-bottom:18px;}
+.footer ul{list-style:none;}
+.footer ul li{margin-bottom:10px;}
+.footer ul li a{color:var(--texto-suave);font-size:0.92rem;transition:color 0.3s;}
+.footer ul li a:hover{color:var(--azul-electrico);}
+.footer-social{display:flex;gap:12px;margin-top:18px;}
+.footer-social a{
+  width:38px;height:38px;
+  background:var(--negro-card);border:1px solid var(--gris-borde);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  color:var(--texto-suave);transition:all 0.3s;
+}
+.footer-social a:hover{background:var(--gradiente);color:#fff;border-color:transparent;}
+.footer-bottom{
+  padding-top:30px;
+  border-top:1px solid var(--gris-borde);
+  display:flex;justify-content:space-between;align-items:center;
+  color:var(--texto-suave);font-size:0.88rem;flex-wrap:wrap;gap:14px;
+}
+
+/* ===== ANIMACIONES SCROLL ===== */
+.fade-in{opacity:0;transform:translateY(30px);transition:all 0.8s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:32px;}
+  .hero-texto{order:1;}
+  .hero-visual{order:2;}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:30px;}
+  .nav-links{
+    position:fixed;top:74px;right:-100%;
+    width:80%;max-width:300px;height:calc(100vh - 74px);
+    background:var(--negro-suave);
+    flex-direction:column;padding:40px 30px;gap:24px;
+    transition:right 0.3s ease;
+    border-left:1px solid var(--gris-borde);
+  }
+  .nav-links.abierto{right:0;}
+  .menu-toggle{display:block;}
+  .flotante{display:none;}
+}
+
+/* ===== MOBILE OPTIMIZED (TODO COMPACTO) ===== */
+@media(max-width:768px){
+  /* Reducir padding global de secciones - eliminar espacios muertos */
+  section{padding:32px 0 !important;}
+  .hero{padding:72px 0 24px !important;min-height:auto !important;}
+
+  /* Contenedor con menos padding lateral */
+  .contenedor{padding:0 12px;}
+
+  /* Hero impactante sin mockup - estilo DYMARCAS BOLD */
+  .hero{text-align:center;}
+  .hero h1{font-size:3rem !important;letter-spacing:-0.5px;margin-bottom:14px;line-height:0.95;}
+  .hero p{font-size:0.92rem;margin-bottom:22px;line-height:1.5;max-width:100%;}
+  .badge{margin-bottom:18px;padding:6px 14px;font-size:0.62rem;letter-spacing:2px;}
+  .hero-cta{gap:8px;justify-content:center;flex-direction:row;width:100%;flex-wrap:nowrap;}
+  .hero-cta a{flex:1;justify-content:center;}
+  .btn-primario,.btn-secundario{padding:12px 14px;font-size:0.82rem;width:100%;justify-content:center;gap:6px;}
+  .hero-stats{display:grid !important;grid-template-columns:repeat(3,1fr) !important;gap:8px;margin-top:24px;padding-top:0;border:none;}
+  .stat{padding:12px 8px !important;border-radius:14px;}
+  .stat .num{font-size:1.45rem !important;}
+  .stat .label{font-size:0.55rem !important;letter-spacing:1px;line-height:1.2;}
+
+  /* Marquee mobile */
+  .marquee{padding:10px 0;}
+  .marquee span{font-size:0.72rem;letter-spacing:2px;gap:30px;}
+  .marquee-track{gap:30px;}
+  .divisor-zebra{height:18px;}
+
+  /* Hero visual OCULTO en mobile (no aporta y alarga la pagina) */
+  .hero-visual{display:none !important;}
+
+  /* Section headers compactos */
+  .section-header{margin-bottom:24px !important;padding:0 4px;}
+  .section-titulo{font-size:1.55rem !important;margin-bottom:8px !important;letter-spacing:-0.5px;line-height:1.15;}
+  .section-subtitulo{font-size:0.88rem;line-height:1.5;}
+  .section-tag{font-size:0.68rem;letter-spacing:1.5px;margin-bottom:8px;}
+
+  /* Grids con menor gap - 2 columnas en servicios y portafolio para reducir altura */
+  .servicios-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+  .proceso-grid{grid-template-columns:repeat(2,1fr);gap:14px;}
+  .portafolio-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+  .equipo-grid{grid-template-columns:1fr;gap:16px;max-width:340px;margin:0 auto;}
+  .testimonios-grid{grid-template-columns:1fr;gap:12px;}
+  .precios-grid{grid-template-columns:1fr;gap:14px;}
+
+  /* Cards de servicio compactos para 2 columnas */
+  .servicio-card{padding:16px 12px !important;border-radius:14px;}
+  .servicio-icon{width:38px;height:38px;font-size:1rem;margin-bottom:10px;border-radius:10px;}
+  .servicio-card h3{font-size:0.92rem;margin-bottom:6px;letter-spacing:-0.3px;line-height:1.2;}
+  .servicio-card p{font-size:0.72rem;line-height:1.4;margin-bottom:10px;}
+  .servicio-numero{font-size:0.7rem;top:10px;right:12px;letter-spacing:0;}
+  .servicio-promesa{font-size:0.6rem;padding-top:8px;gap:5px;letter-spacing:0;}
+  .servicio-promesa i{font-size:0.55rem;}
+
+  /* Proceso compacto */
+  .proceso-step{padding:14px 8px;}
+  .step-num{width:52px;height:52px;font-size:1.2rem;margin-bottom:12px;}
+  .proceso-step h3{font-size:1rem;margin-bottom:6px;}
+  .proceso-step p{font-size:0.82rem;line-height:1.45;}
+
+  /* Portafolio mas compacto - 2 columnas */
+  .proyecto-img{height:140px !important;}
+  .proyecto-img-eve .marca,.proyecto-img-sharp .marca,.proyecto-img-lumina .marca,.proyecto-img-brasa .marca,.proyecto-img-marfil .marca,.proyecto-img-petalo .marca{font-size:0.95rem !important;}
+  .proyecto-img-eve .sub,.proyecto-img-sharp .sub,.proyecto-img-lumina .sub,.proyecto-img-brasa .sub,.proyecto-img-marfil .sub,.proyecto-img-petalo .sub{font-size:0.55rem !important;letter-spacing:2px !important;}
+  .proyecto-img-eve .stats,.proyecto-img-sharp .stats,.proyecto-img-lumina .stats,.proyecto-img-brasa .stats,.proyecto-img-marfil .stats,.proyecto-img-petalo .stats{display:none !important;}
+  .proyecto-img-eve .icono,.proyecto-img-sharp .icono,.proyecto-img-lumina .icono,.proyecto-img-brasa .icono,.proyecto-img-marfil .icono,.proyecto-img-petalo .icono{font-size:1rem !important;margin-bottom:6px !important;}
+  .proyecto-info{padding:12px 10px;}
+  .proyecto-info h3{font-size:0.85rem;margin-bottom:4px;line-height:1.2;}
+  .proyecto-info p{font-size:0.7rem;line-height:1.35;margin-bottom:8px;}
+  .proyecto-tag{font-size:0.58rem !important;padding:3px 8px !important;margin-top:4px !important;}
+  .proyecto-overlay{padding:10px;}
+  .proyecto-ver{font-size:0.7rem;padding:7px 14px;}
+
+  /* Equipo - CARRUSEL HORIZONTAL con snap scroll */
+  .equipo-grid{
+    display:flex !important;
+    grid-template-columns:none !important;
+    overflow-x:auto;overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    gap:10px !important;
+    padding:6px 14px 18px !important;
+    margin:0 -14px !important;
+    max-width:none !important;
+    scroll-padding-left:14px;
+  }
+  .equipo-grid::-webkit-scrollbar{display:none;}
+  .miembro{
+    flex-shrink:0;
+    width:260px;
+    scroll-snap-align:start;
+    padding:24px 20px !important;
+    text-align:center !important;
+    display:block !important;
+    border-radius:16px;
+  }
+  .miembro-foto{width:130px !important;height:130px !important;margin:0 auto 14px !important;padding:0 !important;}
+  .miembro-info{padding:0 !important;text-align:center !important;}
+  .miembro-info h3{font-size:1.15rem;margin-bottom:4px;}
+  .miembro-rol{font-size:0.68rem;margin-bottom:10px;letter-spacing:1.5px;}
+  .miembro-bio{font-size:0.82rem;line-height:1.5;margin-bottom:0 !important;}
+
+  /* Testimonios - CARRUSEL HORIZONTAL con snap scroll */
+  .testimonios-grid{
+    display:flex !important;
+    grid-template-columns:none !important;
+    overflow-x:auto;overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    gap:10px !important;
+    padding:6px 14px 18px !important;
+    margin:0 -14px !important;
+    scroll-padding-left:14px;
+  }
+  .testimonios-grid::-webkit-scrollbar{display:none;}
+  .testimonio{
+    flex-shrink:0;
+    width:280px;
+    scroll-snap-align:start;
+    padding:22px 20px !important;
+    border-radius:16px;
+  }
+  .testimonio-comillas{font-size:2rem !important;line-height:0.8 !important;}
+  .testimonio-texto{font-size:0.88rem !important;margin-bottom:16px !important;line-height:1.55;}
+  .testimonio-autor{gap:12px !important;}
+  .testimonio-avatar{width:42px !important;height:42px !important;font-size:0.85rem !important;}
+  .testimonio-autor h4{font-size:0.9rem !important;}
+  .testimonio-autor span{font-size:0.72rem !important;}
+  .estrellas{font-size:0.8rem;margin-bottom:10px !important;}
+
+  /* Indicador "Desliza" para carruseles */
+  .swipe-hint{
+    display:flex !important;
+    align-items:center;justify-content:center;gap:8px;
+    color:var(--azul-electrico);
+    font-size:0.7rem;font-weight:600;
+    letter-spacing:2px;text-transform:uppercase;
+    margin-top:12px;font-family:'Inter';
+  }
+  .swipe-hint i{animation:swipeArrow 1.5s ease-in-out infinite;}
+  @keyframes swipeArrow{
+    0%,100%{transform:translateX(0);opacity:0.6;}
+    50%{transform:translateX(8px);opacity:1;}
+  }
+
+  /* Plan unico ULTRA optimizado mobile */
+  .plan-unico{padding:38px 12px 14px !important;border-radius:18px;overflow:hidden;}
+  .plan-unico-grid{grid-template-columns:1fr !important;gap:10px !important;}
+
+  /* Cinta como badge horizontal arriba */
+  .plan-unico-cinta{
+    position:absolute !important;
+    top:0 !important;left:0 !important;right:0 !important;
+    transform:none !important;
+    background:linear-gradient(90deg,#00aaff 0%,#0066ff 100%) !important;
+    padding:7px 14px !important;
+    text-align:center !important;
+    font-size:0.6rem !important;
+    letter-spacing:2.5px !important;
+    color:#000 !important;font-weight:800 !important;
+    box-shadow:none !important;
+    width:100% !important;
+  }
+
+  .plan-unico-tag{padding:5px 12px !important;font-size:0.6rem !important;margin-bottom:10px !important;letter-spacing:1.5px;gap:6px;}
+  .plan-unico-tag i{font-size:0.7rem;}
+  .plan-unico-info h3{font-size:1.05rem !important;line-height:1.25;margin-bottom:8px !important;}
+  .plan-unico-info > p{font-size:0.76rem !important;margin-bottom:12px !important;line-height:1.45;}
+
+  /* PRECIO arreglado - tipografia limpia */
+  .precio-actual{align-items:baseline !important;gap:6px !important;}
+  .precio-actual .num{
+    font-family:'Inter',sans-serif !important;
+    font-weight:900 !important;
+    font-size:2.2rem !important;
+    letter-spacing:-1px !important;
+    background:linear-gradient(135deg,#5fc4ff 0%,#00aaff 50%,#0066ff 100%) !important;
+    -webkit-background-clip:text !important;
+    -webkit-text-fill-color:transparent !important;
+    background-clip:text !important;
+    line-height:1 !important;
+  }
+  .precio-actual .moneda{
+    font-size:0.75rem !important;
+    color:rgba(255,255,255,0.5) !important;
+    font-weight:600 !important;
+    letter-spacing:1.5px !important;
+  }
+  .plan-unico-precio{padding:14px 16px !important;margin-bottom:12px !important;border-radius:14px;}
+  .plan-unico-precio .periodo{font-size:0.7rem !important;margin-top:4px;}
+
+  .plan-unico-btn{padding:13px 16px !important;font-size:0.82rem !important;gap:8px;letter-spacing:0;}
+  .plan-unico-btn i{font-size:1rem;}
+  .plan-unico-nota{font-size:0.68rem !important;margin-top:8px;gap:6px;line-height:1.35;}
+  .plan-unico-nota i{font-size:0.75rem;flex-shrink:0;}
+
+  /* Features mas compacto */
+  .plan-unico-features{padding:14px 12px !important;border-radius:14px;}
+  .plan-unico-features h4{font-size:0.62rem !important;margin-bottom:10px !important;letter-spacing:2px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.06);}
+  .plan-unico-features ul{margin-bottom:12px !important;}
+  .plan-unico-features ul li{font-size:0.75rem !important;padding:5px 0 !important;gap:8px;line-height:1.35;align-items:flex-start;border:none !important;}
+  .plan-unico-features ul li i{font-size:0.65rem !important;margin-top:4px;flex-shrink:0;}
+
+  /* Extra card */
+  .plan-unico-extra{padding:11px !important;gap:9px;border-radius:11px;}
+  .plan-unico-extra .extra-icon{width:30px !important;height:30px !important;font-size:0.78rem !important;flex-shrink:0;}
+  .plan-unico-extra h5{font-size:0.76rem !important;margin-bottom:2px !important;}
+  .plan-unico-extra p{font-size:0.68rem !important;line-height:1.4;}
+
+  /* Ocultar efecto radial decorativo en mobile */
+  .plan-unico::before{display:none !important;}
+
+  /* FAQ super compacto */
+  .faq-item{margin-bottom:6px !important;border-radius:10px;}
+  .faq-pregunta{padding:13px 14px !important;font-size:0.85rem !important;gap:10px;line-height:1.3;}
+  .faq-pregunta i{font-size:0.75rem;}
+  .faq-respuesta-inner{padding:0 14px 14px !important;font-size:0.78rem !important;line-height:1.55;}
+  .faq-item.activa .faq-respuesta{max-height:220px !important;}
+
+  /* CTA box */
+  .cta-box{padding:36px 22px !important;border-radius:20px;}
+  .cta-box h2{font-size:1.5rem !important;}
+  .cta-box p{font-size:0.95rem;margin-bottom:24px;}
+  .cta-btn-whatsapp{padding:14px 20px;gap:12px;}
+  .cta-btn-whatsapp i{font-size:1.8rem;}
+  .cta-btn-whatsapp strong{font-size:0.95rem;}
+  .cta-btn-whatsapp span{font-size:0.72rem;}
+
+  /* Footer compacto */
+  footer.footer{padding:50px 0 24px;}
+  .footer-grid{grid-template-columns:1fr;gap:30px;margin-bottom:32px;}
+  .footer h4{font-size:0.95rem;margin-bottom:14px;}
+  .footer ul li{margin-bottom:6px;}
+  .footer ul li a{font-size:0.85rem;}
+  .footer-marca p{font-size:0.85rem;}
+  .footer-bottom{flex-direction:column;gap:12px;text-align:center;font-size:0.78rem;padding-top:24px;}
+
+  /* WhatsApp flotante mas pequeno */
+  .btn-whatsapp-flotante{width:54px;height:54px;font-size:1.45rem;bottom:18px;right:18px;}
+
+  /* Logo y navbar mas compacto */
+  .navbar{padding:0;}
+  .nav-content{padding:10px 0;}
+  .logo-icon{width:42px !important;height:42px !important;}
+  .logo-text .marca{font-size:1rem;}
+  .logo-text .tag{font-size:0.55rem;letter-spacing:2px;}
+  .menu-toggle{font-size:1.3rem;}
+
+  /* Eliminar auroras pesadas en mobile */
+  .aurora{display:none;}
+  .mouse-spotlight{display:none;}
+
+  /* Banner servicios mas compacto */
+  .servicios-banner{padding:18px 16px !important;flex-direction:column;text-align:center;gap:12px;margin-top:18px;border-radius:14px;}
+  .servicios-banner h4{font-size:0.95rem;margin-bottom:2px;}
+  .servicios-banner p{font-size:0.75rem;line-height:1.4;}
+  .servicios-banner a{padding:10px 18px;font-size:0.8rem;}
+
+  /* CTA box compacto */
+  .cta-box{padding:28px 18px !important;border-radius:16px;}
+  .cta-box h2{font-size:1.3rem !important;margin-bottom:8px;}
+  .cta-box p{font-size:0.85rem !important;margin-bottom:16px !important;line-height:1.45;}
+  .cta-btn-whatsapp{padding:12px 18px !important;gap:10px;}
+  .cta-btn-whatsapp i{font-size:1.5rem !important;}
+  .cta-btn-whatsapp strong{font-size:0.85rem !important;}
+  .cta-btn-whatsapp span{font-size:0.65rem !important;}
+
+  /* Proceso super compacto */
+  .proceso-grid{gap:8px !important;}
+  .proceso-step{padding:10px 6px !important;}
+  .step-num{width:42px !important;height:42px !important;font-size:1.1rem !important;margin-bottom:8px !important;}
+  .proceso-step h3{font-size:0.9rem !important;margin-bottom:4px !important;}
+  .proceso-step p{font-size:0.7rem !important;line-height:1.4;}
+
+  /* Section header aun mas compacto */
+  .section-header{margin-bottom:18px !important;}
+
+  /* Plan unico cinta */
+  .plan-unico-cinta{font-size:0.6rem;padding:5px 40px;right:-42px;top:14px;}
+
+  /* Loader 3D mas compacto */
+  .logo-3d-wrap{width:140px;height:140px;}
+  .loader-halo-1{width:240px;height:240px;}
+  .loader-halo-2{width:320px;height:320px;}
+  .loader-marca{margin-top:40px;}
+  .loader-marca h1{font-size:1.15rem;}
+  .loader-marca p{font-size:0.65rem;letter-spacing:3px;}
+  .loader-barra{width:200px;margin-top:24px;}
+
+  /* Quitar tilt en mobile (no se siente bien con touch) */
+  .tilt-card{transform:none !important;}
+}
+
+@media(max-width:480px){
+  section{padding:36px 0 !important;}
+  .hero{padding:75px 0 24px !important;}
+  .hero h1{font-size:1.85rem !important;}
+  .section-titulo{font-size:1.4rem !important;}
+  .proceso-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+  .proceso-step{padding:12px 6px;}
+  .step-num{width:42px;height:42px;font-size:1rem;margin-bottom:8px;}
+  .proceso-step h3{font-size:0.88rem;}
+  .proceso-step p{font-size:0.72rem;}
+}
+
+/* ===== LOADER 3D ===== */
+.loader-3d{
+  position:fixed;inset:0;
+  background:radial-gradient(ellipse at center,#0a1530 0%,#000000 70%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  z-index:99999;
+  perspective:1200px;
+  transition:opacity 0.7s ease,visibility 0.7s ease;
+}
+.loader-3d.oculto{opacity:0;visibility:hidden;pointer-events:none;}
+.loader-3d::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(0,102,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,102,255,0.06) 1px,transparent 1px);
+  background-size:40px 40px;
+  mask-image:radial-gradient(ellipse at center,black 0%,transparent 70%);
+  -webkit-mask-image:radial-gradient(ellipse at center,black 0%,transparent 70%);
+  animation:loaderGrid 20s linear infinite;
+}
+@keyframes loaderGrid{0%{background-position:0 0;}100%{background-position:40px 40px;}}
+.loader-halo{position:absolute;border-radius:50%;pointer-events:none;}
+.loader-halo-1{width:380px;height:380px;background:radial-gradient(circle,rgba(0,170,255,0.35) 0%,transparent 70%);animation:loaderPulseHalo 3s ease-in-out infinite;}
+.loader-halo-2{width:520px;height:520px;background:radial-gradient(circle,rgba(0,102,255,0.18) 0%,transparent 70%);animation:loaderPulseHalo 3s ease-in-out infinite 1.5s;}
+@keyframes loaderPulseHalo{0%,100%{transform:scale(0.85);opacity:0.5;}50%{transform:scale(1.15);opacity:1;}}
+.logo-3d-wrap{position:relative;width:220px;height:220px;transform-style:preserve-3d;animation:loaderRotar3D 4s linear infinite;}
+@keyframes loaderRotar3D{0%{transform:rotateY(0deg) rotateX(8deg);}100%{transform:rotateY(360deg) rotateX(8deg);}}
+.logo-capa{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transform-style:preserve-3d;}
+.logo-capa img{width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 0 35px rgba(0,170,255,0.7));}
+.logo-capa.frente{transform:translateZ(20px);}
+.logo-capa.frente img{filter:drop-shadow(0 0 25px rgba(100,200,255,0.95)) drop-shadow(0 8px 20px rgba(0,102,255,0.5));}
+.logo-capa.atras-1{transform:translateZ(-8px);opacity:0.45;}
+.logo-capa.atras-1 img{filter:blur(2px) drop-shadow(0 0 30px rgba(0,170,255,0.4));}
+.logo-capa.atras-2{transform:translateZ(-18px);opacity:0.25;}
+.logo-capa.atras-2 img{filter:blur(6px) drop-shadow(0 0 40px rgba(0,170,255,0.3));}
+.logo-capa.atras-3{transform:translateZ(-30px);opacity:0.12;}
+.logo-capa.atras-3 img{filter:blur(12px);}
+.loader-reflejo{position:absolute;width:240px;height:240px;border-radius:50%;border:1px solid transparent;transform-style:preserve-3d;}
+.loader-reflejo::before{content:'';position:absolute;top:-4px;left:50%;transform:translateX(-50%);width:8px;height:8px;background:#00aaff;border-radius:50%;box-shadow:0 0 20px #00aaff,0 0 35px #0066ff;}
+.loader-reflejo-1{animation:loaderGirarReflejo 3s linear infinite;transform:rotateY(70deg);}
+.loader-reflejo-2{animation:loaderGirarReflejo 4s linear infinite reverse;transform:rotateX(70deg);width:260px;height:260px;}
+.loader-reflejo-2::before{background:#5fc4ff;box-shadow:0 0 18px #5fc4ff;}
+@keyframes loaderGirarReflejo{0%{transform:rotateY(70deg) rotateZ(0deg);}100%{transform:rotateY(70deg) rotateZ(360deg);}}
+.loader-marca{margin-top:60px;text-align:center;position:relative;z-index:2;}
+.loader-marca h1{font-size:1.4rem;font-weight:700;background:linear-gradient(135deg,#ffffff 0%,#a8d4ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:0.5px;margin-bottom:6px;font-family:'Space Grotesk',sans-serif;}
+.loader-marca p{font-size:0.72rem;color:#00aaff;letter-spacing:5px;text-transform:uppercase;font-weight:500;font-family:'Inter',sans-serif;}
+.loader-dots{display:flex;gap:8px;justify-content:center;margin-top:24px;}
+.loader-dots span{width:8px;height:8px;background:#0066ff;border-radius:50%;animation:loaderPulseDot 1.4s ease-in-out infinite;box-shadow:0 0 10px #0066ff;}
+.loader-dots span:nth-child(2){animation-delay:0.2s;}
+.loader-dots span:nth-child(3){animation-delay:0.4s;}
+@keyframes loaderPulseDot{0%,100%{transform:scale(0.8);opacity:0.4;}50%{transform:scale(1.2);opacity:1;}}
+.loader-barra{margin-top:30px;width:240px;height:3px;background:rgba(255,255,255,0.08);border-radius:10px;overflow:hidden;position:relative;z-index:2;}
+.loader-barra .relleno{height:100%;background:linear-gradient(90deg,#00aaff 0%,#0066ff 50%,#0033aa 100%);border-radius:10px;box-shadow:0 0 20px rgba(0,170,255,0.8);animation:loaderCargarBarra 2.5s ease-in-out forwards;width:0;}
+@keyframes loaderCargarBarra{0%{width:0;}100%{width:100%;}}
+@media(max-width:600px){
+  .logo-3d-wrap{width:160px;height:160px;}
+  .loader-reflejo{width:180px;height:180px;}
+  .loader-reflejo-2{width:200px;height:200px;}
+  .loader-halo-1{width:280px;height:280px;}
+  .loader-halo-2{width:380px;height:380px;}
+}
+</style>
+</head>
+<body>
+
+<!-- BARRA DE PROGRESO DE SCROLL -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- SPOTLIGHT QUE SIGUE AL MOUSE -->
+<div class="mouse-spotlight" id="mouseSpotlight"></div>
+
+<!-- ========== LOADER 3D ========== -->
+<div class="loader-3d" id="loader3d">
+  <div class="loader-halo loader-halo-1"></div>
+  <div class="loader-halo loader-halo-2"></div>
+  <div class="logo-3d-wrap">
+    <div class="loader-reflejo loader-reflejo-1"></div>
+    <div class="loader-reflejo loader-reflejo-2"></div>
+    <div class="logo-capa atras-3"><img src="images/logo/logo.svg" alt="Landing Digital"></div>
+    <div class="logo-capa atras-2"><img src="images/logo/logo.svg" alt="Landing Digital"></div>
+    <div class="logo-capa atras-1"><img src="images/logo/logo.svg" alt="Landing Digital"></div>
+    <div class="logo-capa frente"><img src="images/logo/logo.svg" alt="Landing Digital"></div>
+  </div>
+  <div class="loader-marca">
+    <h1>Landing Digital</h1>
+    <p>Cargando experiencia</p>
+  </div>
+  <div class="loader-dots"><span></span><span></span><span></span></div>
+  <div class="loader-barra"><div class="relleno"></div></div>
+</div>
+
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar">
+  <div class="contenedor nav-content">
+    <a href="#inicio" class="logo">
+      <div class="logo-icon"><img src="images/logo/logo.svg" alt="Landing Digital"></div>
+      <div class="logo-text">
+        <span class="marca">Landing Digital</span>
+        <span class="tag">Diseño Web &middot; Conversion</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#portafolio">Portafolio</a></li>
+      <li><a href="#equipo">Equipo</a></li>
+      <li><a href="#precios">Precios</a></li>
+      <li><a href="https://wa.me/573207519371?text=Hola%2C%20quiero%20cotizar%20una%20landing%20page" target="_blank" class="btn-nav"><i class="fab fa-whatsapp"></i> Cotizar</a></li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="inicio">
+  <div class="contenedor">
+    <div class="hero-grid">
+      <div class="hero-texto">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          Disponibles para nuevos proyectos
+        </div>
+        <h1>Landing Pages que <span class="acento">convierten visitas en clientes</span></h1>
+        <p>Diseñamos y desarrollamos landing pages profesionales, rapidas y optimizadas que transforman tu trafico en resultados reales. Tu marca merece destacar.</p>
+        <div class="hero-cta">
+          <a href="https://wa.me/573207519371?text=Hola%2C%20quiero%20comenzar%20un%20proyecto%20de%20landing%20page" target="_blank" class="btn-primario">
+            <i class="fab fa-whatsapp"></i> Comenzar proyecto
+          </a>
+          <a href="#portafolio" class="btn-secundario">
+            <i class="fas fa-play-circle"></i> Ver portafolio
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="num">100%</div>
+            <div class="label">Originales</div>
+          </div>
+          <div class="stat">
+            <div class="num">98%</div>
+            <div class="label">Clientes satisfechos</div>
+          </div>
+          <a href="https://www.facebook.com/profile.php?id=61589419075595&locale=es_LA" target="_blank" rel="noopener" class="stat stat-facebook">
+            <div class="num"><i class="fab fa-facebook-f"></i></div>
+            <div class="label">Siguenos</div>
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <!-- Capas de fondo premium -->
+        <div class="hero-spotlight"></div>
+        <div class="hero-mesh"></div>
+        <div class="hero-grid-bg"></div>
+        <div class="hero-grain"></div>
+
+        <!-- Formas geometricas premium flotantes -->
+        <div class="hero-shape hero-shape-1"></div>
+        <div class="hero-shape hero-shape-2"></div>
+        <div class="hero-shape hero-shape-3"></div>
+        <div class="hero-shape hero-shape-4"></div>
+
+        <!-- Lineas conectoras animadas -->
+        <div class="hero-line hero-line-1"></div>
+        <div class="hero-line hero-line-2"></div>
+
+        <div class="hero-stack">
+          <!-- Notificacion toast premium -->
+          <div class="hero-toast">
+            <div class="toast-icon"><i class="fas fa-check"></i></div>
+            <div class="toast-body">
+              Nueva conversion
+              <small>luminabienes.co &middot; hace 12 seg</small>
+            </div>
+          </div>
+
+          <!-- Browser frame con borde conico animado -->
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
+              <div class="browser-url">
+                <i class="fas fa-lock"></i>
+                <span class="dominio">luminabienes.co</span><span class="cursor-blink"></span>
+              </div>
+            </div>
+
+            <!-- Pantalla con preview real de Lumina -->
+            <div class="browser-screen">
+              <div class="screen-nav">
+                <div class="screen-nav-logo">Lumina</div>
+                <ul><li>Propiedades</li><li>Asesores</li><li>Contacto</li></ul>
+              </div>
+              <span class="screen-tag">Boutique Inmobiliario</span>
+              <h3 class="screen-title">Donde encontrar es <em>solo el comienzo</em></h3>
+              <p class="screen-desc">Curamos propiedades excepcionales para quienes buscan mas que un inmueble.</p>
+              <div class="screen-cta-row">
+                <div class="screen-cta-1">Ver propiedades</div>
+                <div class="screen-cta-2">Asesoria</div>
+              </div>
+              <div class="screen-img-side"></div>
+
+              <!-- Scroll indicator animado -->
+              <div class="browser-scroll-indicator"></div>
+            </div>
+          </div>
+
+          <!-- Stat card con grafico animado -->
+          <div class="hero-stat-card">
+            <div class="stat-label">Conversiones / mes</div>
+            <div class="stat-value">+247 <sup>↑ 32%</sup></div>
+            <div class="stat-mini-chart">
+              <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+          </div>
+
+          <!-- Card de visitantes en vivo -->
+          <div class="hero-live-visitors">
+            <div class="visitor-icon"><i class="fas fa-user"></i></div>
+            <div class="visitor-info">
+              <div class="visitor-num">1,247</div>
+              <div class="visitor-label">Visitantes online</div>
+            </div>
+          </div>
+
+          <!-- Mini card de testimonio -->
+          <div class="hero-mini-test">
+            <div class="mini-avatar">PG</div>
+            <div class="mini-body">
+              <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              "Triplicaron mis ventas"
+              <em>Patricia G. &middot; cliente</em>
+            </div>
+          </div>
+
+          <!-- Trust card con multiples marcas -->
+          <div class="hero-trust-card">
+            <div class="trust-logos">
+              <div class="trust-logo">BR</div>
+              <div class="trust-logo">MS</div>
+              <div class="trust-logo">PS</div>
+              <div class="trust-logo">+8</div>
+            </div>
+            <div class="trust-info">
+              <div class="trust-num">+12 marcas</div>
+              <div class="trust-label">confiando este mes</div>
+            </div>
+          </div>
+
+          <!-- Phone mockup mostrando otro proyecto (Brasa & Roble) -->
+          <div class="hero-phone">
+            <div class="phone-frame">
+              <div class="phone-screen-inner">
+                <div class="phone-content">
+                  <div class="phone-tag">Brasa &amp; Roble</div>
+                  <div class="phone-title">Cocina<br>de fuego</div>
+                </div>
+                <div class="phone-btn">Reservar</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MARQUEE TIRA ANIMADA ========== -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Landing Pages</span><span>Diseño Web</span><span>WhatsApp</span><span>Conversion</span><span>Mobile First</span>
+    <span>Landing Pages</span><span>Diseño Web</span><span>WhatsApp</span><span>Conversion</span><span>Mobile First</span>
+  </div>
+</div>
+
+<!-- ========== SERVICIOS ========== -->
+<section class="servicios" id="servicios">
+  <div class="aurora aurora-blue aurora-top-left aurora-anim"></div>
+  <div class="aurora aurora-cyan aurora-top-right aurora-anim" style="animation-delay:-5s;"></div>
+  <div class="contenedor">
+    <div class="section-header fade-in">
+      <span class="section-tag" data-num="01">Lo que hacemos por ti</span>
+      <h2 class="section-titulo">Mas que servicios, <span class="acento">una alianza para crecer</span></h2>
+      <p class="section-subtitulo">Sabemos que detras de cada negocio hay una persona con ilusiones y metas reales. Por eso no entregamos plantillas: creamos experiencias digitales pensadas para tu historia.</p>
+    </div>
+    <div class="servicios-grid">
+
+      <div class="servicio-card fade-in">
+        <span class="servicio-numero">01</span>
+        <div class="servicio-icon"><i class="fas fa-paint-brush"></i></div>
+        <h3>Diseño con identidad</h3>
+        <p>Cada marca tiene un alma distinta. Disenamos interfaces que reflejan la tuya y conectan con las personas correctas desde el primer segundo.</p>
+        <div class="servicio-promesa"><i class="fas fa-heart"></i> Hecho a tu medida, no en serie</div>
+      </div>
+
+      <div class="servicio-card fade-in">
+        <span class="servicio-numero">02</span>
+        <div class="servicio-icon"><i class="fas fa-code"></i></div>
+        <h3>Desarrollo cuidado</h3>
+        <p>Codigo limpio escrito a mano, no copiado. Tu sitio carga en menos de 2 segundos y funciona perfecto, porque sabemos que cada segundo cuenta.</p>
+        <div class="servicio-promesa"><i class="fas fa-bolt"></i> Carga ultra rapida garantizada</div>
+      </div>
+
+      <div class="servicio-card fade-in">
+        <span class="servicio-numero">03</span>
+        <div class="servicio-icon"><i class="fas fa-mobile-alt"></i></div>
+        <h3>Perfecto en cada pantalla</h3>
+        <p>Tu marca merece verse increible donde tus clientes la encuentren: desde el celular en el bus hasta el monitor en la oficina. Misma experiencia, misma calidad.</p>
+        <div class="servicio-promesa"><i class="fas fa-check-circle"></i> 100% adaptable y probado</div>
+      </div>
+
+      <div class="servicio-card fade-in">
+        <span class="servicio-numero">04</span>
+        <div class="servicio-icon"><i class="fas fa-search"></i></div>
+        <h3>Visible en Google</h3>
+        <p>De nada sirve un sitio bonito si nadie lo encuentra. Lo optimizamos para que aparezcas cuando tus clientes te buscan, justo en el momento que te necesitan.</p>
+        <div class="servicio-promesa"><i class="fas fa-chart-line"></i> Mas trafico organico real</div>
+      </div>
+
+      <div class="servicio-card fade-in">
+        <span class="servicio-numero">05</span>
+        <div class="servicio-icon"><i class="fas fa-bullseye"></i></div>
+        <h3>Pensado para vender</h3>
+        <p>Cada boton, cada palabra, cada espacio en blanco tiene un proposito: convertir a tus visitantes en clientes reales. No es magia, es estrategia bien aplicada.</p>
+        <div class="servicio-promesa"><i class="fas fa-rocket"></i> Disenado para resultados</div>
+      </div>
+
+      <div class="servicio-card fade-in">
+        <span class="servicio-numero">06</span>
+        <div class="servicio-icon"><i class="fas fa-headset"></i></div>
+        <h3>Cerca despues de la entrega</h3>
+        <p>Tu proyecto no termina cuando publicamos. Si tienes una duda a las 11 de la noche o quieres ajustar algo el lunes, aqui estamos. Tu tranquilidad es parte del trato.</p>
+        <div class="servicio-promesa"><i class="fas fa-handshake"></i> Acompanamiento humano real</div>
+      </div>
+
+    </div>
+
+    <div class="servicios-banner fade-in">
+      <div class="servicios-banner-texto">
+        <h4>Tienes una idea? <span>Hablemos sin compromiso</span></h4>
+        <p>Cuentanos en que estas pensando y te decimos honestamente como podemos ayudarte. Sin presion, sin paquetes obligatorios, solo soluciones que sirven.</p>
+      </div>
+      <a href="https://wa.me/573207519371?text=Hola%2C%20tengo%20una%20idea%20y%20quiero%20conversarla" target="_blank">
+        <i class="fab fa-whatsapp"></i> Conversemos
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROCESO ========== -->
+<section class="proceso">
+  <div class="contenedor">
+    <div class="section-header fade-in">
+      <span class="section-tag" data-num="02">Como trabajamos</span>
+      <h2 class="section-titulo">Nuestro <span class="acento">proceso</span></h2>
+      <p class="section-subtitulo">De la idea al lanzamiento en pocos pasos claros y eficientes.</p>
+    </div>
+    <div class="proceso-grid">
+      <div class="proceso-step fade-in">
+        <div class="step-num">01</div>
+        <h3>Descubrimiento</h3>
+        <p>Conocemos tu marca, objetivos y publico para crear una estrategia digital alineada a tu negocio.</p>
+      </div>
+      <div class="proceso-step fade-in">
+        <div class="step-num">02</div>
+        <h3>Diseño</h3>
+        <p>Creamos prototipos y mockups con un diseño moderno, atractivo y centrado en la conversion.</p>
+      </div>
+      <div class="proceso-step fade-in">
+        <div class="step-num">03</div>
+        <h3>Desarrollo</h3>
+        <p>Programamos tu landing con las mejores practicas, codigo limpio y rendimiento optimo.</p>
+      </div>
+      <div class="proceso-step fade-in">
+        <div class="step-num">04</div>
+        <h3>Lanzamiento</h3>
+        <p>Publicamos tu sitio, hacemos pruebas finales y te entregamos un producto listo para vender.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PORTAFOLIO ========== -->
+<section class="portafolio" id="portafolio">
+  <div class="aurora aurora-violet aurora-top-right aurora-anim"></div>
+  <div class="aurora aurora-blue aurora-bottom aurora-anim" style="animation-delay:-7s;"></div>
+  <div class="contenedor">
+    <div class="section-header fade-in">
+      <span class="section-tag" data-num="03">Portafolio</span>
+      <h2 class="section-titulo">Proyectos <span class="acento">recientes</span></h2>
+      <p class="section-subtitulo">Algunos trabajos que reflejan nuestro estilo, enfoque y resultados.</p>
+    </div>
+    <div class="portafolio-grid">
+      <a href="proyectos/eve-extrem-fit.html" target="_blank" class="proyecto fade-in">
+        <div class="proyecto-img proyecto-img-eve">
+          <div class="marca">EVE<em>.</em>EXTREM<em>.</em>FIT</div>
+          <div class="sub">Entrenadora Personal</div>
+          <div class="stats">
+            <div><b>+100</b>Vidas</div>
+            <div><b>+2</b>Años</div>
+          </div>
+        </div>
+        <div class="proyecto-overlay">
+          <span class="proyecto-ver">Ver proyecto <i class="fas fa-arrow-right"></i></span>
+        </div>
+        <div class="proyecto-info">
+          <h3>Eve.Extrem.Fit</h3>
+          <p>Landing page de alto impacto para entrenadora personal con estilo audaz, tipografia editorial y enfoque en captacion via WhatsApp.</p>
+          <span class="proyecto-tag destacado">Fitness &middot; Marca Personal</span>
+        </div>
+      </a>
+      <a href="proyectos/the-sharp-cut.html" target="_blank" class="proyecto fade-in">
+        <div class="proyecto-img proyecto-img-sharp">
+          <div class="marca">The Sharp<em> </em>Cut</div>
+          <div class="sub">Barberia de Barrio</div>
+          <div class="stats">
+            <div><b>100%</b>Tradicion</div>
+            <div><b>5★</b>Estilo</div>
+          </div>
+        </div>
+        <div class="proyecto-overlay">
+          <span class="proyecto-ver">Ver proyecto <i class="fas fa-arrow-right"></i></span>
+        </div>
+        <div class="proyecto-info">
+          <h3>The Sharp Cut</h3>
+          <p>Landing elegante para barberia con estetica vintage, animaciones tipo barber pole y reservas via WhatsApp.</p>
+          <span class="proyecto-tag dorado">Barberia &middot; Servicios Locales</span>
+        </div>
+      </a>
+      <a href="proyectos/lumina-bienes-raices.html" target="_blank" class="proyecto fade-in">
+        <div class="proyecto-img proyecto-img-lumina">
+          <div class="icono"><i class="fas fa-gem"></i></div>
+          <div class="marca">Lumina<em>.</em></div>
+          <div class="sub">Bienes Raices</div>
+          <div class="stats">
+            <div><b>+1,500</b>Operaciones</div>
+            <div><b>+250</b>Propiedades</div>
+          </div>
+        </div>
+        <div class="proyecto-overlay">
+          <span class="proyecto-ver">Ver proyecto <i class="fas fa-arrow-right"></i></span>
+        </div>
+        <div class="proyecto-info">
+          <h3>Lumina Bienes Raices</h3>
+          <p>Sitio inmersivo para boutique inmobiliario premium con buscador de propiedades, fichas detalladas y estetica editorial de lujo.</p>
+          <span class="proyecto-tag esmeralda">Real Estate &middot; Lujo</span>
+        </div>
+      </a>
+      <a href="proyectos/marfil-estudio-dental.html" target="_blank" class="proyecto fade-in">
+        <div class="proyecto-img proyecto-img-marfil">
+          <div class="icono"><i class="fas fa-tooth"></i></div>
+          <div class="marca">Marfil <em>Studio</em></div>
+          <div class="sub">Diseño de sonrisa</div>
+          <div class="stats">
+            <div><b>+1,200</b>Sonrisas</div>
+            <div><b>4.9★</b>Pacientes</div>
+          </div>
+        </div>
+        <div class="proyecto-overlay">
+          <span class="proyecto-ver">Ver proyecto <i class="fas fa-arrow-right"></i></span>
+        </div>
+        <div class="proyecto-info">
+          <h3>Marfil Estudio Dental</h3>
+          <p>Landing premium para clinica boutique de odontologia con tratamientos, equipo medico, casos antes/despues y agenda de citas.</p>
+          <span class="proyecto-tag menta">Salud &middot; Estetica Dental</span>
+        </div>
+      </a>
+      <a href="proyectos/brasa-y-roble.html" target="_blank" class="proyecto fade-in">
+        <div class="proyecto-img proyecto-img-brasa">
+          <div class="icono"><i class="fas fa-fire"></i></div>
+          <div class="marca">Brasa &amp; <b>Roble</b></div>
+          <div class="sub">Cocina al fuego</div>
+          <div class="stats">
+            <div><b>+150</b>Etiquetas</div>
+            <div><b>3★</b>Gourmet</div>
+          </div>
+        </div>
+        <div class="proyecto-overlay">
+          <span class="proyecto-ver">Ver proyecto <i class="fas fa-arrow-right"></i></span>
+        </div>
+        <div class="proyecto-info">
+          <h3>Brasa &amp; Roble</h3>
+          <p>Pagina editorial para restaurante premium con menu de autor, sistema de reservas, perfil del chef y galeria de ambiente.</p>
+          <span class="proyecto-tag cobre">Gastronomia &middot; Fine Dining</span>
+        </div>
+      </a>
+      <a href="proyectos/petalo-spa.html" target="_blank" class="proyecto fade-in">
+        <div class="proyecto-img proyecto-img-petalo">
+          <div class="icono"><i class="fas fa-spa"></i></div>
+          <div class="marca">P<b>e</b>talo<em>Spa &amp; Wellness</em></div>
+          <div class="sub">El arte de cuidarte</div>
+          <div class="stats">
+            <div><b>+5,000</b>Clientas</div>
+            <div><b>5★</b>Reseña</div>
+          </div>
+        </div>
+        <div class="proyecto-overlay">
+          <span class="proyecto-ver">Ver proyecto <i class="fas fa-arrow-right"></i></span>
+        </div>
+        <div class="proyecto-info">
+          <h3>Petalo Spa &amp; Wellness</h3>
+          <p>Landing zen para spa boutique con catalogo de servicios, rituales firma, equipo de terapeutas, galeria del espacio y reservas.</p>
+          <span class="proyecto-tag rosa">Belleza &middot; Wellness</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== EQUIPO ========== -->
+<!-- MARQUEE 2 -->
+<div class="marquee" style="background:#000;border-color:#00aaff;border-top:1px solid #00aaff;border-bottom:1px solid #00aaff;">
+  <div class="marquee-track">
+    <span style="color:#00aaff;">100% Originales</span><span style="color:#fff;">98% Satisfechos</span><span style="color:#00aaff;">Entrega 7 dias</span><span style="color:#fff;">Soporte WhatsApp</span><span style="color:#00aaff;">Pago Seguro</span>
+    <span style="color:#fff;">100% Originales</span><span style="color:#00aaff;">98% Satisfechos</span><span style="color:#fff;">Entrega 7 dias</span><span style="color:#00aaff;">Soporte WhatsApp</span><span style="color:#fff;">Pago Seguro</span>
+  </div>
+</div>
+
+<section class="equipo" id="equipo">
+  <div class="aurora aurora-cyan aurora-top-left aurora-anim"></div>
+  <div class="aurora aurora-blue aurora-top-right aurora-anim" style="animation-delay:-9s;"></div>
+  <div class="contenedor">
+    <div class="section-header fade-in">
+      <span class="section-tag" data-num="04">Quienes somos</span>
+      <h2 class="section-titulo">Conoce a <span class="acento">nuestro equipo</span></h2>
+      <p class="section-subtitulo">Tres mentes apasionadas que combinan estrategia, diseño y tecnologia para crear landing pages que marcan la diferencia.</p>
+    </div>
+    <div class="equipo-grid">
+      <!-- JAIME - CEO -->
+      <div class="miembro fade-in">
+        <div class="miembro-foto solo foto-jaime">
+          <div class="combo-placeholder">
+            <i class="fas fa-user-tie"></i>
+            <strong>Jaime</strong>
+            <span>Sube tu foto</span>
+          </div>
+          <img class="solo-img" src="images/equipo/JAIME.jpg" alt="Jaime - CEO" onerror="this.style.display='none'">
+        </div>
+        <div class="miembro-info">
+          <h3>Jaime</h3>
+          <span class="miembro-rol">CEO &amp; Fundador</span>
+          <p class="miembro-bio">Lider visionario que conecta los objetivos de cada cliente con soluciones digitales que generan resultados medibles.</p>
+        </div>
+      </div>
+      <!-- DAVID - DISEÑADOR -->
+      <div class="miembro fade-in">
+        <div class="miembro-foto solo foto-david">
+          <div class="combo-placeholder">
+            <i class="fas fa-palette"></i>
+            <strong>David</strong>
+            <span>Sube tu foto</span>
+          </div>
+          <img class="solo-img" src="images/equipo/DAVID.jpg" alt="David - Diseñador" onerror="this.style.display='none'">
+        </div>
+        <div class="miembro-info">
+          <h3>David</h3>
+          <span class="miembro-rol">Diseñador Grafico</span>
+          <p class="miembro-bio">Creativo que transforma ideas en interfaces atractivas. Cada pixel tiene un proposito en sus diseños.</p>
+        </div>
+      </div>
+      <!-- DIEGO - DESARROLLADOR -->
+      <div class="miembro fade-in">
+        <div class="miembro-foto solo foto-diego">
+          <div class="combo-placeholder">
+            <i class="fas fa-laptop-code"></i>
+            <strong>Diego</strong>
+            <span>Sube tu foto</span>
+          </div>
+          <img class="solo-img" src="images/equipo/DIEGO.jpg" alt="Diego - Desarrollador" onerror="this.style.display='none'">
+        </div>
+        <div class="miembro-info">
+          <h3>Diego</h3>
+          <span class="miembro-rol">Desarrollador de Software</span>
+          <p class="miembro-bio">Programador apasionado por el codigo limpio y eficiente. Convierte diseños en experiencias web rapidas y funcionales.</p>
+        </div>
+      </div>
+    </div>
+    <div class="swipe-hint">Desliza <i class="fas fa-arrow-right"></i></div>
+  </div>
+</section>
+
+<!-- ========== TESTIMONIOS ========== -->
+<section class="testimonios">
+  <div class="aurora aurora-violet aurora-top-left aurora-anim"></div>
+  <div class="aurora aurora-blue aurora-bottom aurora-anim" style="animation-delay:-3s;"></div>
+  <div class="contenedor">
+    <div class="section-header fade-in">
+      <span class="section-tag" data-num="05">Testimonios</span>
+      <h2 class="section-titulo">Lo que dicen <span class="acento">nuestros clientes</span></h2>
+    </div>
+    <div class="testimonios-grid">
+      <div class="testimonio fade-in">
+        <div class="testimonio-comillas">"</div>
+        <div class="estrellas">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="testimonio-texto">El equipo de Landing Digital entendio nuestra vision desde el primer dia. La landing supero todas nuestras expectativas y triplico nuestras ventas online.</p>
+        <div class="testimonio-autor">
+          <div class="testimonio-avatar">MR</div>
+          <div>
+            <h4>Maria Rodriguez</h4>
+            <span>CEO, Boutique Estilo</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonio fade-in">
+        <div class="testimonio-comillas">"</div>
+        <div class="estrellas">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="testimonio-texto">Profesionalismo y creatividad de primer nivel. Entregaron antes del plazo y con detalles que nunca habria pensado pedir. 100% recomendados.</p>
+        <div class="testimonio-autor">
+          <div class="testimonio-avatar">CL</div>
+          <div>
+            <h4>Carlos Lopez</h4>
+            <span>Fundador, TechStart</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonio fade-in">
+        <div class="testimonio-comillas">"</div>
+        <div class="estrellas">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="testimonio-texto">La inversion mas rentable que hicimos. Nuestra tasa de conversion subio del 1.2% al 6.8% en solo dos meses. El ROI fue brutal.</p>
+        <div class="testimonio-autor">
+          <div class="testimonio-avatar">AM</div>
+          <div>
+            <h4>Ana Martinez</h4>
+            <span>Marketing, GreenLife</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swipe-hint">Desliza <i class="fas fa-arrow-right"></i></div>
+  </div>
+</section>
+
+<!-- DIVISOR ZEBRA -->
+<div class="divisor-zebra"></div>
+
+<!-- ========== PRECIOS ========== -->
+<section class="precios" id="precios">
+  <div class="aurora aurora-blue aurora-top-left aurora-anim"></div>
+  <div class="aurora aurora-cyan aurora-bottom aurora-anim" style="animation-delay:-6s;"></div>
+  <div class="contenedor">
+    <div class="section-header fade-in">
+      <span class="section-tag" data-num="06">Plan de lanzamiento</span>
+      <h2 class="section-titulo">Comienza con <span class="acento">precio justo</span></h2>
+      <p class="section-subtitulo">Un plan accesible y completo para que tengas tu landing page profesional sin pagar de mas. Sin sorpresas, sin letra chica.</p>
+    </div>
+
+    <div class="plan-unico fade-in">
+      <div class="plan-unico-cinta">PROMOCION DE LANZAMIENTO</div>
+      <div class="plan-unico-grid">
+        <div class="plan-unico-info">
+          <span class="plan-unico-tag"><i class="fas fa-rocket"></i> Plan Principiante</span>
+          <h3>Tu landing page profesional, lista para vender</h3>
+          <p>Diseñamos, desarrollamos y entregamos tu landing page completa. Ideal para emprendedores, freelancers y negocios que estan dando sus primeros pasos digitales.</p>
+
+          <div class="plan-unico-precio">
+            <div class="precio-actual">
+              <span class="moneda">COP</span>
+              <span class="num">$180.000</span>
+            </div>
+            <span class="periodo">Pago unico &middot; Sin mensualidades</span>
+          </div>
+
+          <a href="https://wa.me/573207519371?text=Hola%2C%20quiero%20el%20Plan%20Principiante%20de%20%24180.000%20COP" target="_blank" class="plan-unico-btn">
+            <i class="fab fa-whatsapp"></i> Quiero mi landing por $180.000
+          </a>
+          <p class="plan-unico-nota"><i class="fas fa-shield-alt"></i> Pagas solo el 50% para empezar. El resto al entregar.</p>
+        </div>
+
+        <div class="plan-unico-features">
+          <h4>Que incluye tu plan</h4>
+          <ul>
+            <li><i class="fas fa-check"></i> Landing page profesional de hasta 6 secciones</li>
+            <li><i class="fas fa-check"></i> Diseño 100% adaptable a celular, tablet y computador</li>
+            <li><i class="fas fa-check"></i> Boton flotante de WhatsApp incluido</li>
+            <li><i class="fas fa-check"></i> Formulario de contacto funcional</li>
+            <li><i class="fas fa-check"></i> Integracion con tus redes sociales</li>
+            <li><i class="fas fa-check"></i> Optimizacion SEO basica para Google</li>
+            <li><i class="fas fa-check"></i> Galeria, testimonios y seccion de servicios</li>
+            <li><i class="fas fa-check"></i> Entrega en 5 a 7 dias habiles</li>
+            <li><i class="fas fa-check"></i> Soporte por WhatsApp durante el proyecto</li>
+            <li><i class="fas fa-gift"></i> <strong>1 ronda de cambios incluida gratis</strong></li>
+          </ul>
+
+          <div class="plan-unico-extra">
+            <div class="extra-icon"><i class="fas fa-edit"></i></div>
+            <div>
+              <h5>Cambios adicionales</h5>
+              <p>Cada modificacion despues de la ronda gratis tiene un costo de <strong>$40.000 COP</strong>. Asi mantienes tu sitio actualizado sin sorpresas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section class="faq">
+  <div class="contenedor">
+    <div class="section-header fade-in">
+      <span class="section-tag" data-num="07">Preguntas frecuentes</span>
+      <h2 class="section-titulo">Resolvemos tus <span class="acento">dudas</span></h2>
+    </div>
+    <div class="faq-lista">
+      <div class="faq-item fade-in">
+        <div class="faq-pregunta">
+          Cuanto tiempo toma desarrollar una landing page?
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-respuesta">
+          <div class="faq-respuesta-inner">El tiempo depende del plan elegido. Nuestro plan basico se entrega en 7 dias, mientras que proyectos mas complejos pueden tomar entre 10 y 20 dias habiles.</div>
+        </div>
+      </div>
+      <div class="faq-item fade-in">
+        <div class="faq-pregunta">
+          Que incluye exactamente cada plan?
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-respuesta">
+          <div class="faq-respuesta-inner">Cada plan incluye diseño, desarrollo, optimizacion y entrega. Los detalles especificos los puedes ver en la seccion de precios o agendando una llamada con nosotros.</div>
+        </div>
+      </div>
+      <div class="faq-item fade-in">
+        <div class="faq-pregunta">
+          Trabajan con clientes internacionales?
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-respuesta">
+          <div class="faq-respuesta-inner">Si, atendemos clientes en cualquier parte del mundo. Tenemos experiencia trabajando en multiples idiomas y zonas horarias.</div>
+        </div>
+      </div>
+      <div class="faq-item fade-in">
+        <div class="faq-pregunta">
+          Ofrecen mantenimiento despues de la entrega?
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-respuesta">
+          <div class="faq-respuesta-inner">Por supuesto. Cada plan incluye un periodo de soporte gratuito y ofrecemos planes mensuales de mantenimiento desde $79/mes.</div>
+        </div>
+      </div>
+      <div class="faq-item fade-in">
+        <div class="faq-pregunta">
+          Que metodos de pago aceptan?
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-respuesta">
+          <div class="faq-respuesta-inner">Aceptamos transferencias bancarias, tarjetas de credito, PayPal, Stripe y criptomonedas. Trabajamos con un anticipo del 50% y el resto al entregar.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA ========== -->
+<section class="contacto" id="contacto">
+  <div class="contenedor">
+    <div class="cta-box fade-in">
+      <h2>Listo para impulsar tu marca?</h2>
+      <p>Escribenos por WhatsApp y te enviamos una cotizacion gratis en menos de 24 horas.</p>
+      <div class="cta-acciones">
+        <a href="https://wa.me/573207519371?text=Hola%2C%20me%20interesa%20cotizar%20una%20landing%20page%20profesional" target="_blank" class="cta-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+          <div>
+            <strong>Hablemos por WhatsApp</strong>
+            <span>+57 320 7519371 &middot; respuesta en minutos</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="contenedor">
+    <div class="footer-grid">
+      <div class="footer-marca">
+        <a href="#inicio" class="logo">
+          <div class="logo-icon"><img src="images/logo/logo.svg" alt="Landing Digital"></div>
+          <div class="logo-text">
+            <span class="marca">Landing Digital</span>
+            <span class="tag">Diseño Web &middot; Conversion</span>
+          </div>
+        </a>
+        <p>Creamos landing pages profesionales que convierten. Diseñadas para marcas que quieren destacar y crecer.</p>
+        <div class="footer-social">
+          <a href="https://wa.me/573207519371" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=61589419075595&locale=es_LA" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#equipo">Equipo</a></li>
+          <li><a href="#portafolio">Portafolio</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#servicios">Diseño UI/UX</a></li>
+          <li><a href="#servicios">Desarrollo Web</a></li>
+          <li><a href="#servicios">SEO</a></li>
+          <li><a href="#servicios">Mantenimiento</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="https://wa.me/573207519371?text=Hola%2C%20me%20interesa%20una%20landing%20page" target="_blank"><i class="fab fa-whatsapp"></i> +57 320 751 9371</a></li>
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i> Colombia</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Landing Digital. Todos los derechos reservados.</p>
+      <div style="display:flex;gap:24px;">
+        <a href="#" style="color:var(--texto-suave);">Privacidad</a>
+        <a href="#" style="color:var(--texto-suave);">Terminos</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Menu movil
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+menuToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('abierto');
+  const icon = menuToggle.querySelector('i');
+  icon.classList.toggle('fa-bars');
+  icon.classList.toggle('fa-times');
+});
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('abierto');
+    menuToggle.querySelector('i').classList.remove('fa-times');
+    menuToggle.querySelector('i').classList.add('fa-bars');
+  });
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-pregunta').forEach(p => {
+  p.addEventListener('click', () => {
+    const item = p.parentElement;
+    item.classList.toggle('activa');
+  });
+});
+
+// Scroll fade-in
+const observador = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-in').forEach(el => observador.observe(el));
+
+// Navbar scroll
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('.navbar');
+  if (window.scrollY > 80) {
+    nav.style.background = 'rgba(10,10,10,0.95)';
+  } else {
+    nav.style.background = 'rgba(10,10,10,0.85)';
+  }
+});
+</script>
+
+<!-- BOTON FLOTANTE WHATSAPP -->
+<a href="https://wa.me/573207519371?text=Hola%2C%20me%20interesa%20una%20landing%20page" target="_blank" class="btn-whatsapp-flotante" aria-label="Contactar por WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- ===== EFECTOS GLOBALES PREMIUM ===== -->
+<script>
+/* Barra de progreso de scroll */
+(function(){
+  const bar=document.getElementById('scrollProgress');
+  if(!bar)return;
+  function actualizar(){
+    const total=document.documentElement.scrollHeight-window.innerHeight;
+    const actual=window.scrollY;
+    const pct=total>0?(actual/total)*100:0;
+    bar.style.width=pct+'%';
+  }
+  window.addEventListener('scroll',actualizar,{passive:true});
+  actualizar();
+})();
+
+/* Spotlight que sigue al mouse */
+(function(){
+  const sp=document.getElementById('mouseSpotlight');
+  if(!sp)return;
+  let mouseX=0,mouseY=0,curX=0,curY=0;
+  document.addEventListener('mousemove',(e)=>{
+    mouseX=e.clientX;mouseY=e.clientY;
+    sp.style.opacity='1';
+  });
+  document.addEventListener('mouseleave',()=>{sp.style.opacity='0';});
+  function anim(){
+    curX+=(mouseX-curX)*0.12;
+    curY+=(mouseY-curY)*0.12;
+    sp.style.left=curX+'px';
+    sp.style.top=curY+'px';
+    requestAnimationFrame(anim);
+  }
+  anim();
+})();
+
+/* Tilt 3D en hover */
+(function(){
+  const selectores=['.servicio-card','.miembro','.test','.proyecto','.plan-unico','.hero-stat-card'];
+  document.querySelectorAll(selectores.join(',')).forEach(el=>{
+    el.classList.add('tilt-card');
+    el.addEventListener('mousemove',(e)=>{
+      const rect=el.getBoundingClientRect();
+      const x=(e.clientX-rect.left)/rect.width-0.5;
+      const y=(e.clientY-rect.top)/rect.height-0.5;
+      el.style.transform=`perspective(1000px) rotateY(${x*6}deg) rotateX(${-y*6}deg) translateY(-6px)`;
+    });
+    el.addEventListener('mouseleave',()=>{
+      el.style.transform='';
+    });
+  });
+})();
+
+/* Reveal scroll mejorado con stagger automatico */
+(function(){
+  const reveals=document.querySelectorAll('.servicio-card,.proyecto,.miembro,.test,.plan-unico,.section-header,.hero-stat-card,.hero-mini-test,.hero-live-visitors,.hero-trust-card,.faq-item');
+  reveals.forEach((el,i)=>{
+    if(!el.classList.contains('reveal')&&!el.classList.contains('reveal-left')&&!el.classList.contains('reveal-right')&&!el.classList.contains('reveal-scale')){
+      el.classList.add('reveal');
+      el.style.transitionDelay=(Math.min(i%4,3)*0.1)+'s';
+    }
+  });
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('activo');
+      }
+    });
+  },{threshold:0.1,rootMargin:'-40px'});
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el=>obs.observe(el));
+})();
+
+/* Contadores animados */
+(function(){
+  function animarNum(el,destino,duracion=2000){
+    const inicio=Date.now();
+    const desdeNum=0;
+    function tick(){
+      const ahora=Date.now();
+      const t=Math.min((ahora-inicio)/duracion,1);
+      const ease=1-Math.pow(1-t,3);
+      const valor=Math.floor(desdeNum+(destino-desdeNum)*ease);
+      el.textContent=valor.toLocaleString();
+      if(t<1)requestAnimationFrame(tick);
+    }
+    tick();
+  }
+  const stats=document.querySelectorAll('.stat .num,.trust-item .num');
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting&&!e.target.dataset.animado){
+        const texto=e.target.textContent.replace(/[^\d]/g,'');
+        const num=parseInt(texto)||0;
+        if(num>0){
+          const prefijo=e.target.textContent.match(/^[+\-]/);
+          const sufijo=e.target.textContent.replace(/[\d.,+\-]/g,'');
+          e.target.dataset.animado='1';
+          animarNum(e.target,num,2000);
+          if(prefijo||sufijo){
+            setTimeout(()=>{
+              e.target.textContent=(prefijo?prefijo[0]:'')+num.toLocaleString()+sufijo;
+            },2100);
+          }
+        }
+      }
+    });
+  },{threshold:0.3});
+  stats.forEach(el=>obs.observe(el));
+})();
+</script>
+
+<!-- SCRIPT PARALLAX HERO -->
+<script>
+(function(){
+  const visual=document.querySelector('.hero-visual');
+  const stack=document.querySelector('.hero-stack');
+  if(!visual||!stack)return;
+  let targetX=0,targetY=0,currentX=0,currentY=0;
+  let rect=null;
+  function actualizar(){
+    currentX+=(targetX-currentX)*0.08;
+    currentY+=(targetY-currentY)*0.08;
+    stack.style.transform=`perspective(2000px) rotateY(${-7+currentX}deg) rotateX(${3-currentY}deg) translateY(${Math.sin(Date.now()/1500)*7}px)`;
+    requestAnimationFrame(actualizar);
+  }
+  visual.addEventListener('mousemove',(e)=>{
+    rect=visual.getBoundingClientRect();
+    const x=(e.clientX-rect.left)/rect.width-0.5;
+    const y=(e.clientY-rect.top)/rect.height-0.5;
+    targetX=x*8;targetY=y*6;
+  });
+  visual.addEventListener('mouseleave',()=>{targetX=0;targetY=0;});
+  // Desactivar el keyframe stackFloat ya que ahora animamos con JS
+  stack.style.animation='none';
+  actualizar();
+})();
+</script>
+
+<!-- SCRIPT LOADER 3D -->
+<script>
+(function(){
+  const loader=document.getElementById('loader3d');
+  if(!loader)return;
+  // Mantener visible minimo 2.2 segundos para que se aprecie la animacion
+  const inicio=Date.now();
+  const minimo=2200;
+  function ocultar(){
+    const transcurrido=Date.now()-inicio;
+    const espera=Math.max(0,minimo-transcurrido);
+    setTimeout(()=>{loader.classList.add('oculto');},espera);
+  }
+  if(document.readyState==='complete'){ocultar();}
+  else{window.addEventListener('load',ocultar);}
+})();
+</script>
+
+</body>
+</html>
