@@ -3,7 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Creamos landing pages profesionales que convierten visitantes en clientes. Diseño moderno, rapido y optimizado.">
+<meta name="description" content="Somos un equipo colombiano que diseña y desarrolla landing pages profesionales hechas a tu medida: rapidas, optimizadas y pensadas para que tu negocio venda mas. Trato directo, sin plantillas.">
+<meta name="author" content="Landing Digital">
+<meta name="theme-color" content="#0066ff">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Landing Digital | Landing Pages Profesionales que Convierten">
+<meta property="og:description" content="Equipo colombiano que diseña tu landing page a mano: rapida, a tu medida y pensada para vender. Hablemos por WhatsApp.">
+<meta property="og:locale" content="es_CO">
 <title>Landing Digital | Landing Pages Profesionales que Convierten</title>
 <link rel="icon" type="image/png" sizes="32x32" href="images/logo/favicon.png">
 <link rel="icon" type="image/png" sizes="16x16" href="images/logo/favicon.png">
@@ -1183,7 +1189,8 @@ section{padding:100px 0;position:relative;}
 .proyecto-img-sharp .stats b{display:block;color:#e6c478;font-size:1.1rem;font-family:'Space Grotesk';}
 
 /* ===== EQUIPO ===== */
-.equipo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;max-width:1100px;margin:0 auto;}
+.equipo-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;max-width:1180px;margin:0 auto;}
+@media(max-width:1100px){.equipo-grid{grid-template-columns:repeat(2,1fr);max-width:560px;}}
 .swipe-hint{display:none;}
 .miembro{
   background:var(--negro-card);
@@ -1192,12 +1199,12 @@ section{padding:100px 0;position:relative;}
   overflow:visible;
   transition:all 0.4s ease;
   position:relative;
-  padding:55px 32px 38px;
+  padding:46px 24px 34px;
   text-align:center;
 }
 .miembro:hover{transform:translateY(-10px);border-color:rgba(0,170,255,0.4);box-shadow:var(--shadow-azul);}
 .miembro-foto{
-  width:220px;height:220px;
+  width:190px;height:190px;
   border-radius:50%;
   background:linear-gradient(135deg,#0a0a0a 0%,#001f5c 100%);
   position:relative;overflow:hidden;
@@ -1248,6 +1255,10 @@ section{padding:100px 0;position:relative;}
   transform:scale(1.05);
 }
 .miembro-foto.solo.foto-diego .solo-img{
+  object-position:center 20%;
+  transform:scale(1.05);
+}
+.miembro-foto.solo.foto-nicolas .solo-img{
   object-position:center 20%;
   transform:scale(1.05);
 }
@@ -2038,7 +2049,7 @@ section{padding:100px 0;position:relative;}
           Disponibles para nuevos proyectos
         </div>
         <h1>Landing Pages que <span class="acento">convierten visitas en clientes</span></h1>
-        <p>Diseñamos y desarrollamos landing pages profesionales, rapidas y optimizadas que transforman tu trafico en resultados reales. Tu marca merece destacar.</p>
+        <p>Somos un equipo colombiano que diseña y desarrolla tu landing page a mano: rapida, hecha a tu medida y pensada para que tu negocio venda mas. Sin plantillas, sin promesas vacias y con trato directo de principio a fin.</p>
         <div class="hero-cta">
           <a href="https://wa.me/573207519371?text=Hola%2C%20quiero%20comenzar%20un%20proyecto%20de%20landing%20page" target="_blank" class="btn-primario">
             <i class="fab fa-whatsapp"></i> Comenzar proyecto
@@ -2439,7 +2450,7 @@ section{padding:100px 0;position:relative;}
     <div class="section-header fade-in">
       <span class="section-tag" data-num="04">Quienes somos</span>
       <h2 class="section-titulo">Conoce a <span class="acento">nuestro equipo</span></h2>
-      <p class="section-subtitulo">Tres mentes apasionadas que combinan estrategia, diseño y tecnologia para crear landing pages que marcan la diferencia.</p>
+      <p class="section-subtitulo">Somos un equipo pequeño, y por eso cuidamos cada proyecto como si fuera nuestro. Cuando nos escribes, hablas directo con la persona que va a diseñar y construir tu pagina, no con un bot ni un call center.</p>
     </div>
     <div class="equipo-grid">
       <!-- JAIME - CEO -->
@@ -2455,7 +2466,7 @@ section{padding:100px 0;position:relative;}
         <div class="miembro-info">
           <h3>Jaime</h3>
           <span class="miembro-rol">CEO &amp; Fundador</span>
-          <p class="miembro-bio">Lider visionario que conecta los objetivos de cada cliente con soluciones digitales que generan resultados medibles.</p>
+          <p class="miembro-bio">Se sienta contigo a entender tu negocio antes de hablar de diseño. Le gusta convertir ideas sueltas en un plan claro y acompañarte hasta que tu pagina este en linea y funcionando.</p>
         </div>
       </div>
       <!-- DAVID - DISEÑADOR -->
@@ -2471,7 +2482,7 @@ section{padding:100px 0;position:relative;}
         <div class="miembro-info">
           <h3>David</h3>
           <span class="miembro-rol">Diseñador Grafico</span>
-          <p class="miembro-bio">Creativo que transforma ideas en interfaces atractivas. Cada pixel tiene un proposito en sus diseños.</p>
+          <p class="miembro-bio">El que se obsesiona con que todo se vea bien hasta en el detalle mas pequeño. Diseña pensando en tus clientes, no solo en que se vea bonito: cada color y cada espacio tienen una razon.</p>
         </div>
       </div>
       <!-- DIEGO - DESARROLLADOR -->
@@ -2487,9 +2498,29 @@ section{padding:100px 0;position:relative;}
         <div class="miembro-info">
           <h3>Diego</h3>
           <span class="miembro-rol">Desarrollador de Software</span>
-          <p class="miembro-bio">Programador apasionado por el codigo limpio y eficiente. Convierte diseños en experiencias web rapidas y funcionales.</p>
+          <p class="miembro-bio">Escribe cada linea de codigo a mano para que tu sitio cargue rapido y se vea perfecto en cualquier celular. Si algo se puede hacer mejor, no descansa hasta lograrlo.</p>
         </div>
       </div>
+      <!-- NICOLAS - DESARROLLADOR -->
+      <div class="miembro fade-in">
+        <div class="miembro-foto solo foto-nicolas">
+          <div class="combo-placeholder">
+            <i class="fas fa-code"></i>
+            <strong>Nicolas</strong>
+            <span>Sube tu foto</span>
+          </div>
+          <img class="solo-img" src="images/equipo/NICOLAS.jpg" alt="Nicolas - Desarrollador" onerror="this.style.display='none'">
+        </div>
+        <div class="miembro-info">
+          <h3>Nicolas</h3>
+          <span class="miembro-rol">Desarrollador Web</span>
+          <p class="miembro-bio">El integrante mas nuevo del equipo y ya se nota su empuje. Trabaja codo a codo con Diego para que cada boton y cada animacion funcionen perfecto, y prueba tu landing hasta que vuele en velocidad y no falle en ningun celular.</p>
+        </div>
+      </div>
+    </div>
+    <div class="equipo-nota" style="max-width:780px;margin:52px auto 0;padding:30px 34px;background:linear-gradient(135deg,rgba(0,102,255,0.08),rgba(0,170,255,0.04));border:1px solid var(--gris-borde);border-left:3px solid var(--azul-electrico);border-radius:18px;text-align:center;">
+      <i class="fas fa-quote-left" style="color:var(--azul-electrico);font-size:1.5rem;opacity:0.85;"></i>
+      <p style="margin-top:14px;color:var(--texto-suave);font-size:1.06rem;line-height:1.75;">Detras de <strong style="color:#fff;">Landing Digital</strong> no hay una agencia gigante ni un call center: somos cuatro personas reales que respondemos el WhatsApp, cumplimos lo que prometemos y nos alegramos de verdad cuando a tu negocio le empieza a ir mejor.</p>
     </div>
     <div class="swipe-hint">Desliza <i class="fas fa-arrow-right"></i></div>
   </div>
@@ -2510,7 +2541,7 @@ section{padding:100px 0;position:relative;}
         <div class="estrellas">
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
         </div>
-        <p class="testimonio-texto">El equipo de Landing Digital entendio nuestra vision desde el primer dia. La landing supero todas nuestras expectativas y triplico nuestras ventas online.</p>
+        <p class="testimonio-texto">Yo no entendia casi nada de paginas web y me explicaron todo con paciencia, sin tecnicismos raros. Quedo justo como me la imaginaba y ahora los clientes me escriben por WhatsApp casi todos los dias.</p>
         <div class="testimonio-autor">
           <div class="testimonio-avatar">MR</div>
           <div>
@@ -2524,7 +2555,7 @@ section{padding:100px 0;position:relative;}
         <div class="estrellas">
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
         </div>
-        <p class="testimonio-texto">Profesionalismo y creatividad de primer nivel. Entregaron antes del plazo y con detalles que nunca habria pensado pedir. 100% recomendados.</p>
+        <p class="testimonio-texto">Lo que mas valoro es que cumplieron lo que prometieron y en la fecha que dijeron. Cada ajuste que pedi lo resolvieron rapido y sin enredos. Se nota que les importa el cliente.</p>
         <div class="testimonio-autor">
           <div class="testimonio-avatar">CL</div>
           <div>
@@ -2538,7 +2569,7 @@ section{padding:100px 0;position:relative;}
         <div class="estrellas">
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
         </div>
-        <p class="testimonio-texto">La inversion mas rentable que hicimos. Nuestra tasa de conversion subio del 1.2% al 6.8% en solo dos meses. El ROI fue brutal.</p>
+        <p class="testimonio-texto">Mas que una pagina, senti que se metieron en mi negocio para entenderlo de verdad. Hoy mi marca se ve mucho mas seria y me llegan clientes que antes ni sabian que yo existia.</p>
         <div class="testimonio-autor">
           <div class="testimonio-avatar">AM</div>
           <div>
@@ -2577,13 +2608,13 @@ section{padding:100px 0;position:relative;}
           <div class="plan-unico-precio">
             <div class="precio-actual">
               <span class="moneda">COP</span>
-              <span class="num">$180.000</span>
+              <span class="num">$200.000</span>
             </div>
             <span class="periodo">Pago unico &middot; Sin mensualidades</span>
           </div>
 
-          <a href="https://wa.me/573207519371?text=Hola%2C%20quiero%20el%20Plan%20Principiante%20de%20%24180.000%20COP" target="_blank" class="plan-unico-btn">
-            <i class="fab fa-whatsapp"></i> Quiero mi landing por $180.000
+          <a href="https://wa.me/573207519371?text=Hola%2C%20quiero%20el%20Plan%20Principiante%20de%20%24200.000%20COP" target="_blank" class="plan-unico-btn">
+            <i class="fab fa-whatsapp"></i> Quiero mi landing por $200.000
           </a>
           <p class="plan-unico-nota"><i class="fas fa-shield-alt"></i> Pagas solo el 50% para empezar. El resto al entregar.</p>
         </div>
@@ -2630,25 +2661,25 @@ section{padding:100px 0;position:relative;}
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-respuesta">
-          <div class="faq-respuesta-inner">El tiempo depende del plan elegido. Nuestro plan basico se entrega en 7 dias, mientras que proyectos mas complejos pueden tomar entre 10 y 20 dias habiles.</div>
+          <div class="faq-respuesta-inner">Tu landing queda lista en 5 a 7 dias habiles desde que tenemos tu informacion y tus textos. Si el proyecto es mas grande, te decimos el tiempo real y honesto antes de empezar, nunca despues.</div>
         </div>
       </div>
       <div class="faq-item fade-in">
         <div class="faq-pregunta">
-          Que incluye exactamente cada plan?
+          Que incluye exactamente el plan?
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-respuesta">
-          <div class="faq-respuesta-inner">Cada plan incluye diseño, desarrollo, optimizacion y entrega. Los detalles especificos los puedes ver en la seccion de precios o agendando una llamada con nosotros.</div>
+          <div class="faq-respuesta-inner">Diseño, desarrollo, optimizacion y entrega de tu landing completa, mas una ronda de cambios gratis. Puedes ver todo lo que incluye en la seccion de precios, y si te queda alguna duda nos escribes por WhatsApp y te contamos sin compromiso.</div>
         </div>
       </div>
       <div class="faq-item fade-in">
         <div class="faq-pregunta">
-          Trabajan con clientes internacionales?
+          Atienden en toda Colombia?
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-respuesta">
-          <div class="faq-respuesta-inner">Si, atendemos clientes en cualquier parte del mundo. Tenemos experiencia trabajando en multiples idiomas y zonas horarias.</div>
+          <div class="faq-respuesta-inner">Si. Trabajamos con personas y negocios de toda Colombia y de otros paises de habla hispana. Todo lo coordinamos por WhatsApp y videollamada, asi que no importa en que ciudad estes para tener tu landing lista.</div>
         </div>
       </div>
       <div class="faq-item fade-in">
@@ -2657,7 +2688,7 @@ section{padding:100px 0;position:relative;}
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-respuesta">
-          <div class="faq-respuesta-inner">Por supuesto. Cada plan incluye un periodo de soporte gratuito y ofrecemos planes mensuales de mantenimiento desde $79/mes.</div>
+          <div class="faq-respuesta-inner">Claro que si. Tu proyecto incluye soporte por WhatsApp durante todo el proceso, y si despues quieres que te ayudemos a mantener y actualizar tu sitio, armamos un plan mensual a tu medida. Lo conversamos segun lo que necesites, sin paquetes obligatorios.</div>
         </div>
       </div>
       <div class="faq-item fade-in">
@@ -2666,7 +2697,7 @@ section{padding:100px 0;position:relative;}
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-respuesta">
-          <div class="faq-respuesta-inner">Aceptamos transferencias bancarias, tarjetas de credito, PayPal, Stripe y criptomonedas. Trabajamos con un anticipo del 50% y el resto al entregar.</div>
+          <div class="faq-respuesta-inner">Aceptamos Nequi, Daviplata, Bancolombia, transferencia y tarjeta. Empezamos con un anticipo del 50% para arrancar y pagas el resto cuando tu landing esta lista y aprobada. Asi ambos vamos tranquilos.</div>
         </div>
       </div>
     </div>
@@ -2678,7 +2709,7 @@ section{padding:100px 0;position:relative;}
   <div class="contenedor">
     <div class="cta-box fade-in">
       <h2>Listo para impulsar tu marca?</h2>
-      <p>Escribenos por WhatsApp y te enviamos una cotizacion gratis en menos de 24 horas.</p>
+      <p>Escribenos por WhatsApp, cuentanos tu idea y te responde una persona de verdad (no un bot) con una cotizacion clara y sin compromiso, normalmente el mismo dia.</p>
       <div class="cta-acciones">
         <a href="https://wa.me/573207519371?text=Hola%2C%20me%20interesa%20cotizar%20una%20landing%20page%20profesional" target="_blank" class="cta-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
@@ -2704,7 +2735,7 @@ section{padding:100px 0;position:relative;}
             <span class="tag">Diseño Web &middot; Conversion</span>
           </div>
         </a>
-        <p>Creamos landing pages profesionales que convierten. Diseñadas para marcas que quieren destacar y crecer.</p>
+        <p>Somos un equipo colombiano que diseña landing pages a mano, con trato cercano y honesto. Hechas para negocios reales que quieren crecer.</p>
         <div class="footer-social">
           <a href="https://wa.me/573207519371" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
           <a href="https://www.facebook.com/profile.php?id=61589419075595&locale=es_LA" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
