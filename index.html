@@ -1083,17 +1083,18 @@ section{padding:100px 0;position:relative;}
 .proyecto-img{height:240px;background:var(--gradiente);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
 .proyecto-img img{width:100%;height:100%;object-fit:cover;}
 .proyecto-img-placeholder{font-size:3rem;color:rgba(255,255,255,0.3);}
-.proyecto-img-eve{
-  background:radial-gradient(ellipse at top right,rgba(255,46,77,0.5) 0%,transparent 60%),linear-gradient(135deg,#1a0a0a 0%,#000 100%);
+.proyecto-img-menvi{
+  background:radial-gradient(ellipse at top right,rgba(201,168,106,0.45) 0%,transparent 62%),linear-gradient(135deg,#15120b 0%,#000 100%);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   font-family:'Space Grotesk',sans-serif;text-align:center;padding:20px;
 }
-.proyecto-img-eve .marca{font-size:1.8rem;font-weight:800;letter-spacing:2px;color:#fff;text-transform:uppercase;}
-.proyecto-img-eve .marca em{color:#ff2e4d;font-style:normal;}
-.proyecto-img-eve .sub{font-size:0.75rem;color:rgba(255,255,255,0.6);letter-spacing:3px;margin-top:6px;text-transform:uppercase;}
-.proyecto-img-eve .stats{display:flex;gap:20px;margin-top:18px;}
-.proyecto-img-eve .stats div{font-size:0.7rem;color:rgba(255,255,255,0.5);}
-.proyecto-img-eve .stats b{display:block;color:#ff6b3d;font-size:1.2rem;}
+.proyecto-img-menvi .icono{color:#c9a86a;font-size:1.9rem;margin-bottom:12px;}
+.proyecto-img-menvi .marca{font-size:1.8rem;font-weight:800;letter-spacing:2px;color:#fff;text-transform:uppercase;}
+.proyecto-img-menvi .marca em{color:#e6c478;font-style:normal;}
+.proyecto-img-menvi .sub{font-size:0.75rem;color:rgba(255,255,255,0.6);letter-spacing:3px;margin-top:6px;text-transform:uppercase;}
+.proyecto-img-menvi .stats{display:flex;gap:20px;margin-top:18px;}
+.proyecto-img-menvi .stats div{font-size:0.7rem;color:rgba(255,255,255,0.5);}
+.proyecto-img-menvi .stats b{display:block;color:#e6c478;font-size:1.2rem;}
 .proyecto-overlay{
   position:absolute;inset:0;
   background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,0.85) 100%);
@@ -1683,10 +1684,10 @@ section{padding:100px 0;position:relative;}
 
   /* Portafolio mas compacto - 2 columnas */
   .proyecto-img{height:140px !important;}
-  .proyecto-img-eve .marca,.proyecto-img-sharp .marca,.proyecto-img-lumina .marca,.proyecto-img-brasa .marca,.proyecto-img-marfil .marca,.proyecto-img-petalo .marca{font-size:0.95rem !important;}
-  .proyecto-img-eve .sub,.proyecto-img-sharp .sub,.proyecto-img-lumina .sub,.proyecto-img-brasa .sub,.proyecto-img-marfil .sub,.proyecto-img-petalo .sub{font-size:0.55rem !important;letter-spacing:2px !important;}
-  .proyecto-img-eve .stats,.proyecto-img-sharp .stats,.proyecto-img-lumina .stats,.proyecto-img-brasa .stats,.proyecto-img-marfil .stats,.proyecto-img-petalo .stats{display:none !important;}
-  .proyecto-img-eve .icono,.proyecto-img-sharp .icono,.proyecto-img-lumina .icono,.proyecto-img-brasa .icono,.proyecto-img-marfil .icono,.proyecto-img-petalo .icono{font-size:1rem !important;margin-bottom:6px !important;}
+  .proyecto-img-menvi .marca,.proyecto-img-sharp .marca,.proyecto-img-lumina .marca,.proyecto-img-brasa .marca,.proyecto-img-marfil .marca,.proyecto-img-petalo .marca{font-size:0.95rem !important;}
+  .proyecto-img-menvi .sub,.proyecto-img-sharp .sub,.proyecto-img-lumina .sub,.proyecto-img-brasa .sub,.proyecto-img-marfil .sub,.proyecto-img-petalo .sub{font-size:0.55rem !important;letter-spacing:2px !important;}
+  .proyecto-img-menvi .stats,.proyecto-img-sharp .stats,.proyecto-img-lumina .stats,.proyecto-img-brasa .stats,.proyecto-img-marfil .stats,.proyecto-img-petalo .stats{display:none !important;}
+  .proyecto-img-menvi .icono,.proyecto-img-sharp .icono,.proyecto-img-lumina .icono,.proyecto-img-brasa .icono,.proyecto-img-marfil .icono,.proyecto-img-petalo .icono{font-size:1rem !important;margin-bottom:6px !important;}
   .proyecto-info{padding:12px 10px;}
   .proyecto-info h3{font-size:0.85rem;margin-bottom:4px;line-height:1.2;}
   .proyecto-info p{font-size:0.7rem;line-height:1.35;margin-bottom:8px;}
@@ -2318,22 +2319,23 @@ section{padding:100px 0;position:relative;}
       <p class="section-subtitulo">Algunos trabajos que reflejan nuestro estilo, enfoque y resultados.</p>
     </div>
     <div class="portafolio-grid">
-      <a href="proyectos/eve-extrem-fit.html" target="_blank" class="proyecto fade-in">
-        <div class="proyecto-img proyecto-img-eve">
-          <div class="marca">EVE<em>.</em>EXTREM<em>.</em>FIT</div>
-          <div class="sub">Entrenadora Personal</div>
+      <a href="https://menvieyewear.vercel.app" target="_blank" rel="noopener" class="proyecto fade-in">
+        <div class="proyecto-img proyecto-img-menvi">
+          <div class="icono"><i class="fas fa-glasses"></i></div>
+          <div class="marca">MENVI<em>.</em></div>
+          <div class="sub">Optica Premium</div>
           <div class="stats">
-            <div><b>+100</b>Vidas</div>
-            <div><b>+2</b>Años</div>
+            <div><b>+200</b>Modelos</div>
+            <div><b>+15</b>Marcas</div>
           </div>
         </div>
         <div class="proyecto-overlay">
           <span class="proyecto-ver">Ver proyecto <i class="fas fa-arrow-right"></i></span>
         </div>
         <div class="proyecto-info">
-          <h3>Eve.Extrem.Fit</h3>
-          <p>Landing page de alto impacto para entrenadora personal con estilo audaz, tipografia editorial y enfoque en captacion via WhatsApp.</p>
-          <span class="proyecto-tag destacado">Fitness &middot; Marca Personal</span>
+          <h3>MENVI Eyewear</h3>
+          <p>Sitio premium para optica moderna que une salud visual, estilo y experiencia: catalogo de lentes y gafas de sol, agendamiento de citas y examen visual sin costo.</p>
+          <span class="proyecto-tag dorado">Optica &middot; Eyewear Premium</span>
         </div>
       </a>
       <a href="proyectos/the-sharp-cut.html" target="_blank" class="proyecto fade-in">
