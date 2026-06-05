@@ -1557,6 +1557,36 @@ section{padding:100px 0;position:relative;}
 .cta-btn-whatsapp strong{font-size:1.1rem;font-weight:700;}
 .cta-btn-whatsapp span{font-size:0.82rem;opacity:0.9;font-weight:400;}
 
+/* ===== Formulario de cotizacion -> WhatsApp ===== */
+.cta-form{position:relative;z-index:2;max-width:640px;margin:0 auto 18px;text-align:left;}
+.cta-form-row{display:flex;gap:16px;margin-bottom:16px;}
+.cta-form .field{flex:1;display:flex;flex-direction:column;gap:7px;min-width:0;}
+.cta-form label{color:#fff;font-size:0.85rem;font-weight:600;}
+.cta-form label .opt{font-weight:400;opacity:0.7;font-size:0.78rem;}
+.cta-form input,.cta-form select{
+  width:100%;padding:14px 16px;border-radius:12px;
+  border:1.5px solid rgba(255,255,255,0.25);
+  background:rgba(255,255,255,0.97);color:#0a0a0a;
+  font-size:0.95rem;font-family:inherit;
+  transition:border-color 0.2s ease,box-shadow 0.2s ease;
+}
+.cta-form input::placeholder{color:#8a8a93;}
+.cta-form input:focus,.cta-form select:focus{outline:none;border-color:#fff;box-shadow:0 0 0 4px rgba(255,255,255,0.28);}
+.cta-form-btn{
+  width:100%;margin-top:4px;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;gap:12px;
+  background:#25D366;color:#fff;border:none;
+  padding:17px 24px;border-radius:60px;
+  font-size:1.05rem;font-weight:700;font-family:inherit;
+  box-shadow:0 12px 40px rgba(37,211,102,0.4);transition:all 0.3s ease;
+}
+.cta-form-btn:hover{transform:translateY(-3px);background:#1ebe5a;box-shadow:0 18px 50px rgba(37,211,102,0.55);}
+.cta-form-btn i{font-size:1.4rem;}
+.cta-form-nota{font-size:0.82rem !important;color:rgba(255,255,255,0.85);margin:14px 0 0 !important;text-align:center;}
+.cta-form-nota.err{color:#ffe08a;font-weight:600;}
+.cta-directo{position:relative;z-index:2;display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,0.92);text-decoration:none;font-size:0.9rem;border-bottom:1px solid rgba(255,255,255,0.4);padding-bottom:2px;transition:gap 0.2s ease;}
+.cta-directo:hover{gap:12px;}
+
 .btn-whatsapp-flotante{
   position:fixed;bottom:24px;right:24px;
   width:62px;height:62px;background:#25D366;
@@ -1576,6 +1606,10 @@ section{padding:100px 0;position:relative;}
   .cta-btn-whatsapp{padding:16px 22px;gap:14px;}
   .cta-btn-whatsapp i{font-size:1.8rem;}
   .cta-btn-whatsapp strong{font-size:0.95rem;}
+  .cta-form-row{flex-direction:column;gap:13px;margin-bottom:13px;}
+  .cta-form{margin-bottom:14px;}
+  .cta-form input,.cta-form select{font-size:16px;padding:13px 15px;}
+  .cta-form-btn{font-size:1rem;padding:16px 20px;}
 }
 
 /* ===== FOOTER ===== */
@@ -2041,7 +2075,7 @@ section{padding:100px 0;position:relative;}
       <li><a href="#portafolio">Portafolio</a></li>
       <li><a href="#equipo">Equipo</a></li>
       <li><a href="#precios">Precios</a></li>
-      <li><a href="https://wa.me/573207519371?text=Hola%2C%20quiero%20cotizar%20una%20landing%20page" target="_blank" class="btn-nav"><i class="fab fa-whatsapp"></i> Cotizar</a></li>
+      <li><a href="#contacto" class="btn-nav"><i class="fas fa-paper-plane"></i> Cotizar</a></li>
     </ul>
     <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
   </div>
@@ -2059,8 +2093,8 @@ section{padding:100px 0;position:relative;}
         <h1>Tu marca merece una landing page <span class="acento">que conecte y venda</span></h1>
         <p>Somos un equipo colombiano que diseña y desarrolla tu landing page a mano: rapida, hecha a tu medida y pensada para que tu negocio venda mas. Sin plantillas y con trato directo. No te lo contamos: te lo mostramos aqui mismo, con proyectos reales y en vivo.</p>
         <div class="hero-cta">
-          <a href="https://wa.me/573207519371?text=Hola%2C%20quiero%20comenzar%20un%20proyecto%20de%20landing%20page" target="_blank" class="btn-primario">
-            <i class="fab fa-whatsapp"></i> Comenzar proyecto
+          <a href="#contacto" class="btn-primario">
+            <i class="fas fa-rocket"></i> Comenzar proyecto
           </a>
           <a href="#portafolio" class="btn-secundario">
             <i class="fas fa-play-circle"></i> Ver portafolio
@@ -2682,17 +2716,39 @@ section{padding:100px 0;position:relative;}
 <section class="contacto" id="contacto">
   <div class="contenedor">
     <div class="cta-box fade-in">
-      <h2>Listo para impulsar tu marca?</h2>
-      <p>Escribenos por WhatsApp, cuentanos tu idea y te responde una persona de verdad (no un bot) con una cotizacion clara y sin compromiso, normalmente el mismo dia.</p>
-      <div class="cta-acciones">
-        <a href="https://wa.me/573207519371?text=Hola%2C%20me%20interesa%20cotizar%20una%20landing%20page%20profesional" target="_blank" class="cta-btn-whatsapp">
-          <i class="fab fa-whatsapp"></i>
-          <div>
-            <strong>Hablemos por WhatsApp</strong>
-            <span>+57 320 7519371 &middot; respuesta en minutos</span>
+      <h2>Cuentanos de tu proyecto</h2>
+      <p>Responde 3 preguntas rapidas y te llevamos directo a WhatsApp con tu mensaje listo. Te responde una persona de verdad, con una cotizacion clara y sin compromiso.</p>
+      <form class="cta-form" id="leadForm" novalidate>
+        <div class="cta-form-row">
+          <div class="field">
+            <label for="lf-nombre">Tu nombre</label>
+            <input id="lf-nombre" type="text" placeholder="Ej: Camila Restrepo" autocomplete="name">
           </div>
-        </a>
-      </div>
+          <div class="field">
+            <label for="lf-negocio">&iquest;De que es tu negocio?</label>
+            <input id="lf-negocio" type="text" placeholder="Ej: barberia, restaurante, tienda de ropa...">
+          </div>
+        </div>
+        <div class="cta-form-row">
+          <div class="field">
+            <label for="lf-necesita">&iquest;Que necesitas?</label>
+            <select id="lf-necesita">
+              <option value="Una landing page nueva">Una landing page nueva</option>
+              <option value="Rediseñar la que ya tengo">Rediseñar la que ya tengo</option>
+              <option value="Aun no se, quiero asesoria">Aun no se, quiero asesoria</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="lf-extra">&iquest;Algo mas? <span class="opt">(opcional)</span></label>
+            <input id="lf-extra" type="text" placeholder="Color, fecha, una idea...">
+          </div>
+        </div>
+        <button type="submit" class="cta-form-btn">
+          <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
+        </button>
+        <p class="cta-form-nota" id="lfNota">Se abrira WhatsApp con tu mensaje ya escrito, listo para enviar.</p>
+      </form>
+      <a href="https://wa.me/573207519371?text=Hola%2C%20me%20interesa%20cotizar%20una%20landing%20page%20profesional" target="_blank" class="cta-directo">o escribenos directo por WhatsApp <i class="fas fa-arrow-right"></i></a>
     </div>
   </div>
 </section>
@@ -2981,6 +3037,38 @@ window.addEventListener('scroll', () => {
   const visual=document.querySelector('.hero-visual');
   if(visual){visual.addEventListener('mouseenter',stop);visual.addEventListener('mouseleave',start);}
   show(0);start();
+})();
+</script>
+
+<!-- SCRIPT: formulario de cotizacion -> WhatsApp -->
+<script>
+(function(){
+  const form=document.getElementById('leadForm');
+  if(!form)return;
+  const nota=document.getElementById('lfNota');
+  const notaBase='Se abrira WhatsApp con tu mensaje ya escrito, listo para enviar.';
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    const nombre=document.getElementById('lf-nombre').value.trim();
+    const negocio=document.getElementById('lf-negocio').value.trim();
+    const necesita=document.getElementById('lf-necesita').value;
+    const extra=document.getElementById('lf-extra').value.trim();
+    if(!nombre || !negocio){
+      nota.textContent='Cuentanos al menos tu nombre y de que es tu negocio para empezar.';
+      nota.classList.add('err');
+      (!nombre?document.getElementById('lf-nombre'):document.getElementById('lf-negocio')).focus();
+      return;
+    }
+    nota.textContent=notaBase;
+    nota.classList.remove('err');
+    let msg='Hola Landing Digital! 👋\n\n';
+    msg+='Soy '+nombre+'.\n';
+    msg+='Mi negocio es de: '+negocio+'.\n';
+    msg+='Lo que necesito: '+necesita+'.\n';
+    if(extra){ msg+='Algo mas: '+extra+'.\n'; }
+    msg+='\nMe gustaria que me ayuden con mi landing page.';
+    window.open('https://wa.me/573207519371?text='+encodeURIComponent(msg),'_blank');
+  });
 })();
 </script>
 
