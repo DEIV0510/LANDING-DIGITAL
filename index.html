@@ -714,6 +714,19 @@ img{max-width:100%;display:block;}
   letter-spacing:2px;text-transform:uppercase;font-weight:500;
 }
 
+/* ===== HERO: showcase de screenshots reales rotando ===== */
+.browser-screen.browser-shots{padding:0;min-height:0;height:322px;background:#0d0d12;}
+.browser-shots .bshot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;opacity:0;transition:opacity 0.7s ease;}
+.browser-shots .bshot.is-active{opacity:1;}
+.shot-dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:5;background:rgba(0,0,0,0.42);padding:6px 11px;border-radius:20px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
+.shot-dots .dot{width:7px;height:7px;border-radius:50%;border:none;background:rgba(255,255,255,0.4);cursor:pointer;padding:0;transition:all 0.3s ease;}
+.shot-dots .dot:hover{background:rgba(255,255,255,0.7);}
+.shot-dots .dot.is-active{background:#00aaff;width:18px;border-radius:4px;}
+.phone-screen-inner.phone-shots{padding:0;}
+.phone-screen-inner.phone-shots::after{display:none;}
+.phone-shots .pshot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;opacity:0;transition:opacity 0.7s ease;border-radius:18px;}
+.phone-shots .pshot.is-active{opacity:1;}
+
 /* Notificacion toast premium - slide in/out */
 .hero-toast{
   position:absolute;top:30px;left:-40px;z-index:5;
@@ -1641,7 +1654,11 @@ section{padding:100px 0;position:relative;}
   .divisor-zebra{height:18px;}
 
   /* Hero visual OCULTO en mobile (no aporta y alarga la pagina) */
-  .hero-visual{display:none !important;}
+  .hero-visual{display:block !important;min-height:auto;padding:6px 0 0;}
+  .hero-stack{max-width:430px !important;margin:0 auto;}
+  .hero-toast,.hero-stat-card,.hero-live-visitors,.hero-mini-test,.hero-trust-card{display:none !important;}
+  .browser-screen.browser-shots{height:208px;}
+  .shot-dots{bottom:8px;}
 
   /* Section headers compactos */
   .section-header{margin-bottom:24px !important;padding:0 4px;}
@@ -2037,10 +2054,10 @@ section{padding:100px 0;position:relative;}
       <div class="hero-texto">
         <div class="badge">
           <span class="badge-dot"></span>
-          Disponibles para nuevos proyectos
+          Especialistas en Landing Pages que venden
         </div>
         <h1>Tu marca merece una landing page <span class="acento">que conecte y venda</span></h1>
-        <p>Somos un equipo colombiano que diseña y desarrolla tu landing page a mano: rapida, hecha a tu medida y pensada para que tu negocio venda mas. Sin plantillas, sin promesas vacias y con trato directo de principio a fin.</p>
+        <p>Somos un equipo colombiano que diseña y desarrolla tu landing page a mano: rapida, hecha a tu medida y pensada para que tu negocio venda mas. Sin plantillas y con trato directo. No te lo contamos: te lo mostramos aqui mismo, con proyectos reales y en vivo.</p>
         <div class="hero-cta">
           <a href="https://wa.me/573207519371?text=Hola%2C%20quiero%20comenzar%20un%20proyecto%20de%20landing%20page" target="_blank" class="btn-primario">
             <i class="fab fa-whatsapp"></i> Comenzar proyecto
@@ -2103,23 +2120,22 @@ section{padding:100px 0;position:relative;}
               </div>
             </div>
 
-            <!-- Pantalla con preview real de MENVI Eyewear -->
-            <div class="browser-screen">
-              <div class="screen-nav">
-                <div class="screen-nav-logo">MENVI</div>
-                <ul><li>Lentes</li><li>Gafas</li><li>Citas</li></ul>
+            <!-- Pantalla: screenshots reales rotando -->
+            <div class="browser-screen browser-shots" id="browserShots">
+              <img class="bshot is-active" src="images/portafolio/menvi.jpg" data-dom="menvieyewear.vercel.app" alt="Landing de MENVI Eyewear">
+              <img class="bshot" src="images/portafolio/visa.jpg" data-dom="visayaventura.pages.dev" alt="Landing de Visa & Aventura">
+              <img class="bshot" src="images/portafolio/ea.jpg" data-dom="eacapital.pages.dev" alt="Landing de EA Capital">
+              <img class="bshot" src="images/portafolio/unicambio.jpg" data-dom="unicambio.vercel.app" alt="Landing de Unicambio">
+              <img class="bshot" src="images/portafolio/motos.jpg" data-dom="motos2tpcolombia.pages.dev" alt="Landing de Motos 2TP">
+              <img class="bshot" src="images/portafolio/camilo.jpg" data-dom="camilo-psicologia.vercel.app" alt="Landing de Camilo Pinilla">
+              <div class="shot-dots" id="shotDots">
+                <button class="dot is-active" data-i="0" aria-label="Ver MENVI Eyewear"></button>
+                <button class="dot" data-i="1" aria-label="Ver Visa y Aventura"></button>
+                <button class="dot" data-i="2" aria-label="Ver EA Capital"></button>
+                <button class="dot" data-i="3" aria-label="Ver Unicambio"></button>
+                <button class="dot" data-i="4" aria-label="Ver Motos 2TP"></button>
+                <button class="dot" data-i="5" aria-label="Ver Camilo Pinilla"></button>
               </div>
-              <span class="screen-tag">Optica Premium</span>
-              <h3 class="screen-title">Transformamos tu forma de <em>ver el mundo</em></h3>
-              <p class="screen-desc">Salud visual, estilo y experiencia premium en un mismo lugar.</p>
-              <div class="screen-cta-row">
-                <div class="screen-cta-1">Ver coleccion</div>
-                <div class="screen-cta-2">Agendar cita</div>
-              </div>
-              <div class="screen-img-side"></div>
-
-              <!-- Scroll indicator animado -->
-              <div class="browser-scroll-indicator"></div>
             </div>
           </div>
 
@@ -2165,15 +2181,16 @@ section{padding:100px 0;position:relative;}
             </div>
           </div>
 
-          <!-- Phone mockup mostrando otro proyecto (Motos 2TP) -->
+          <!-- Phone: screenshots moviles reales rotando (sincronizado) -->
           <div class="hero-phone">
             <div class="phone-frame">
-              <div class="phone-screen-inner">
-                <div class="phone-content">
-                  <div class="phone-tag">Motos 2TP</div>
-                  <div class="phone-title">Repuestos<br>de moto</div>
-                </div>
-                <div class="phone-btn">Ver catalogo</div>
+              <div class="phone-screen-inner phone-shots" id="phoneShots">
+                <img class="pshot is-active" src="images/portafolio/m-menvi.jpg" alt="Version movil de MENVI">
+                <img class="pshot" src="images/portafolio/m-visa.jpg" alt="Version movil de Visa & Aventura">
+                <img class="pshot" src="images/portafolio/m-ea.jpg" alt="Version movil de EA Capital">
+                <img class="pshot" src="images/portafolio/m-unicambio.jpg" alt="Version movil de Unicambio">
+                <img class="pshot" src="images/portafolio/m-motos.jpg" alt="Version movil de Motos 2TP">
+                <img class="pshot" src="images/portafolio/m-camilo.jpg" alt="Version movil de Camilo Pinilla">
               </div>
             </div>
           </div>
@@ -2939,6 +2956,31 @@ window.addEventListener('scroll', () => {
   }
   if(document.readyState==='complete'){ocultar();}
   else{window.addEventListener('load',ocultar);}
+})();
+</script>
+
+<!-- SCRIPT: showcase de landings reales rotando en el hero -->
+<script>
+(function(){
+  const bshots=[...document.querySelectorAll('#browserShots .bshot')];
+  const pshots=[...document.querySelectorAll('#phoneShots .pshot')];
+  const dots=[...document.querySelectorAll('#shotDots .dot')];
+  const domEl=document.querySelector('.browser-url .dominio');
+  if(!bshots.length)return;
+  let i=0,timer=null;
+  function show(n){
+    i=(n+bshots.length)%bshots.length;
+    bshots.forEach((s,k)=>s.classList.toggle('is-active',k===i));
+    pshots.forEach((s,k)=>s.classList.toggle('is-active',k===i));
+    dots.forEach((d,k)=>d.classList.toggle('is-active',k===i));
+    if(domEl&&bshots[i].dataset.dom){domEl.textContent=bshots[i].dataset.dom;}
+  }
+  function start(){stop();timer=setInterval(()=>show(i+1),3000);}
+  function stop(){if(timer){clearInterval(timer);timer=null;}}
+  dots.forEach((d,k)=>d.addEventListener('click',()=>{show(k);start();}));
+  const visual=document.querySelector('.hero-visual');
+  if(visual){visual.addEventListener('mouseenter',stop);visual.addEventListener('mouseleave',start);}
+  show(0);start();
 })();
 </script>
 
