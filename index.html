@@ -188,11 +188,16 @@ section > .contenedor{position:relative;z-index:2;}
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   background-clip:text;
 }
+/* overflow-x en html Y body: si solo se pone en body, el scroll lateral
+   se propaga al documento y la pagina igual se corre de lado.
+   clip no crea contenedor de scroll (no rompe position:sticky); hidden es el fallback. */
+html{overflow-x:hidden;overflow-x:clip;}
 body{
   font-family:'Inter',sans-serif;
   background:var(--negro);
   color:var(--texto);
   overflow-x:hidden;
+  overflow-x:clip;
   line-height:1.6;
 }
 h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;font-weight:700;line-height:1.2;}
@@ -317,30 +322,33 @@ img{max-width:100%;display:block;}
 .stat:first-child .label{color:rgba(0,0,0,0.65);font-weight:600;}
 
 /* Stat de Facebook clickeable */
-.stat-facebook{
-  text-decoration:none;
-  background:#1877F2 !important;border-color:#1877F2 !important;
-  box-shadow:0 0 25px rgba(24,119,242,0.5) !important;
-  cursor:pointer;
+/* Tercera casilla del hero: Instagram + Facebook en una sola tarjeta,
+   para no romper la grilla de 3 columnas de .hero-stats */
+.stat-redes{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;
-  transition:all 0.3s ease;
+  gap:8px;text-align:center;
 }
-.stat-facebook:hover{
-  transform:translateY(-3px);
-  background:#0d65d9 !important;
-  box-shadow:0 0 40px rgba(24,119,242,0.75) !important;
-}
-.stat-facebook .num{
-  color:#fff !important;background:none !important;
-  -webkit-text-fill-color:#fff !important;
-  font-family:'Inter' !important;
-  font-size:1.7rem !important;
+.redes-iconos{display:flex;align-items:center;justify-content:center;gap:10px;}
+.redes-iconos a{
+  width:38px;height:38px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:1.05rem;
+  transition:transform 0.3s ease,box-shadow 0.3s ease,filter 0.3s ease;
 }
-.stat-facebook .label{
-  color:rgba(255,255,255,0.92) !important;font-weight:700 !important;
-  font-size:0.65rem !important;
+.redes-iconos .red-ig{
+  background:linear-gradient(45deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+  box-shadow:0 0 18px rgba(220,39,67,0.45);
+}
+.redes-iconos .red-fb{
+  background:#1877F2;
+  box-shadow:0 0 18px rgba(24,119,242,0.45);
+}
+.redes-iconos a:hover{transform:translateY(-3px) scale(1.06);filter:brightness(1.1);}
+.redes-iconos .red-ig:hover{box-shadow:0 0 32px rgba(220,39,67,0.75);}
+.redes-iconos .red-fb:hover{box-shadow:0 0 32px rgba(24,119,242,0.75);}
+.stat-redes .label{
+  color:var(--texto-suave);font-weight:700;
+  font-size:0.65rem;
 }
 .stat .num{
   font-family:'Anton','Bebas Neue',sans-serif;
@@ -949,8 +957,8 @@ img{max-width:100%;display:block;}
 }
 
 /* ===== SECCIONES GENERAL ===== */
-section{padding:100px 0;position:relative;}
-.section-header{text-align:center;margin-bottom:64px;}
+section{padding:64px 0;position:relative;}
+.section-header{text-align:center;margin-bottom:42px;}
 .section-tag{
   display:inline-block;
   color:var(--azul-electrico);
@@ -1103,18 +1111,6 @@ section{padding:100px 0;position:relative;}
 .proyecto-img{height:240px;background:var(--gradiente);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
 .proyecto-img img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}
 .proyecto-img-placeholder{font-size:3rem;color:rgba(255,255,255,0.3);}
-.proyecto-img-menvi{
-  background:radial-gradient(ellipse at top right,rgba(201,168,106,0.45) 0%,transparent 62%),linear-gradient(135deg,#15120b 0%,#000 100%);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  font-family:'Space Grotesk',sans-serif;text-align:center;padding:20px;
-}
-.proyecto-img-menvi .icono{color:#c9a86a;font-size:1.9rem;margin-bottom:12px;}
-.proyecto-img-menvi .marca{font-size:1.8rem;font-weight:800;letter-spacing:2px;color:#fff;text-transform:uppercase;}
-.proyecto-img-menvi .marca em{color:#e6c478;font-style:normal;}
-.proyecto-img-menvi .sub{font-size:0.75rem;color:rgba(255,255,255,0.6);letter-spacing:3px;margin-top:6px;text-transform:uppercase;}
-.proyecto-img-menvi .stats{display:flex;gap:20px;margin-top:18px;}
-.proyecto-img-menvi .stats div{font-size:0.7rem;color:rgba(255,255,255,0.5);}
-.proyecto-img-menvi .stats b{display:block;color:#e6c478;font-size:1.2rem;}
 .proyecto-overlay{
   position:absolute;inset:0;
   background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,0.85) 100%);
@@ -1138,66 +1134,6 @@ section{padding:100px 0;position:relative;}
 .proyecto-tag.cobre{background:rgba(196,123,75,0.15);color:#e09850;}
 .proyecto-tag.menta{background:rgba(168,213,204,0.15);color:#a8d5cc;}
 .proyecto-tag.rosa{background:rgba(201,122,110,0.18);color:#e09d92;}
-.proyecto-img-petalo{
-  background:radial-gradient(ellipse at top right,rgba(46,183,194,0.34) 0%,transparent 62%),linear-gradient(135deg,#08171a 0%,#000 100%);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  font-family:'Space Grotesk',sans-serif;text-align:center;padding:20px;
-}
-.proyecto-img-petalo .icono{color:#2eb7c2;font-size:1.9rem;margin-bottom:12px;}
-.proyecto-img-petalo .marca{font-size:1.6rem;font-weight:800;letter-spacing:1.5px;color:#fff;text-transform:uppercase;}
-.proyecto-img-petalo .marca em{color:#2eb7c2;font-style:normal;}
-.proyecto-img-petalo .sub{font-size:0.72rem;color:rgba(255,255,255,0.6);letter-spacing:2.5px;margin-top:8px;text-transform:uppercase;}
-.proyecto-img-petalo .stats{display:flex;gap:20px;margin-top:16px;}
-.proyecto-img-petalo .stats div{font-size:0.66rem;color:rgba(255,255,255,0.5);letter-spacing:1px;}
-.proyecto-img-petalo .stats b{display:block;color:#67e8f0;font-size:1.2rem;}
-.proyecto-img-marfil{
-  background:radial-gradient(ellipse at top right,rgba(20,232,193,0.30) 0%,transparent 62%),linear-gradient(135deg,#08140f 0%,#000 100%);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  font-family:'Space Grotesk',sans-serif;text-align:center;padding:20px;
-}
-.proyecto-img-marfil .icono{color:#14e8c1;font-size:1.9rem;margin-bottom:12px;}
-.proyecto-img-marfil .marca{font-size:1.7rem;font-weight:800;letter-spacing:1.5px;color:#fff;text-transform:uppercase;}
-.proyecto-img-marfil .marca em{color:#14e8c1;font-style:normal;}
-.proyecto-img-marfil .sub{font-size:0.72rem;color:rgba(255,255,255,0.6);letter-spacing:2.5px;margin-top:8px;text-transform:uppercase;}
-.proyecto-img-marfil .stats{display:flex;gap:20px;margin-top:16px;}
-.proyecto-img-marfil .stats div{font-size:0.66rem;color:rgba(255,255,255,0.5);letter-spacing:1px;}
-.proyecto-img-marfil .stats b{display:block;color:#5eead4;font-size:1.2rem;}
-.proyecto-img-brasa{
-  background:radial-gradient(ellipse at top right,rgba(255,51,68,0.40) 0%,transparent 62%),linear-gradient(135deg,#1a0a0b 0%,#000 100%);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  font-family:'Space Grotesk',sans-serif;text-align:center;padding:20px;
-}
-.proyecto-img-brasa .icono{color:#ff3344;font-size:2rem;margin-bottom:12px;}
-.proyecto-img-brasa .marca{font-size:1.7rem;font-weight:800;letter-spacing:1.5px;color:#fff;text-transform:uppercase;}
-.proyecto-img-brasa .marca em{color:#ff3344;font-style:normal;}
-.proyecto-img-brasa .sub{font-size:0.72rem;color:rgba(255,255,255,0.6);letter-spacing:2.5px;margin-top:8px;text-transform:uppercase;}
-.proyecto-img-brasa .stats{display:flex;gap:20px;margin-top:16px;}
-.proyecto-img-brasa .stats div{font-size:0.66rem;color:rgba(255,255,255,0.5);letter-spacing:1px;}
-.proyecto-img-brasa .stats b{display:block;color:#fcd116;font-size:1.2rem;}
-.proyecto-img-lumina{
-  background:radial-gradient(ellipse at top right,rgba(109,123,255,0.38) 0%,transparent 62%),linear-gradient(135deg,#0d0d1a 0%,#000 100%);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  font-family:'Space Grotesk',sans-serif;text-align:center;padding:20px;
-}
-.proyecto-img-lumina .icono{color:#6d7bff;font-size:1.9rem;margin-bottom:12px;}
-.proyecto-img-lumina .marca{font-size:1.7rem;font-weight:800;letter-spacing:1.5px;color:#fff;text-transform:uppercase;}
-.proyecto-img-lumina .marca em{color:#6d7bff;font-style:normal;}
-.proyecto-img-lumina .sub{font-size:0.72rem;color:rgba(255,255,255,0.6);letter-spacing:2.5px;margin-top:8px;text-transform:uppercase;}
-.proyecto-img-lumina .stats{display:flex;gap:20px;margin-top:16px;}
-.proyecto-img-lumina .stats div{font-size:0.66rem;color:rgba(255,255,255,0.5);letter-spacing:1px;}
-.proyecto-img-lumina .stats b{display:block;color:#a5b4fc;font-size:1.2rem;}
-.proyecto-img-sharp{
-  background:radial-gradient(ellipse at top right,rgba(56,189,248,0.38) 0%,transparent 62%),linear-gradient(135deg,#0a1420 0%,#000 100%);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  font-family:'Space Grotesk',sans-serif;text-align:center;padding:20px;
-}
-.proyecto-img-sharp .icono{color:#38bdf8;font-size:1.9rem;margin-bottom:12px;}
-.proyecto-img-sharp .marca{font-size:1.7rem;font-weight:800;letter-spacing:1.5px;color:#fff;text-transform:uppercase;}
-.proyecto-img-sharp .marca em{color:#38bdf8;font-style:normal;}
-.proyecto-img-sharp .sub{font-size:0.72rem;color:rgba(255,255,255,0.6);letter-spacing:2.5px;margin-top:8px;text-transform:uppercase;}
-.proyecto-img-sharp .stats{display:flex;gap:20px;margin-top:16px;}
-.proyecto-img-sharp .stats div{font-size:0.66rem;color:rgba(255,255,255,0.5);letter-spacing:1px;}
-.proyecto-img-sharp .stats b{display:block;color:#7dd3fc;font-size:1.2rem;}
 
 /* ===== EQUIPO ===== */
 .equipo-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;max-width:1180px;margin:0 auto;}
@@ -1724,6 +1660,10 @@ section{padding:100px 0;position:relative;}
   .stat{padding:12px 8px !important;border-radius:14px;}
   .stat .num{font-size:1.45rem !important;}
   .stat .label{font-size:0.55rem !important;letter-spacing:1px;line-height:1.2;}
+  /* Iconos de redes mas chicos: en 375px cada casilla mide ~110px */
+  .stat-redes{gap:6px;}
+  .redes-iconos{gap:8px;}
+  .redes-iconos a{width:32px;height:32px;font-size:0.9rem;}
 
   /* Marquee mobile */
   .marquee{padding:10px 0;}
@@ -1769,10 +1709,6 @@ section{padding:100px 0;position:relative;}
 
   /* Portafolio mas compacto - 2 columnas */
   .proyecto-img{height:140px !important;}
-  .proyecto-img-menvi .marca,.proyecto-img-sharp .marca,.proyecto-img-lumina .marca,.proyecto-img-brasa .marca,.proyecto-img-marfil .marca,.proyecto-img-petalo .marca{font-size:0.95rem !important;}
-  .proyecto-img-menvi .sub,.proyecto-img-sharp .sub,.proyecto-img-lumina .sub,.proyecto-img-brasa .sub,.proyecto-img-marfil .sub,.proyecto-img-petalo .sub{font-size:0.55rem !important;letter-spacing:2px !important;}
-  .proyecto-img-menvi .stats,.proyecto-img-sharp .stats,.proyecto-img-lumina .stats,.proyecto-img-brasa .stats,.proyecto-img-marfil .stats,.proyecto-img-petalo .stats{display:none !important;}
-  .proyecto-img-menvi .icono,.proyecto-img-sharp .icono,.proyecto-img-lumina .icono,.proyecto-img-brasa .icono,.proyecto-img-marfil .icono,.proyecto-img-petalo .icono{font-size:1rem !important;margin-bottom:6px !important;}
   .proyecto-info{padding:12px 10px;}
   .proyecto-info h3{font-size:0.85rem;margin-bottom:4px;line-height:1.2;}
   .proyecto-info p{font-size:0.7rem;line-height:1.35;margin-bottom:8px;}
@@ -2153,10 +2089,13 @@ section{padding:100px 0;position:relative;}
             <div class="num">+6</div>
             <div class="label">Proyectos en vivo</div>
           </div>
-          <a href="https://www.facebook.com/profile.php?id=61589419075595&locale=es_LA" target="_blank" rel="noopener" class="stat stat-facebook">
-            <div class="num"><i class="fab fa-facebook-f"></i></div>
+          <div class="stat stat-redes">
+            <div class="redes-iconos">
+              <a href="https://www.instagram.com/landingdigital_" target="_blank" rel="noopener" class="red-ig" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.facebook.com/profile.php?id=61589419075595&locale=es_LA" target="_blank" rel="noopener" class="red-fb" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            </div>
             <div class="label">Siguenos</div>
-          </a>
+          </div>
         </div>
       </div>
       <div class="hero-visual">
@@ -2561,7 +2500,7 @@ section{padding:100px 0;position:relative;}
             <strong>Nicolas</strong>
             <span>Sube tu foto</span>
           </div>
-          <img class="solo-img" src="images/equipo/Nicolas.png" alt="Nicolas - Desarrollador" onerror="this.style.display='none'">
+          <img class="solo-img" src="images/equipo/NICOLAS.webp" alt="Nicolas - Desarrollador" onerror="this.style.display='none'">
         </div>
         <div class="miembro-info">
           <h3>Nicolas</h3>
@@ -2821,6 +2760,7 @@ section{padding:100px 0;position:relative;}
         <p>Somos un equipo colombiano que diseña landing pages a mano, con trato cercano y honesto. Hechas para negocios reales que quieren crecer.</p>
         <div class="footer-social">
           <a href="https://wa.me/573207519371" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.instagram.com/landingdigital_" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           <a href="https://www.facebook.com/profile.php?id=61589419075595&locale=es_LA" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
         </div>
       </div>
