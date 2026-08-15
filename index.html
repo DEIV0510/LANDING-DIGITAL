@@ -1203,20 +1203,92 @@ section{padding:64px 0;position:relative;}
 }
 .video-pie .etiqueta i{color:var(--azul-electrico);font-size:0.8rem;}
 
-/* Bloque de video dentro de Proceso */
-.proceso-video{max-width:940px;margin:56px auto 0;}
-.proceso-video-intro{text-align:center;margin-bottom:26px;}
-.proceso-video-intro h3{font-size:1.5rem;margin-bottom:10px;}
-.proceso-video-intro p{color:var(--texto-suave);font-size:0.98rem;max-width:620px;margin:0 auto;}
+/* ===== VIDEOS DESTACADOS (justo debajo del hero) =====
+   Es lo primero que ve el cliente despues del hero, asi que el bloque pesa
+   visualmente: fondo propio, borde superior luminoso y dos tarjetas grandes. */
+.videos-destacados{
+  position:relative;
+  background:linear-gradient(180deg,#0d0f18 0%,var(--negro) 100%);
+  border-top:1px solid rgba(0,170,255,0.18);
+  border-bottom:1px solid var(--gris-borde);
+}
+.videos-destacados::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:min(760px,90%);height:1px;
+  background:linear-gradient(90deg,transparent,rgba(0,170,255,0.9),transparent);
+}
+.videos-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:34px;
+  margin-top:8px;
+}
+.video-tarjeta{display:flex;flex-direction:column;gap:16px;}
+.video-tarjeta-info{padding:0 4px;}
+.video-tarjeta-info h3{
+  font-size:1.3rem;margin-bottom:7px;display:flex;align-items:center;gap:10px;
+}
+.video-tarjeta-info h3 .num{
+  width:28px;height:28px;flex-shrink:0;border-radius:9px;
+  display:inline-flex;align-items:center;justify-content:center;
+  background:rgba(0,170,255,0.12);border:1px solid rgba(0,170,255,0.28);
+  color:var(--azul-electrico);font-size:0.8rem;font-family:'Inter',sans-serif;font-weight:800;
+}
+.video-tarjeta-info p{color:var(--texto-suave);font-size:0.94rem;line-height:1.6;margin:0;}
+
+/* Gancho de video en el hero */
+.hero-video-link{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-top:18px;color:var(--texto-suave);
+  font-size:0.9rem;font-weight:600;
+  transition:color 0.3s ease;
+}
+.hero-video-link .icono{
+  width:30px;height:30px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#00aaff 0%,#0066ff 100%);
+  color:#fff;font-size:0.7rem;
+  box-shadow:0 0 18px rgba(0,102,255,0.45);
+  transition:transform 0.3s ease;
+}
+.hero-video-link .icono i{margin-left:2px;}
+.hero-video-link:hover{color:#fff;}
+.hero-video-link:hover .icono{transform:scale(1.1);}
+
+/* Boton para volver a los videos desde la seccion del panel */
+.panel-ver-video{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(0,170,255,0.1);border:1px solid rgba(0,170,255,0.3);
+  color:#fff;padding:13px 22px;border-radius:12px;
+  font-weight:600;font-size:0.94rem;margin-bottom:26px;
+  transition:background 0.3s ease,border-color 0.3s ease,transform 0.3s ease;
+}
+.panel-ver-video i{color:var(--azul-electrico);}
+.panel-ver-video:hover{background:rgba(0,170,255,0.18);border-color:rgba(0,170,255,0.55);transform:translateY(-2px);}
+
+/* Enlace al video desde la seccion Proceso */
+.proceso-video-link{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  max-width:640px;margin:44px auto 0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.04),rgba(255,255,255,0.015));
+  border:1px solid var(--gris-borde);border-radius:16px;
+  padding:18px 24px;text-align:center;
+  color:var(--texto-suave);font-size:0.95rem;
+  transition:border-color 0.3s ease,transform 0.3s ease;
+}
+.proceso-video-link:hover{border-color:rgba(0,170,255,0.45);transform:translateY(-2px);color:#fff;}
+.proceso-video-link i{color:var(--azul-electrico);font-size:1.1rem;}
 
 /* ===== PANEL ADMINISTRADOR ===== */
 .panel-admin{position:relative;overflow:hidden;}
-.panel-grid{
-  display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center;
-}
-.panel-texto h2{font-size:2.4rem;margin-bottom:18px;line-height:1.15;}
-.panel-texto > p{color:var(--texto-suave);font-size:1.05rem;line-height:1.75;margin-bottom:28px;}
+.panel-cuerpo{max-width:1080px;margin:0 auto;text-align:center;}
 .panel-lista{display:flex;flex-direction:column;gap:16px;margin-bottom:30px;}
+/* Variante en 3 columnas: el video se movio arriba, asi que la seccion
+   ya no necesita la rejilla de dos columnas. */
+.panel-lista-3{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+  text-align:left;margin-bottom:28px;
+}
+.panel-lista-3 .panel-item{flex-direction:column;align-items:flex-start;gap:12px;}
+.panel-lista-3 .panel-item:hover{transform:translateY(-4px);}
 .panel-item{
   display:flex;gap:15px;align-items:flex-start;
   background:linear-gradient(135deg,rgba(255,255,255,0.035),rgba(255,255,255,0.012));
@@ -1234,7 +1306,8 @@ section{padding:64px 0;position:relative;}
 .panel-item h4{font-size:1rem;margin-bottom:4px;color:#fff;}
 .panel-item p{color:var(--texto-suave);font-size:0.88rem;line-height:1.55;margin:0;}
 .panel-nota{
-  display:flex;gap:12px;align-items:flex-start;
+  display:flex;gap:12px;align-items:flex-start;text-align:left;
+  max-width:820px;margin:0 auto;
   border-left:3px solid var(--azul-electrico);
   background:linear-gradient(135deg,rgba(0,102,255,0.08),rgba(0,170,255,0.03));
   border-radius:0 14px 14px 0;padding:16px 20px;
@@ -1805,18 +1878,22 @@ a,button,.faq-pregunta,.dot,.video-play{touch-action:manipulation;}
   .marquee-track{gap:30px;}
   .divisor-zebra{height:18px;}
 
-  /* Video y panel administrador en movil */
-  .proceso-video{margin-top:32px;}
-  .proceso-video-intro h3{font-size:1.2rem;}
-  .proceso-video-intro p{font-size:0.88rem;}
+  /* Videos y panel administrador en movil */
+  .videos-grid{grid-template-columns:1fr;gap:26px;}
+  .video-tarjeta-info h3{font-size:1.05rem;gap:8px;}
+  .video-tarjeta-info h3 .num{width:24px;height:24px;font-size:0.7rem;}
+  .video-tarjeta-info p{font-size:0.85rem;}
+  .hero-video-link{font-size:0.82rem;margin-top:14px;gap:8px;}
+  .hero-video-link .icono{width:26px;height:26px;font-size:0.62rem;}
+  .proceso-video-link{margin-top:26px;padding:14px 18px;font-size:0.85rem;gap:9px;}
+  .panel-lista-3{grid-template-columns:1fr;gap:10px;}
+  .panel-lista-3 .panel-item{flex-direction:row;align-items:flex-start;}
+  .panel-ver-video{font-size:0.85rem;padding:11px 18px;margin-bottom:20px;}
   .video-marco{border-radius:14px;}
   .video-play .circulo{width:58px;height:58px;box-shadow:0 8px 26px rgba(0,102,255,0.5),0 0 0 7px rgba(0,170,255,0.12);}
   .video-play .circulo i{font-size:1.1rem;}
   .video-pie{padding:12px 14px;gap:8px;}
   .video-pie .etiqueta{font-size:0.62rem;padding:5px 10px;}
-  .panel-grid{grid-template-columns:1fr;gap:28px;}
-  .panel-texto h2{font-size:1.75rem;}
-  .panel-texto > p{font-size:0.92rem;margin-bottom:20px;}
   .panel-lista{gap:10px;margin-bottom:20px;}
   .panel-item{padding:13px 14px;gap:12px;}
   .panel-item .ico{width:34px;height:34px;font-size:0.85rem;}
@@ -2206,9 +2283,9 @@ a,button,.faq-pregunta,.dot,.video-play{touch-action:manipulation;}
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#videos">Videos</a></li>
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#portafolio">Portafolio</a></li>
-      <li><a href="#panel">Panel</a></li>
       <li><a href="#equipo">Equipo</a></li>
       <li><a href="#precios">Precios</a></li>
       <li><a href="#contacto" class="btn-nav"><i class="fas fa-paper-plane"></i> Cotizar</a></li>
@@ -2233,9 +2310,13 @@ a,button,.faq-pregunta,.dot,.video-play{touch-action:manipulation;}
             <i class="fas fa-rocket"></i> Comenzar proyecto
           </a>
           <a href="#portafolio" class="btn-secundario">
-            <i class="fas fa-play-circle"></i> Ver portafolio
+            <i class="fas fa-arrow-down"></i> Ver portafolio
           </a>
         </div>
+        <a href="#videos" class="hero-video-link">
+          <span class="icono"><i class="fas fa-play" aria-hidden="true"></i></span>
+          Mira en video como trabajamos
+        </a>
         <div class="hero-stats">
           <div class="stat">
             <div class="num">100%</div>
@@ -2381,6 +2462,55 @@ a,button,.faq-pregunta,.dot,.video-play{touch-action:manipulation;}
   </div>
 </div>
 
+<!-- ========== VIDEOS DESTACADOS ========== -->
+<section class="videos-destacados" id="videos">
+  <div class="contenedor">
+    <div class="section-header fade-in">
+      <span class="section-tag">En video</span>
+      <h2 class="section-titulo">Mira <span class="acento">como trabajamos</span></h2>
+      <p class="section-subtitulo">Antes de escribirnos, velo tu mismo. Dos videos cortos: como armamos una pagina de principio a fin, y como quedaria el panel para que administres la tuya.</p>
+    </div>
+
+    <div class="videos-grid">
+      <div class="video-tarjeta fade-in">
+        <div class="video-marco" data-video="ZFdx62mAw1A">
+          <img src="images/video/proceso-portada.jpg" width="1280" height="720" decoding="async"
+               alt="Portada del video: como creamos tu pagina, el proceso paso a paso">
+          <div class="velo"></div>
+          <button type="button" class="video-play" aria-label="Reproducir el video: asi es el proceso para crear tu pagina">
+            <span class="circulo"><i class="fas fa-play" aria-hidden="true"></i></span>
+          </button>
+          <div class="video-pie">
+            <span class="etiqueta"><i class="fas fa-circle-play" aria-hidden="true"></i> El proceso, paso a paso</span>
+          </div>
+        </div>
+        <div class="video-tarjeta-info">
+          <h3><span class="num">01</span> Como creamos tu pagina</h3>
+          <p>Todo el proceso con un proyecto real, desde la primera conversacion hasta el sitio publicado. Asi sabes exactamente que va a pasar cuando nos escribas.</p>
+        </div>
+      </div>
+
+      <div class="video-tarjeta fade-in">
+        <div class="video-marco" data-video="Ak7nj9rUbq0">
+          <img src="images/video/panel-portada.jpg" width="1280" height="720" decoding="async"
+               alt="Portada del video: editalo tu mismo con el panel administrador, sin programar">
+          <div class="velo"></div>
+          <button type="button" class="video-play" aria-label="Reproducir el video: asi funciona el panel administrador">
+            <span class="circulo"><i class="fas fa-play" aria-hidden="true"></i></span>
+          </button>
+          <div class="video-pie">
+            <span class="etiqueta"><i class="fas fa-desktop" aria-hidden="true"></i> El panel funcionando, en vivo</span>
+          </div>
+        </div>
+        <div class="video-tarjeta-info">
+          <h3><span class="num">02</span> El panel administrador</h3>
+          <p>Si tu negocio cambia seguido de productos o precios, mira como los editarias tu mismo desde el celular, sin depender de nosotros.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ========== SERVICIOS ========== -->
 <section class="servicios" id="servicios">
   <div class="aurora aurora-blue aurora-top-left aurora-anim"></div>
@@ -2486,23 +2616,10 @@ a,button,.faq-pregunta,.dot,.video-play{touch-action:manipulation;}
       </div>
     </div>
 
-    <div class="proceso-video fade-in">
-      <div class="proceso-video-intro">
-        <h3>No te lo contamos, <span class="acento">te lo mostramos</span></h3>
-        <p>Mira en video como armamos una pagina de principio a fin, con un proyecto real. Asi sabes exactamente que va a pasar cuando nos escribas.</p>
-      </div>
-      <div class="video-marco" data-video="ZFdx62mAw1A">
-        <img src="images/video/proceso.jpg" width="1280" height="720" loading="lazy" decoding="async"
-             alt="Vista previa del video que explica el proceso de creacion de una pagina en Landing Digital">
-        <div class="velo"></div>
-        <button type="button" class="video-play" aria-label="Reproducir el video: asi es el proceso para crear tu pagina">
-          <span class="circulo"><i class="fas fa-play" aria-hidden="true"></i></span>
-        </button>
-        <div class="video-pie">
-          <span class="etiqueta"><i class="fas fa-circle-play" aria-hidden="true"></i> El proceso, paso a paso</span>
-        </div>
-      </div>
-    </div>
+    <a href="#videos" class="proceso-video-link fade-in">
+      <i class="fas fa-circle-play" aria-hidden="true"></i>
+      <span>Ver estos 4 pasos en video, con un proyecto real</span>
+    </a>
   </div>
 </section>
 
@@ -2610,54 +2727,40 @@ a,button,.faq-pregunta,.dot,.video-play{touch-action:manipulation;}
       <p class="section-subtitulo">Si tu negocio cambia seguido de productos, precios o promociones, te montamos un panel para que lo edites tu mismo, sin depender de nosotros ni pagar por cada ajuste.</p>
     </div>
 
-    <div class="panel-grid">
-      <div class="panel-texto fade-in">
-        <h2>Cambia tu pagina sin saber programar</h2>
-        <p>Entras con tu usuario y tu clave desde el celular o el computador, editas lo que necesites y los cambios quedan publicados al instante.</p>
+    <div class="panel-cuerpo fade-in">
+      <a href="#videos" class="panel-ver-video">
+        <i class="fas fa-circle-play" aria-hidden="true"></i>
+        Ver el panel funcionando en video
+      </a>
 
-        <div class="panel-lista">
-          <div class="panel-item">
-            <div class="ico"><i class="fas fa-box-open" aria-hidden="true"></i></div>
-            <div>
-              <h4>Productos y precios</h4>
-              <p>Agrega, edita o quita productos y actualiza precios cuando quieras, sin llamar a nadie.</p>
-            </div>
-          </div>
-          <div class="panel-item">
-            <div class="ico"><i class="fas fa-images" aria-hidden="true"></i></div>
-            <div>
-              <h4>Fotos y textos</h4>
-              <p>Cambia las imagenes, los titulos y las descripciones desde el mismo panel.</p>
-            </div>
-          </div>
-          <div class="panel-item">
-            <div class="ico"><i class="fas fa-mobile-screen" aria-hidden="true"></i></div>
-            <div>
-              <h4>Desde donde estes</h4>
-              <p>El panel funciona en el celular, asi que puedes actualizar tu sitio desde el mostrador.</p>
-            </div>
+      <div class="panel-lista panel-lista-3">
+        <div class="panel-item">
+          <div class="ico"><i class="fas fa-box-open" aria-hidden="true"></i></div>
+          <div>
+            <h4>Productos y precios</h4>
+            <p>Agrega, edita o quita productos y actualiza precios cuando quieras, sin llamar a nadie.</p>
           </div>
         </div>
-
-        <p class="panel-nota">
-          <i class="fas fa-circle-info" aria-hidden="true"></i>
-          <span>El panel no viene en el Plan Principiante: se cotiza aparte segun lo que necesites administrar. Escribenos y te decimos con honestidad si tu negocio de verdad lo necesita o no.</span>
-        </p>
-      </div>
-
-      <div class="panel-video fade-in">
-        <div class="video-marco" data-video="Ak7nj9rUbq0">
-          <img src="images/video/panel.jpg" width="1280" height="720" loading="lazy" decoding="async"
-               alt="Vista previa del video que muestra el panel administrador funcionando">
-          <div class="velo"></div>
-          <button type="button" class="video-play" aria-label="Reproducir el video: asi funciona el panel administrador">
-            <span class="circulo"><i class="fas fa-play" aria-hidden="true"></i></span>
-          </button>
-          <div class="video-pie">
-            <span class="etiqueta"><i class="fas fa-desktop" aria-hidden="true"></i> El panel funcionando, en vivo</span>
+        <div class="panel-item">
+          <div class="ico"><i class="fas fa-images" aria-hidden="true"></i></div>
+          <div>
+            <h4>Fotos y textos</h4>
+            <p>Cambia las imagenes, los titulos y las descripciones desde el mismo panel.</p>
+          </div>
+        </div>
+        <div class="panel-item">
+          <div class="ico"><i class="fas fa-mobile-screen" aria-hidden="true"></i></div>
+          <div>
+            <h4>Desde donde estes</h4>
+            <p>El panel funciona en el celular, asi que puedes actualizar tu sitio desde el mostrador.</p>
           </div>
         </div>
       </div>
+
+      <p class="panel-nota">
+        <i class="fas fa-circle-info" aria-hidden="true"></i>
+        <span>El panel no viene en el Plan Principiante: se cotiza aparte segun lo que necesites administrar. Escribenos y te decimos con honestidad si tu negocio de verdad lo necesita o no.</span>
+      </p>
     </div>
   </div>
 </section>
