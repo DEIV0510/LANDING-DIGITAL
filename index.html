@@ -1135,6 +1135,113 @@ section{padding:64px 0;position:relative;}
 .proyecto-tag.menta{background:rgba(168,213,204,0.15);color:#a8d5cc;}
 .proyecto-tag.rosa{background:rgba(201,122,110,0.18);color:#e09d92;}
 
+/* ===== VIDEO (fachada) =====
+   No incrustamos el iframe de YouTube de entrada: eso carga ~1MB de JS y
+   cookies de terceros en cuanto abre la pagina. Mostramos la miniatura local
+   y el iframe se crea solo cuando el usuario pulsa play. */
+.video-marco{
+  position:relative;width:100%;
+  aspect-ratio:16/9;              /* reserva el alto: sin salto de layout */
+  border-radius:20px;overflow:hidden;
+  border:1px solid var(--gris-borde);
+  background:var(--negro-card);
+  box-shadow:0 24px 70px rgba(0,0,0,0.55),0 0 0 1px rgba(0,170,255,0.08);
+  transition:border-color 0.35s ease,box-shadow 0.35s ease;
+}
+.video-marco::after{  /* borde luminoso superior, como las otras tarjetas */
+  content:'';position:absolute;top:0;left:12%;right:12%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(0,170,255,0.85),transparent);
+  opacity:0.7;z-index:3;pointer-events:none;
+}
+.video-marco:hover{
+  border-color:rgba(0,170,255,0.45);
+  box-shadow:0 30px 90px rgba(0,0,0,0.6),0 0 60px rgba(0,170,255,0.18);
+}
+.video-marco img,.video-marco iframe{
+  position:absolute;inset:0;width:100%;height:100%;
+  display:block;border:0;
+}
+.video-marco img{object-fit:cover;}
+.video-marco .velo{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(10,10,10,0.15) 0%,transparent 35%,rgba(10,10,10,0.75) 100%);
+  transition:opacity 0.35s ease;
+}
+.video-marco:hover .velo{opacity:0.8;}
+/* Boton play: es el control real, ocupa toda la superficie para que el area
+   tactil sea generosa, pero el circulo es lo que se ve. */
+.video-play{
+  position:absolute;inset:0;z-index:2;
+  display:flex;align-items:center;justify-content:center;
+  background:none;border:0;padding:0;cursor:pointer;
+  color:#fff;
+}
+.video-play .circulo{
+  width:78px;height:78px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#00aaff 0%,#0066ff 100%);
+  box-shadow:0 12px 40px rgba(0,102,255,0.5),0 0 0 10px rgba(0,170,255,0.12);
+  transition:transform 0.3s ease,box-shadow 0.3s ease;
+}
+.video-play .circulo i{font-size:1.5rem;margin-left:5px;}
+.video-play:hover .circulo,.video-play:focus-visible .circulo{
+  transform:scale(1.08);
+  box-shadow:0 16px 55px rgba(0,102,255,0.65),0 0 0 16px rgba(0,170,255,0.15);
+}
+.video-play:active .circulo{transform:scale(0.97);}
+.video-pie{
+  position:absolute;left:0;right:0;bottom:0;z-index:2;
+  padding:20px 24px;pointer-events:none;
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+}
+.video-pie .etiqueta{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(0,0,0,0.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,0.14);
+  padding:7px 13px;border-radius:20px;
+  font-size:0.76rem;font-weight:600;letter-spacing:0.6px;color:#fff;
+}
+.video-pie .etiqueta i{color:var(--azul-electrico);font-size:0.8rem;}
+
+/* Bloque de video dentro de Proceso */
+.proceso-video{max-width:940px;margin:56px auto 0;}
+.proceso-video-intro{text-align:center;margin-bottom:26px;}
+.proceso-video-intro h3{font-size:1.5rem;margin-bottom:10px;}
+.proceso-video-intro p{color:var(--texto-suave);font-size:0.98rem;max-width:620px;margin:0 auto;}
+
+/* ===== PANEL ADMINISTRADOR ===== */
+.panel-admin{position:relative;overflow:hidden;}
+.panel-grid{
+  display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center;
+}
+.panel-texto h2{font-size:2.4rem;margin-bottom:18px;line-height:1.15;}
+.panel-texto > p{color:var(--texto-suave);font-size:1.05rem;line-height:1.75;margin-bottom:28px;}
+.panel-lista{display:flex;flex-direction:column;gap:16px;margin-bottom:30px;}
+.panel-item{
+  display:flex;gap:15px;align-items:flex-start;
+  background:linear-gradient(135deg,rgba(255,255,255,0.035),rgba(255,255,255,0.012));
+  border:1px solid var(--gris-borde);
+  border-radius:14px;padding:16px 18px;
+  transition:border-color 0.3s ease,transform 0.3s ease;
+}
+.panel-item:hover{border-color:rgba(0,170,255,0.4);transform:translateX(4px);}
+.panel-item .ico{
+  width:38px;height:38px;flex-shrink:0;border-radius:11px;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(0,170,255,0.12);border:1px solid rgba(0,170,255,0.25);
+  color:var(--azul-electrico);font-size:0.95rem;
+}
+.panel-item h4{font-size:1rem;margin-bottom:4px;color:#fff;}
+.panel-item p{color:var(--texto-suave);font-size:0.88rem;line-height:1.55;margin:0;}
+.panel-nota{
+  display:flex;gap:12px;align-items:flex-start;
+  border-left:3px solid var(--azul-electrico);
+  background:linear-gradient(135deg,rgba(0,102,255,0.08),rgba(0,170,255,0.03));
+  border-radius:0 14px 14px 0;padding:16px 20px;
+  color:var(--texto-suave);font-size:0.92rem;line-height:1.6;
+}
+.panel-nota i{color:var(--azul-electrico);margin-top:3px;}
+
 /* ===== EQUIPO ===== */
 .equipo-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;max-width:1180px;margin:0 auto;}
 @media(max-width:1100px){.equipo-grid{grid-template-columns:repeat(2,1fr);max-width:560px;}}
@@ -1438,10 +1545,14 @@ section{padding:64px 0;position:relative;}
 }
 .faq-item:hover{border-color:rgba(0,170,255,0.25);}
 .faq-item.activa{border-color:rgba(0,170,255,0.4);box-shadow:0 16px 40px rgba(0,102,255,0.12),inset 0 1px 0 rgba(255,255,255,0.06);background:linear-gradient(180deg,rgba(0,170,255,0.06) 0%,rgba(255,255,255,0.01) 100%);}
+/* Es un <button> real para que funcione con teclado y lo anuncien los
+   lectores de pantalla; hay que resetear los estilos nativos del boton. */
 .faq-pregunta{
-  padding:22px 26px;
-  display:flex;justify-content:space-between;align-items:center;
+  width:100%;padding:22px 26px;
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
   cursor:pointer;font-weight:600;font-size:1.05rem;
+  background:none;border:0;margin:0;
+  font-family:inherit;color:inherit;text-align:left;
 }
 .faq-pregunta i{color:var(--azul-electrico);transition:transform 0.3s ease;width:30px;height:30px;display:flex;align-items:center;justify-content:center;background:rgba(0,170,255,0.12);border:1px solid rgba(0,170,255,0.22);border-radius:50%;font-size:0.8rem;flex-shrink:0;margin-left:14px;}
 .faq-item.activa .faq-pregunta i{transform:rotate(180deg);}
@@ -1592,6 +1703,53 @@ section{padding:64px 0;position:relative;}
   color:var(--texto-suave);font-size:0.88rem;flex-wrap:wrap;gap:14px;
 }
 
+/* ===== ACCESIBILIDAD Y ENTRADA ===== */
+/* Anillo de foco visible SOLO con teclado (:focus-visible no se dispara al
+   hacer clic con el mouse, asi que no ensucia la navegacion normal). */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible{
+  outline:3px solid var(--azul-electrico);
+  outline-offset:3px;
+  border-radius:6px;
+}
+/* Quita el retardo de 300ms al tocar en movil */
+a,button,.faq-pregunta,.dot,.video-play{touch-action:manipulation;}
+
+/* Enlace para saltar al contenido: primer tabulador de la pagina */
+.saltar-al-contenido{
+  position:absolute;left:16px;top:-100px;z-index:2000;
+  background:var(--azul-primario);color:#fff;
+  padding:12px 20px;border-radius:0 0 10px 10px;
+  font-weight:700;font-size:0.9rem;
+  transition:top 0.2s ease;
+}
+.saltar-al-contenido:focus{top:0;}
+
+/* Respeta a quien pidio menos movimiento en su sistema: la pagina tiene
+   loader 3D, marquees, auroras, tilt y tarjetas flotantes, y todo eso puede
+   producir mareo. Se apaga el movimiento pero el contenido queda visible. */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:0.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.001ms !important;
+    scroll-behavior:auto !important;
+  }
+  .fade-in,.reveal,.reveal-left,.reveal-right,.reveal-scale{
+    opacity:1 !important;transform:none !important;
+  }
+  .loader-3d{display:none !important;}
+  .marquee-track{animation:none !important;transform:none !important;}
+  .tilt-card{transform:none !important;}
+  .hero-shape,.hero-line,.aurora,.hero-toast,.hero-stat-card,
+  .hero-live-visitors,.hero-mini-test,.hero-trust-card{animation:none !important;}
+  #mouseSpotlight{display:none !important;}
+}
+
 /* ===== ANIMACIONES SCROLL ===== */
 .fade-in{opacity:0;transform:translateY(30px);transition:all 0.8s ease;}
 .fade-in.visible{opacity:1;transform:translateY(0);}
@@ -1646,6 +1804,25 @@ section{padding:64px 0;position:relative;}
   .marquee span{font-size:0.72rem;letter-spacing:2px;gap:30px;}
   .marquee-track{gap:30px;}
   .divisor-zebra{height:18px;}
+
+  /* Video y panel administrador en movil */
+  .proceso-video{margin-top:32px;}
+  .proceso-video-intro h3{font-size:1.2rem;}
+  .proceso-video-intro p{font-size:0.88rem;}
+  .video-marco{border-radius:14px;}
+  .video-play .circulo{width:58px;height:58px;box-shadow:0 8px 26px rgba(0,102,255,0.5),0 0 0 7px rgba(0,170,255,0.12);}
+  .video-play .circulo i{font-size:1.1rem;}
+  .video-pie{padding:12px 14px;gap:8px;}
+  .video-pie .etiqueta{font-size:0.62rem;padding:5px 10px;}
+  .panel-grid{grid-template-columns:1fr;gap:28px;}
+  .panel-texto h2{font-size:1.75rem;}
+  .panel-texto > p{font-size:0.92rem;margin-bottom:20px;}
+  .panel-lista{gap:10px;margin-bottom:20px;}
+  .panel-item{padding:13px 14px;gap:12px;}
+  .panel-item .ico{width:34px;height:34px;font-size:0.85rem;}
+  .panel-item h4{font-size:0.92rem;}
+  .panel-item p{font-size:0.82rem;}
+  .panel-nota{font-size:0.85rem;padding:13px 16px;}
 
   /* Hero visual OCULTO en mobile (no aporta y alarga la pagina) */
   .hero-visual{display:block !important;min-height:auto;padding:6px 0 0;}
@@ -2002,10 +2179,10 @@ section{padding:64px 0;position:relative;}
   <div class="logo-3d-wrap">
     <div class="loader-reflejo loader-reflejo-1"></div>
     <div class="loader-reflejo loader-reflejo-2"></div>
-    <div class="logo-capa atras-3"><img src="images/logo/logo.svg" alt="Landing Digital"></div>
-    <div class="logo-capa atras-2"><img src="images/logo/logo.svg" alt="Landing Digital"></div>
-    <div class="logo-capa atras-1"><img src="images/logo/logo.svg" alt="Landing Digital"></div>
-    <div class="logo-capa frente"><img src="images/logo/logo.svg" alt="Landing Digital"></div>
+    <div class="logo-capa atras-3"><img decoding="async" src="images/logo/logo.svg" alt="Landing Digital"></div>
+    <div class="logo-capa atras-2"><img decoding="async" src="images/logo/logo.svg" alt="Landing Digital"></div>
+    <div class="logo-capa atras-1"><img decoding="async" src="images/logo/logo.svg" alt="Landing Digital"></div>
+    <div class="logo-capa frente"><img decoding="async" src="images/logo/logo.svg" alt="Landing Digital"></div>
   </div>
   <div class="loader-marca">
     <h1>Landing Digital</h1>
@@ -2016,10 +2193,12 @@ section{padding:64px 0;position:relative;}
 </div>
 
 <!-- ========== NAVBAR ========== -->
+<a href="#servicios" class="saltar-al-contenido">Saltar al contenido</a>
+
 <nav class="navbar">
   <div class="contenedor nav-content">
     <a href="#inicio" class="logo">
-      <div class="logo-icon"><img src="images/logo/logo.svg" alt="Landing Digital"></div>
+      <div class="logo-icon"><img decoding="async" src="images/logo/logo.svg" alt="Landing Digital"></div>
       <div class="logo-text">
         <span class="marca">Landing Digital</span>
         <span class="tag">Diseño Web &middot; Conversion</span>
@@ -2029,11 +2208,12 @@ section{padding:64px 0;position:relative;}
       <li><a href="#inicio">Inicio</a></li>
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#portafolio">Portafolio</a></li>
+      <li><a href="#panel">Panel</a></li>
       <li><a href="#equipo">Equipo</a></li>
       <li><a href="#precios">Precios</a></li>
       <li><a href="#contacto" class="btn-nav"><i class="fas fa-paper-plane"></i> Cotizar</a></li>
     </ul>
-    <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks"><i class="fas fa-bars" aria-hidden="true"></i></button>
   </div>
 </nav>
 
@@ -2115,12 +2295,12 @@ section{padding:64px 0;position:relative;}
 
             <!-- Pantalla: screenshots reales rotando -->
             <div class="browser-screen browser-shots" id="browserShots">
-              <img class="bshot is-active" src="images/portafolio/menvi.jpg" data-dom="menvieyewear.vercel.app" alt="Landing de MENVI Eyewear">
-              <img class="bshot" src="images/portafolio/visa.jpg" data-dom="visayaventura.pages.dev" alt="Landing de Visa & Aventura">
-              <img class="bshot" src="images/portafolio/ea.jpg" data-dom="eacapital.pages.dev" alt="Landing de EA Capital">
-              <img class="bshot" src="images/portafolio/unicambio.jpg" data-dom="unicambio.vercel.app" alt="Landing de Unicambio">
-              <img class="bshot" src="images/portafolio/aether.jpg" data-dom="aethersls.com" alt="Landing de Aether Solutions">
-              <img class="bshot" src="images/portafolio/camilo.jpg" data-dom="camilo-psicologia.vercel.app" alt="Landing de Camilo Pinilla">
+              <img decoding="async" fetchpriority="high" width="1263" height="800" class="bshot is-active" src="images/portafolio/menvi.jpg" data-dom="menvieyewear.vercel.app" alt="Landing de MENVI Eyewear">
+              <img decoding="async" loading="lazy" width="1263" height="800" class="bshot" src="images/portafolio/visa.jpg" data-dom="visayaventura.pages.dev" alt="Landing de Visa & Aventura">
+              <img decoding="async" loading="lazy" width="1263" height="800" class="bshot" src="images/portafolio/ea.jpg" data-dom="eacapital.pages.dev" alt="Landing de EA Capital">
+              <img decoding="async" loading="lazy" width="1263" height="800" class="bshot" src="images/portafolio/unicambio.jpg" data-dom="unicambio.vercel.app" alt="Landing de Unicambio">
+              <img decoding="async" loading="lazy" width="1263" height="800" class="bshot" src="images/portafolio/aether.jpg" data-dom="aethersls.com" alt="Landing de Aether Solutions">
+              <img decoding="async" loading="lazy" width="1263" height="800" class="bshot" src="images/portafolio/camilo.jpg" data-dom="camilo-psicologia.vercel.app" alt="Landing de Camilo Pinilla">
               <div class="shot-dots" id="shotDots">
                 <button class="dot is-active" data-i="0" aria-label="Ver MENVI Eyewear"></button>
                 <button class="dot" data-i="1" aria-label="Ver Visa y Aventura"></button>
@@ -2178,12 +2358,12 @@ section{padding:64px 0;position:relative;}
           <div class="hero-phone">
             <div class="phone-frame">
               <div class="phone-screen-inner phone-shots" id="phoneShots">
-                <img class="pshot is-active" src="images/portafolio/m-menvi.jpg" alt="Version movil de MENVI">
-                <img class="pshot" src="images/portafolio/m-visa.jpg" alt="Version movil de Visa & Aventura">
-                <img class="pshot" src="images/portafolio/m-ea.jpg" alt="Version movil de EA Capital">
-                <img class="pshot" src="images/portafolio/m-unicambio.jpg" alt="Version movil de Unicambio">
-                <img class="pshot" src="images/portafolio/m-aether.jpg" alt="Version movil de Aether Solutions">
-                <img class="pshot" src="images/portafolio/m-camilo.jpg" alt="Version movil de Camilo Pinilla">
+                <img decoding="async" fetchpriority="high" width="373" height="844" class="pshot is-active" src="images/portafolio/m-menvi.jpg" alt="Version movil de MENVI">
+                <img decoding="async" loading="lazy" width="373" height="844" class="pshot" src="images/portafolio/m-visa.jpg" alt="Version movil de Visa & Aventura">
+                <img decoding="async" loading="lazy" width="373" height="844" class="pshot" src="images/portafolio/m-ea.jpg" alt="Version movil de EA Capital">
+                <img decoding="async" loading="lazy" width="373" height="844" class="pshot" src="images/portafolio/m-unicambio.jpg" alt="Version movil de Unicambio">
+                <img decoding="async" loading="lazy" width="373" height="844" class="pshot" src="images/portafolio/m-aether.jpg" alt="Version movil de Aether Solutions">
+                <img decoding="async" loading="lazy" width="373" height="844" class="pshot" src="images/portafolio/m-camilo.jpg" alt="Version movil de Camilo Pinilla">
               </div>
             </div>
           </div>
@@ -2305,6 +2485,24 @@ section{padding:64px 0;position:relative;}
         <p>Publicamos tu sitio, hacemos pruebas finales y te entregamos un producto listo para vender.</p>
       </div>
     </div>
+
+    <div class="proceso-video fade-in">
+      <div class="proceso-video-intro">
+        <h3>No te lo contamos, <span class="acento">te lo mostramos</span></h3>
+        <p>Mira en video como armamos una pagina de principio a fin, con un proyecto real. Asi sabes exactamente que va a pasar cuando nos escribas.</p>
+      </div>
+      <div class="video-marco" data-video="ZFdx62mAw1A">
+        <img src="images/video/proceso.jpg" width="1280" height="720" loading="lazy" decoding="async"
+             alt="Vista previa del video que explica el proceso de creacion de una pagina en Landing Digital">
+        <div class="velo"></div>
+        <button type="button" class="video-play" aria-label="Reproducir el video: asi es el proceso para crear tu pagina">
+          <span class="circulo"><i class="fas fa-play" aria-hidden="true"></i></span>
+        </button>
+        <div class="video-pie">
+          <span class="etiqueta"><i class="fas fa-circle-play" aria-hidden="true"></i> El proceso, paso a paso</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -2321,7 +2519,7 @@ section{padding:64px 0;position:relative;}
     <div class="portafolio-grid">
       <a href="https://menvieyewear.vercel.app" target="_blank" rel="noopener" class="proyecto fade-in">
         <div class="proyecto-img">
-          <img src="images/portafolio/menvi.jpg" alt="Home del sitio de MENVI Eyewear" loading="lazy">
+          <img decoding="async" width="1263" height="800" src="images/portafolio/menvi.jpg" alt="Home del sitio de MENVI Eyewear" loading="lazy">
         </div>
         <div class="proyecto-overlay">
           <span class="proyecto-ver">Ver proyecto <i class="fas fa-arrow-right"></i></span>
@@ -2334,7 +2532,7 @@ section{padding:64px 0;position:relative;}
       </a>
       <a href="https://visayaventura.pages.dev" target="_blank" rel="noopener" class="proyecto fade-in">
         <div class="proyecto-img">
-          <img src="images/portafolio/visa.jpg" alt="Home del sitio de Visa & Aventura" loading="lazy">
+          <img decoding="async" width="1263" height="800" src="images/portafolio/visa.jpg" alt="Home del sitio de Visa & Aventura" loading="lazy">
         </div>
         <div class="proyecto-overlay">
           <span class="proyecto-ver">Ver proyecto <i class="fas fa-arrow-right"></i></span>
@@ -2347,7 +2545,7 @@ section{padding:64px 0;position:relative;}
       </a>
       <a href="https://eacapital.pages.dev/" target="_blank" rel="noopener" class="proyecto fade-in">
         <div class="proyecto-img">
-          <img src="images/portafolio/ea.jpg" alt="Home del sitio de EA Capital" loading="lazy">
+          <img decoding="async" width="1263" height="800" src="images/portafolio/ea.jpg" alt="Home del sitio de EA Capital" loading="lazy">
         </div>
         <div class="proyecto-overlay">
           <span class="proyecto-ver">Ver proyecto <i class="fas fa-arrow-right"></i></span>
@@ -2360,7 +2558,7 @@ section{padding:64px 0;position:relative;}
       </a>
       <a href="https://unicambio.vercel.app" target="_blank" rel="noopener" class="proyecto fade-in">
         <div class="proyecto-img">
-          <img src="images/portafolio/unicambio.jpg" alt="Home del sitio de Unicambio" loading="lazy">
+          <img decoding="async" width="1263" height="800" src="images/portafolio/unicambio.jpg" alt="Home del sitio de Unicambio" loading="lazy">
         </div>
         <div class="proyecto-overlay">
           <span class="proyecto-ver">Ver proyecto <i class="fas fa-arrow-right"></i></span>
@@ -2373,7 +2571,7 @@ section{padding:64px 0;position:relative;}
       </a>
       <a href="https://www.aethersls.com" target="_blank" rel="noopener" class="proyecto fade-in">
         <div class="proyecto-img">
-          <img src="images/portafolio/aether.jpg" alt="Home del sitio de Aether Solutions" loading="lazy">
+          <img decoding="async" width="1263" height="800" src="images/portafolio/aether.jpg" alt="Home del sitio de Aether Solutions" loading="lazy">
         </div>
         <div class="proyecto-overlay">
           <span class="proyecto-ver">Ver proyecto <i class="fas fa-arrow-right"></i></span>
@@ -2386,7 +2584,7 @@ section{padding:64px 0;position:relative;}
       </a>
       <a href="https://camilo-psicologia.vercel.app" target="_blank" rel="noopener" class="proyecto fade-in">
         <div class="proyecto-img">
-          <img src="images/portafolio/camilo.jpg" alt="Home del sitio de Camilo Pinilla Psicología" loading="lazy">
+          <img decoding="async" width="1263" height="800" src="images/portafolio/camilo.jpg" alt="Home del sitio de Camilo Pinilla Psicología" loading="lazy">
         </div>
         <div class="proyecto-overlay">
           <span class="proyecto-ver">Ver proyecto <i class="fas fa-arrow-right"></i></span>
@@ -2397,6 +2595,69 @@ section{padding:64px 0;position:relative;}
           <span class="proyecto-tag" style="background:rgba(46,183,194,0.15);color:#67e8f0;">Marca Personal &middot; Salud</span>
         </div>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PANEL ADMINISTRADOR ========== -->
+<section class="panel-admin" id="panel">
+  <div class="aurora aurora-blue aurora-top-left aurora-anim"></div>
+  <div class="aurora aurora-cyan aurora-bottom aurora-anim" style="animation-delay:-4s;"></div>
+  <div class="contenedor">
+    <div class="section-header fade-in">
+      <span class="section-tag" data-num="04">Tu pagina, en tus manos</span>
+      <h2 class="section-titulo">Con <span class="acento">panel administrador</span></h2>
+      <p class="section-subtitulo">Si tu negocio cambia seguido de productos, precios o promociones, te montamos un panel para que lo edites tu mismo, sin depender de nosotros ni pagar por cada ajuste.</p>
+    </div>
+
+    <div class="panel-grid">
+      <div class="panel-texto fade-in">
+        <h2>Cambia tu pagina sin saber programar</h2>
+        <p>Entras con tu usuario y tu clave desde el celular o el computador, editas lo que necesites y los cambios quedan publicados al instante.</p>
+
+        <div class="panel-lista">
+          <div class="panel-item">
+            <div class="ico"><i class="fas fa-box-open" aria-hidden="true"></i></div>
+            <div>
+              <h4>Productos y precios</h4>
+              <p>Agrega, edita o quita productos y actualiza precios cuando quieras, sin llamar a nadie.</p>
+            </div>
+          </div>
+          <div class="panel-item">
+            <div class="ico"><i class="fas fa-images" aria-hidden="true"></i></div>
+            <div>
+              <h4>Fotos y textos</h4>
+              <p>Cambia las imagenes, los titulos y las descripciones desde el mismo panel.</p>
+            </div>
+          </div>
+          <div class="panel-item">
+            <div class="ico"><i class="fas fa-mobile-screen" aria-hidden="true"></i></div>
+            <div>
+              <h4>Desde donde estes</h4>
+              <p>El panel funciona en el celular, asi que puedes actualizar tu sitio desde el mostrador.</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="panel-nota">
+          <i class="fas fa-circle-info" aria-hidden="true"></i>
+          <span>El panel no viene en el Plan Principiante: se cotiza aparte segun lo que necesites administrar. Escribenos y te decimos con honestidad si tu negocio de verdad lo necesita o no.</span>
+        </p>
+      </div>
+
+      <div class="panel-video fade-in">
+        <div class="video-marco" data-video="Ak7nj9rUbq0">
+          <img src="images/video/panel.jpg" width="1280" height="720" loading="lazy" decoding="async"
+               alt="Vista previa del video que muestra el panel administrador funcionando">
+          <div class="velo"></div>
+          <button type="button" class="video-play" aria-label="Reproducir el video: asi funciona el panel administrador">
+            <span class="circulo"><i class="fas fa-play" aria-hidden="true"></i></span>
+          </button>
+          <div class="video-pie">
+            <span class="etiqueta"><i class="fas fa-desktop" aria-hidden="true"></i> El panel funcionando, en vivo</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -2415,7 +2676,7 @@ section{padding:64px 0;position:relative;}
   <div class="aurora aurora-blue aurora-top-right aurora-anim" style="animation-delay:-9s;"></div>
   <div class="contenedor">
     <div class="section-header fade-in">
-      <span class="section-tag" data-num="04">Quienes somos</span>
+      <span class="section-tag" data-num="05">Quienes somos</span>
       <h2 class="section-titulo">Conoce a <span class="acento">nuestro equipo</span></h2>
       <p class="section-subtitulo">Somos un equipo pequeño, y por eso cuidamos cada proyecto como si fuera nuestro. Cuando nos escribes, hablas directo con la persona que va a diseñar y construir tu pagina, no con un bot ni un call center.</p>
     </div>
@@ -2423,7 +2684,7 @@ section{padding:64px 0;position:relative;}
       <!-- JAIME - CEO -->
       <div class="miembro fade-in">
         <div class="miembro-foto solo foto-jaime">
-          <img class="solo-img" src="images/equipo/JAIME.jpg" alt="Jaime - CEO">
+          <img decoding="async" width="1030" height="1527" class="solo-img" src="images/equipo/JAIME.jpg" alt="Jaime - CEO">
         </div>
         <div class="miembro-info">
           <h3>Jaime</h3>
@@ -2434,7 +2695,7 @@ section{padding:64px 0;position:relative;}
       <!-- DAVID - DISEÑADOR -->
       <div class="miembro fade-in">
         <div class="miembro-foto solo foto-david">
-          <img class="solo-img" src="images/equipo/DAVID.jpg" alt="David - Diseñador">
+          <img decoding="async" width="606" height="1254" class="solo-img" src="images/equipo/DAVID.jpg" alt="David - Diseñador">
         </div>
         <div class="miembro-info">
           <h3>David</h3>
@@ -2445,7 +2706,7 @@ section{padding:64px 0;position:relative;}
       <!-- DIEGO - DESARROLLADOR -->
       <div class="miembro fade-in">
         <div class="miembro-foto solo foto-diego">
-          <img class="solo-img" src="images/equipo/DIEGO.jpg" alt="Diego - Desarrollador">
+          <img decoding="async" width="616" height="1254" class="solo-img" src="images/equipo/DIEGO.jpg" alt="Diego - Desarrollador">
         </div>
         <div class="miembro-info">
           <h3>Diego</h3>
@@ -2456,7 +2717,7 @@ section{padding:64px 0;position:relative;}
       <!-- NICOLAS - DESARROLLADOR -->
       <div class="miembro fade-in">
         <div class="miembro-foto solo foto-nicolas">
-          <img class="solo-img" src="images/equipo/NICOLAS.webp" alt="Nicolas - Desarrollador">
+          <img decoding="async" width="792" height="791" class="solo-img" src="images/equipo/NICOLAS.webp" alt="Nicolas - Desarrollador">
         </div>
         <div class="miembro-info">
           <h3>Nicolas</h3>
@@ -2479,7 +2740,7 @@ section{padding:64px 0;position:relative;}
   <div class="aurora aurora-blue aurora-bottom aurora-anim" style="animation-delay:-3s;"></div>
   <div class="contenedor">
     <div class="section-header fade-in">
-      <span class="section-tag" data-num="05">Testimonios</span>
+      <span class="section-tag" data-num="06">Testimonios</span>
       <h2 class="section-titulo">Lo que dicen <span class="acento">nuestros clientes</span></h2>
     </div>
     <div class="testimonios-grid">
@@ -2539,7 +2800,7 @@ section{padding:64px 0;position:relative;}
   <div class="aurora aurora-cyan aurora-bottom aurora-anim" style="animation-delay:-6s;"></div>
   <div class="contenedor">
     <div class="section-header fade-in">
-      <span class="section-tag" data-num="06">Plan de lanzamiento</span>
+      <span class="section-tag" data-num="07">Plan de lanzamiento</span>
       <h2 class="section-titulo">Comienza con <span class="acento">precio justo</span></h2>
       <p class="section-subtitulo">Un plan accesible y completo para que tengas tu landing page profesional sin pagar de mas. Sin sorpresas, sin letra chica.</p>
     </div>
@@ -2598,52 +2859,52 @@ section{padding:64px 0;position:relative;}
 <section class="faq">
   <div class="contenedor">
     <div class="section-header fade-in">
-      <span class="section-tag" data-num="07">Preguntas frecuentes</span>
+      <span class="section-tag" data-num="08">Preguntas frecuentes</span>
       <h2 class="section-titulo">Resolvemos tus <span class="acento">dudas</span></h2>
     </div>
     <div class="faq-lista">
       <div class="faq-item fade-in">
-        <div class="faq-pregunta">
-          Cuanto tiempo toma desarrollar una landing page?
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-respuesta">
+        <button type="button" class="faq-pregunta" id="faq1-btn" aria-expanded="false" aria-controls="faq1">
+          <span>Cuanto tiempo toma desarrollar una landing page?</span>
+          <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </button>
+        <div class="faq-respuesta" id="faq1" role="region" aria-labelledby="faq1-btn">
           <div class="faq-respuesta-inner">En 24 horas ya tienes un borrador para ver, y la entrega final queda en 5 a 7 dias habiles desde que tenemos tu informacion y tus textos. Si el proyecto es mas grande, te decimos el tiempo real y honesto antes de empezar, nunca despues.</div>
         </div>
       </div>
       <div class="faq-item fade-in">
-        <div class="faq-pregunta">
-          Que incluye exactamente el plan?
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-respuesta">
+        <button type="button" class="faq-pregunta" id="faq2-btn" aria-expanded="false" aria-controls="faq2">
+          <span>Que incluye exactamente el plan?</span>
+          <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </button>
+        <div class="faq-respuesta" id="faq2" role="region" aria-labelledby="faq2-btn">
           <div class="faq-respuesta-inner">Diseño, desarrollo, optimizacion y entrega de tu landing completa, mas una ronda de cambios gratis. Puedes ver todo lo que incluye en la seccion de precios, y si te queda alguna duda nos escribes por WhatsApp y te contamos sin compromiso.</div>
         </div>
       </div>
       <div class="faq-item fade-in">
-        <div class="faq-pregunta">
-          Atienden en toda Colombia?
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-respuesta">
+        <button type="button" class="faq-pregunta" id="faq3-btn" aria-expanded="false" aria-controls="faq3">
+          <span>Atienden en toda Colombia?</span>
+          <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </button>
+        <div class="faq-respuesta" id="faq3" role="region" aria-labelledby="faq3-btn">
           <div class="faq-respuesta-inner">Si. Trabajamos con personas y negocios de toda Colombia y de otros paises de habla hispana. Todo lo coordinamos por WhatsApp y videollamada, asi que no importa en que ciudad estes para tener tu landing lista.</div>
         </div>
       </div>
       <div class="faq-item fade-in">
-        <div class="faq-pregunta">
-          Ofrecen mantenimiento despues de la entrega?
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-respuesta">
+        <button type="button" class="faq-pregunta" id="faq4-btn" aria-expanded="false" aria-controls="faq4">
+          <span>Ofrecen mantenimiento despues de la entrega?</span>
+          <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </button>
+        <div class="faq-respuesta" id="faq4" role="region" aria-labelledby="faq4-btn">
           <div class="faq-respuesta-inner">Claro que si. Tu proyecto incluye soporte por WhatsApp durante todo el proceso y el primer cambio va gratis. Despues, si necesitas un ajuste puntual son $50.000, y si prefieres tenernos siempre a la mano el plan mensual es de $100.000. Sin paquetes obligatorios: eliges el que te sirva.</div>
         </div>
       </div>
       <div class="faq-item fade-in">
-        <div class="faq-pregunta">
-          Que metodos de pago aceptan?
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-respuesta">
+        <button type="button" class="faq-pregunta" id="faq5-btn" aria-expanded="false" aria-controls="faq5">
+          <span>Que metodos de pago aceptan?</span>
+          <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </button>
+        <div class="faq-respuesta" id="faq5" role="region" aria-labelledby="faq5-btn">
           <div class="faq-respuesta-inner">Aceptamos Nequi, Daviplata, Bancolombia, transferencia y tarjeta. No pagas nada hasta ver tu borrador: si te gusta, pagas el 50% y el resto al entregar. Asi ambos vamos tranquilos.</div>
         </div>
       </div>
@@ -2707,7 +2968,7 @@ section{padding:64px 0;position:relative;}
     <div class="footer-grid">
       <div class="footer-marca">
         <a href="#inicio" class="logo">
-          <div class="logo-icon"><img src="images/logo/logo.svg" alt="Landing Digital"></div>
+          <div class="logo-icon"><img decoding="async" src="images/logo/logo.svg" alt="Landing Digital"></div>
           <div class="logo-text">
             <span class="marca">Landing Digital</span>
             <span class="tag">Diseño Web &middot; Conversion</span>
@@ -2760,25 +3021,57 @@ section{padding:64px 0;position:relative;}
 // Menu movil
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.getElementById('navLinks');
-menuToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('abierto');
+function pintarMenu(abierto){
+  navLinks.classList.toggle('abierto', abierto);
+  menuToggle.setAttribute('aria-expanded', String(abierto));
+  menuToggle.setAttribute('aria-label', abierto ? 'Cerrar menu' : 'Abrir menu');
   const icon = menuToggle.querySelector('i');
-  icon.classList.toggle('fa-bars');
-  icon.classList.toggle('fa-times');
+  icon.classList.toggle('fa-bars', !abierto);
+  icon.classList.toggle('fa-times', abierto);
+}
+menuToggle.addEventListener('click', () => {
+  pintarMenu(!navLinks.classList.contains('abierto'));
 });
 document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('abierto');
-    menuToggle.querySelector('i').classList.remove('fa-times');
-    menuToggle.querySelector('i').classList.add('fa-bars');
+  link.addEventListener('click', () => pintarMenu(false));
+});
+// Escape cierra el menu, como en cualquier menu del sistema
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && navLinks.classList.contains('abierto')) {
+    pintarMenu(false);
+    menuToggle.focus();
+  }
+});
+
+// FAQ accordion. Las preguntas son <button> con aria-expanded, y la altura
+// se calcula desde el contenido real para que ninguna respuesta larga se corte.
+document.querySelectorAll('.faq-pregunta').forEach(boton => {
+  boton.addEventListener('click', () => {
+    const item = boton.parentElement;
+    const panel = item.querySelector('.faq-respuesta');
+    const abrir = !item.classList.contains('activa');
+    item.classList.toggle('activa', abrir);
+    boton.setAttribute('aria-expanded', String(abrir));
+    panel.style.maxHeight = abrir ? panel.scrollHeight + 'px' : '';
   });
 });
 
-// FAQ accordion
-document.querySelectorAll('.faq-pregunta').forEach(p => {
-  p.addEventListener('click', () => {
-    const item = p.parentElement;
-    item.classList.toggle('activa');
+// Video: fachada. El iframe de YouTube solo se crea al pulsar play, asi la
+// pagina no arrastra el JS ni las cookies de YouTube en la carga inicial.
+document.querySelectorAll('.video-marco').forEach(marco => {
+  const boton = marco.querySelector('.video-play');
+  if (!boton) return;
+  boton.addEventListener('click', () => {
+    const id = marco.dataset.video;
+    if (!id) return;
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
+    iframe.title = boton.getAttribute('aria-label') || 'Video de Landing Digital';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.allowFullscreen = true;
+    marco.innerHTML = '';
+    marco.appendChild(iframe);
+    iframe.focus();
   });
 });
 
