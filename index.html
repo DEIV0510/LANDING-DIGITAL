@@ -1217,12 +1217,29 @@ section{padding:64px 0;position:relative;}
   width:min(760px,90%);height:1px;
   background:linear-gradient(90deg,transparent,rgba(0,170,255,0.9),transparent);
 }
+/* Dos filas: los titulos van todos en la primera y los videos en la segunda,
+   asi los reproductores quedan alineados aunque un texto ocupe mas lineas
+   que el otro. Las tarjetas usan display:contents para que sus hijos caigan
+   directo en la rejilla del padre; la posicion se asigna a mano porque el
+   auto-placement los repartiria por documento (titulo y video en la misma
+   fila) en vez de por columna. */
 .videos-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:34px;
-  margin-top:8px;
+  display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;
+  column-gap:34px;row-gap:18px;
+  margin-top:8px;align-items:end;
 }
-.video-tarjeta{display:flex;flex-direction:column;gap:16px;}
-.video-tarjeta-info{padding:0 4px;}
+.video-tarjeta{display:contents;}
+.video-tarjeta:nth-of-type(1) .video-tarjeta-info{grid-column:1;grid-row:1;}
+.video-tarjeta:nth-of-type(1) .video-marco{grid-column:1;grid-row:2;}
+.video-tarjeta:nth-of-type(2) .video-tarjeta-info{grid-column:2;grid-row:1;}
+.video-tarjeta:nth-of-type(2) .video-marco{grid-column:2;grid-row:2;}
+.video-tarjeta-info{padding:0 4px;align-self:end;}
+/* .fade-in pone transition:all 0.8s, que volveria lentisimo el hover del
+   marco; se reescribe para que solo la entrada dure 0.8s. */
+.video-marco.fade-in{
+  transition:opacity 0.8s ease,transform 0.8s ease,
+             border-color 0.35s ease,box-shadow 0.35s ease;
+}
 .video-tarjeta-info h3{
   font-size:1.3rem;margin-bottom:7px;display:flex;align-items:center;gap:10px;
 }
@@ -1879,7 +1896,11 @@ a,button,.faq-pregunta,.dot,.video-play{touch-action:manipulation;}
   .divisor-zebra{height:18px;}
 
   /* Videos y panel administrador en movil */
-  .videos-grid{grid-template-columns:1fr;gap:26px;}
+  /* Una columna: se suelta la posicion fija y cada par titulo+video
+     cae en el orden del documento. */
+  .videos-grid{grid-template-columns:1fr;gap:10px 0;}
+  .video-tarjeta > *{grid-column:1 !important;grid-row:auto !important;}
+  .video-tarjeta:nth-of-type(2) .video-tarjeta-info{margin-top:20px;}
   .video-tarjeta-info h3{font-size:1.05rem;gap:8px;}
   .video-tarjeta-info h3 .num{width:24px;height:24px;font-size:0.7rem;}
   .video-tarjeta-info p{font-size:0.85rem;}
@@ -2472,8 +2493,12 @@ a,button,.faq-pregunta,.dot,.video-play{touch-action:manipulation;}
     </div>
 
     <div class="videos-grid">
-      <div class="video-tarjeta fade-in">
-        <div class="video-marco" data-video="ZFdx62mAw1A">
+      <div class="video-tarjeta">
+        <div class="video-tarjeta-info fade-in">
+          <h3><span class="num">01</span> Como creamos tu pagina</h3>
+          <p>Todo el proceso con un proyecto real, desde la primera conversacion hasta el sitio publicado. Asi sabes exactamente que va a pasar cuando nos escribas.</p>
+        </div>
+        <div class="video-marco fade-in" data-video="ZFdx62mAw1A">
           <img src="images/video/proceso-portada.jpg" width="1280" height="720" decoding="async"
                alt="Portada del video: como creamos tu pagina, el proceso paso a paso">
           <div class="velo"></div>
@@ -2484,14 +2509,14 @@ a,button,.faq-pregunta,.dot,.video-play{touch-action:manipulation;}
             <span class="etiqueta"><i class="fas fa-circle-play" aria-hidden="true"></i> El proceso, paso a paso</span>
           </div>
         </div>
-        <div class="video-tarjeta-info">
-          <h3><span class="num">01</span> Como creamos tu pagina</h3>
-          <p>Todo el proceso con un proyecto real, desde la primera conversacion hasta el sitio publicado. Asi sabes exactamente que va a pasar cuando nos escribas.</p>
-        </div>
       </div>
 
-      <div class="video-tarjeta fade-in">
-        <div class="video-marco" data-video="Ak7nj9rUbq0">
+      <div class="video-tarjeta">
+        <div class="video-tarjeta-info fade-in">
+          <h3><span class="num">02</span> El panel administrador</h3>
+          <p>Si tu negocio cambia seguido de productos o precios, mira como los editarias tu mismo desde el celular, sin depender de nosotros.</p>
+        </div>
+        <div class="video-marco fade-in" data-video="Ak7nj9rUbq0">
           <img src="images/video/panel-portada.jpg" width="1280" height="720" decoding="async"
                alt="Portada del video: editalo tu mismo con el panel administrador, sin programar">
           <div class="velo"></div>
@@ -2501,10 +2526,6 @@ a,button,.faq-pregunta,.dot,.video-play{touch-action:manipulation;}
           <div class="video-pie">
             <span class="etiqueta"><i class="fas fa-desktop" aria-hidden="true"></i> El panel funcionando, en vivo</span>
           </div>
-        </div>
-        <div class="video-tarjeta-info">
-          <h3><span class="num">02</span> El panel administrador</h3>
-          <p>Si tu negocio cambia seguido de productos o precios, mira como los editarias tu mismo desde el celular, sin depender de nosotros.</p>
         </div>
       </div>
     </div>
