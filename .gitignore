@@ -6,3 +6,7 @@
 Thumbs.db
 desktop.ini
 .vercel
+
+# Claves del asistente virtual (nunca subir la clave real)
+.env
+.env.local

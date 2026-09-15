@@ -2260,6 +2260,86 @@ a,button,.faq-pregunta,.dot,.video-play{touch-action:manipulation;}
   .loader-halo-1{width:280px;height:280px;}
   .loader-halo-2{width:380px;height:380px;}
 }
+
+/* ===== ASISTENTE VIRTUAL (CHAT IA) ===== */
+.ld-chat{position:fixed;left:24px;bottom:24px;z-index:999;font-family:'Inter',sans-serif;}
+.ld-chat-fab{
+  width:62px;height:62px;border-radius:50%;border:none;cursor:pointer;
+  background:var(--gradiente-electrico);color:#fff;font-size:1.4rem;
+  display:flex;align-items:center;justify-content:center;position:relative;
+  box-shadow:0 10px 30px rgba(0,102,255,0.5);
+  transition:transform 0.3s ease,box-shadow 0.3s ease,background 0.3s ease;
+}
+.ld-chat-fab:hover{transform:scale(1.08);box-shadow:0 10px 40px rgba(0,102,255,0.75),0 0 0 12px rgba(0,102,255,0.12);}
+.ld-chat-fab:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+.ld-chat-fab-dot{position:absolute;top:5px;right:5px;width:12px;height:12px;border-radius:50%;background:#2ee66b;border:2px solid var(--negro);}
+.ld-chat.activo .ld-chat-fab{background:var(--negro-card);border:1px solid var(--gris-borde);}
+
+.ld-chat-panel{
+  position:fixed;left:24px;bottom:100px;width:380px;max-width:calc(100vw - 40px);
+  height:min(600px,calc(100vh - 140px));
+  background:var(--negro-card);border:1px solid var(--gris-borde);border-radius:22px;
+  box-shadow:var(--shadow-card);
+  display:flex;flex-direction:column;overflow:hidden;
+  opacity:0;transform:translateY(16px) scale(0.97);pointer-events:none;
+  transition:opacity 0.3s ease,transform 0.3s ease;
+}
+.ld-chat.activo .ld-chat-panel{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
+
+.ld-chat-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;border-bottom:1px solid var(--gris-borde);background:linear-gradient(135deg,rgba(0,102,255,0.12),rgba(0,170,255,0.04));}
+.ld-chat-header-info{display:flex;align-items:center;gap:12px;}
+.ld-chat-avatar{width:38px;height:38px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:6px;}
+.ld-chat-header h3{font-size:0.95rem;color:#fff;margin:0;font-family:'Inter';}
+.ld-chat-status{display:flex;align-items:center;gap:6px;font-size:0.72rem;color:var(--texto-suave);margin-top:2px;}
+.ld-chat-status .dot{width:7px;height:7px;border-radius:50%;background:#2ee66b;box-shadow:0 0 8px #2ee66b;}
+.ld-chat-cerrar{background:none;border:none;color:var(--texto-suave);font-size:1.05rem;cursor:pointer;padding:6px;border-radius:8px;transition:color 0.2s,background 0.2s;}
+.ld-chat-cerrar:hover{color:#fff;background:rgba(255,255,255,0.06);}
+
+.ld-chat-mensajes{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px;scrollbar-width:thin;scrollbar-color:#0066ff transparent;}
+.ld-msg{max-width:85%;padding:11px 14px;border-radius:16px;font-size:0.87rem;line-height:1.5;white-space:pre-line;animation:ldMsgIn 0.3s ease;}
+@keyframes ldMsgIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.ld-msg-bot{align-self:flex-start;background:var(--negro-suave);border:1px solid var(--gris-borde);color:var(--texto);border-bottom-left-radius:4px;}
+.ld-msg-user{align-self:flex-end;background:var(--gradiente-electrico);color:#fff;border-bottom-right-radius:4px;}
+.ld-msg-error{align-self:flex-start;background:rgba(255,80,80,0.08);border:1px solid rgba(255,80,80,0.35);color:#ffb4b4;}
+.ld-msg-error a{color:#ffb4b4;font-weight:700;}
+
+.ld-typing{align-self:flex-start;display:flex;gap:4px;padding:13px 16px;background:var(--negro-suave);border:1px solid var(--gris-borde);border-radius:16px;border-bottom-left-radius:4px;}
+.ld-typing span{width:6px;height:6px;border-radius:50%;background:var(--azul-electrico);animation:ldBlink 1.2s ease-in-out infinite;}
+.ld-typing span:nth-child(2){animation-delay:0.2s;}
+.ld-typing span:nth-child(3){animation-delay:0.4s;}
+@keyframes ldBlink{0%,80%,100%{opacity:0.25;}40%{opacity:1;}}
+
+.ld-resumen{align-self:stretch;background:linear-gradient(135deg,rgba(0,102,255,0.1),rgba(0,170,255,0.04));border:1px solid rgba(0,170,255,0.35);border-radius:16px;padding:16px;font-size:0.84rem;}
+.ld-resumen h4{color:#fff;font-size:0.85rem;margin-bottom:10px;display:flex;align-items:center;gap:8px;font-family:'Inter';}
+.ld-resumen dl{display:grid;grid-template-columns:auto 1fr;gap:5px 10px;margin-bottom:14px;}
+.ld-resumen dt{color:var(--texto-suave);font-weight:600;}
+.ld-resumen dd{color:var(--texto);}
+.ld-resumen-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:#25D366;color:#fff;border:none;border-radius:12px;padding:11px;font-weight:700;font-size:0.85rem;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.2s;}
+.ld-resumen-cta:hover{background:#1ebe5a;transform:translateY(-2px);}
+
+.ld-chat-rapidas{display:flex;flex-wrap:wrap;gap:8px;padding:0 18px 12px;}
+.ld-chat-rapidas[hidden]{display:none;}
+.ld-chat-chip{background:rgba(0,170,255,0.08);border:1px solid rgba(0,170,255,0.3);color:#9fd6ff;padding:7px 13px;border-radius:50px;font-size:0.76rem;cursor:pointer;transition:background 0.2s,transform 0.2s;white-space:nowrap;font-family:'Inter';}
+.ld-chat-chip:hover{background:rgba(0,170,255,0.18);transform:translateY(-1px);}
+
+.ld-chat-form{display:flex;gap:8px;padding:12px 14px;border-top:1px solid var(--gris-borde);}
+.ld-chat-form input{flex:1;background:var(--negro-suave);border:1px solid var(--gris-borde);border-radius:50px;padding:11px 16px;color:#fff;font-family:'Inter';font-size:0.85rem;min-width:0;}
+.ld-chat-form input:focus{outline:none;border-color:var(--azul-electrico);}
+.ld-chat-form input::placeholder{color:#6b6b7a;}
+.ld-chat-form button{width:42px;height:42px;border-radius:50%;border:none;background:var(--azul-electrico);color:#000;flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform 0.2s,background 0.2s;}
+.ld-chat-form button:hover{background:#5fc4ff;transform:scale(1.06);}
+.ld-chat-form button:disabled{opacity:0.4;cursor:default;transform:none;}
+.ld-chat-nota{font-size:0.66rem;color:#6b6b7a;text-align:center;padding:0 14px 12px;}
+.ld-chat-nota a{color:var(--azul-electrico);}
+
+@media(max-width:480px){
+  .ld-chat{left:16px;bottom:16px;}
+  .ld-chat-fab{width:54px;height:54px;font-size:1.2rem;}
+  .ld-chat-panel{left:16px;right:16px;width:auto;bottom:86px;height:min(72vh,600px);}
+}
+@media(prefers-reduced-motion:reduce){
+  .ld-chat-fab,.ld-chat-panel,.ld-msg,.ld-resumen-cta,.ld-chat-chip,.ld-chat-form button{transition:none;animation:none;}
+}
 </style>
 </head>
 <body>
@@ -3225,6 +3305,43 @@ window.addEventListener('scroll', () => {
   <i class="fab fa-whatsapp"></i>
 </a>
 
+<!-- ========== ASISTENTE VIRTUAL (IA) ========== -->
+<div class="ld-chat" id="ldChat">
+  <button type="button" class="ld-chat-fab" id="ldChatFab" aria-haspopup="dialog" aria-expanded="false" aria-controls="ldChatPanel" aria-label="Abrir el asistente virtual de Landing Digital">
+    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+    <span class="ld-chat-fab-dot"></span>
+  </button>
+
+  <section class="ld-chat-panel" id="ldChatPanel" role="dialog" aria-modal="false" aria-labelledby="ldChatTitulo" hidden>
+    <header class="ld-chat-header">
+      <div class="ld-chat-header-info">
+        <div class="ld-chat-avatar"><img src="images/logo/logo.svg" alt="" width="28" height="28"></div>
+        <div>
+          <h3 id="ldChatTitulo">Asistente Landing Digital</h3>
+          <span class="ld-chat-status"><span class="dot"></span> Responde al instante</span>
+        </div>
+      </div>
+      <button type="button" class="ld-chat-cerrar" id="ldChatCerrar" aria-label="Cerrar el asistente">
+        <i class="fas fa-xmark" aria-hidden="true"></i>
+      </button>
+    </header>
+
+    <div class="ld-chat-mensajes" id="ldChatMensajes" role="log" aria-live="polite" aria-label="Conversacion con el asistente"></div>
+
+    <div class="ld-chat-rapidas" id="ldChatRapidas">
+      <button type="button" class="ld-chat-chip">Quiero crear una pagina web</button>
+      <button type="button" class="ld-chat-chip">¿Cuanto cuesta una landing?</button>
+      <button type="button" class="ld-chat-chip">¿Como es el proceso?</button>
+    </div>
+
+    <form class="ld-chat-form" id="ldChatForm">
+      <input type="text" id="ldChatInput" maxlength="800" placeholder="Escribe tu mensaje..." aria-label="Tu mensaje" autocomplete="off">
+      <button type="submit" aria-label="Enviar mensaje"><i class="fas fa-paper-plane" aria-hidden="true"></i></button>
+    </form>
+    <p class="ld-chat-nota">Asistente con IA · Puede cometer errores · <a href="https://wa.me/573207519371" target="_blank" rel="noopener">Escribir por WhatsApp</a></p>
+  </section>
+</div>
+
 <!-- ===== EFECTOS GLOBALES PREMIUM ===== -->
 <script>
 /* Barra de progreso de scroll */
@@ -3435,6 +3552,189 @@ window.addEventListener('scroll', () => {
     msg+='\nMe gustaria que me ayuden con mi landing page.';
     window.open('https://wa.me/573207519371?text='+encodeURIComponent(msg),'_blank');
   });
+})();
+</script>
+
+<!-- SCRIPT: asistente virtual (IA) -->
+<script>
+(function(){
+  const raiz=document.getElementById('ldChat');
+  if(!raiz)return;
+  const fab=document.getElementById('ldChatFab');
+  const panel=document.getElementById('ldChatPanel');
+  const cerrarBtn=document.getElementById('ldChatCerrar');
+  const lista=document.getElementById('ldChatMensajes');
+  const rapidas=document.getElementById('ldChatRapidas');
+  const form=document.getElementById('ldChatForm');
+  const input=document.getElementById('ldChatInput');
+  const enviarBtn=form.querySelector('button');
+
+  // Reutiliza el numero real del boton flotante de WhatsApp que ya existe
+  // en la pagina, para no repetir el numero en un segundo lugar del codigo.
+  const waHref=(document.querySelector('.btn-whatsapp-flotante')||{}).href||'https://wa.me/573207519371';
+  const waBase=waHref.split('?')[0];
+
+  const CLAVE_HISTORIAL='ldChatHistorial';
+  let historial=[];
+  try{
+    const guardado=sessionStorage.getItem(CLAVE_HISTORIAL);
+    if(guardado)historial=JSON.parse(guardado);
+  }catch(e){historial=[];}
+
+  function guardarHistorial(){
+    try{sessionStorage.setItem(CLAVE_HISTORIAL,JSON.stringify(historial.slice(-16)));}catch(e){}
+  }
+
+  function burbuja(texto,clase){
+    const div=document.createElement('div');
+    div.className='ld-msg '+clase;
+    div.textContent=texto;
+    lista.appendChild(div);
+    lista.scrollTop=lista.scrollHeight;
+    return div;
+  }
+
+  function mostrarTyping(){
+    const div=document.createElement('div');
+    div.className='ld-typing';
+    div.id='ldTyping';
+    div.setAttribute('aria-label','Escribiendo...');
+    div.innerHTML='<span></span><span></span><span></span>';
+    lista.appendChild(div);
+    lista.scrollTop=lista.scrollHeight;
+  }
+  function quitarTyping(){
+    const t=document.getElementById('ldTyping');
+    if(t)t.remove();
+  }
+
+  function tarjetaResumen(resumen){
+    const box=document.createElement('div');
+    box.className='ld-resumen';
+    const campos=[
+      ['Negocio',resumen.negocio],
+      ['Actividad',resumen.actividad],
+      ['Objetivo',resumen.objetivo],
+      ['Tipo de pagina',resumen.tipo_pagina_sugerido],
+      ['Funcionalidades',Array.isArray(resumen.funcionalidades)?resumen.funcionalidades.join(', '):resumen.funcionalidades],
+      ['Notas',resumen.notas],
+    ].filter(function(par){return par[1];});
+
+    const titulo=document.createElement('h4');
+    titulo.innerHTML='<i class="fas fa-clipboard-check" aria-hidden="true"></i> Resumen de tu proyecto';
+    box.appendChild(titulo);
+
+    const dl=document.createElement('dl');
+    campos.forEach(function(par){
+      const dt=document.createElement('dt');dt.textContent=par[0]+':';
+      const dd=document.createElement('dd');dd.textContent=par[1];
+      dl.appendChild(dt);dl.appendChild(dd);
+    });
+    box.appendChild(dl);
+
+    let msg='Hola Landing Digital! 👋 Vengo del asistente virtual.\n\n';
+    campos.forEach(function(par){msg+=par[0]+': '+par[1]+'\n';});
+    msg+='\nMe gustaria continuar con mi landing page.';
+
+    const cta=document.createElement('a');
+    cta.className='ld-resumen-cta';
+    cta.href=waBase+'?text='+encodeURIComponent(msg);
+    cta.target='_blank';
+    cta.rel='noopener';
+    cta.innerHTML='<i class="fab fa-whatsapp" aria-hidden="true"></i> Continuar por WhatsApp';
+    box.appendChild(cta);
+
+    lista.appendChild(box);
+    lista.scrollTop=lista.scrollHeight;
+  }
+
+  function mensajeError(){
+    const div=burbuja('','ld-msg-error');
+    div.textContent='Tuve un problema para responder. Puedes intentar de nuevo o ';
+    const a=document.createElement('a');
+    a.href=waBase+'?text='+encodeURIComponent('Hola Landing Digital! Intente escribirle al asistente virtual pero tuvo un problema, quiero conversar directo.');
+    a.target='_blank';a.rel='noopener';
+    a.textContent='escribirnos directo por WhatsApp';
+    div.appendChild(a);
+    div.appendChild(document.createTextNode('.'));
+  }
+
+  async function enviar(texto){
+    rapidas.hidden=true;
+    burbuja(texto,'ld-msg-user');
+    historial.push({role:'user',content:texto});
+    guardarHistorial();
+    input.value='';
+    input.disabled=true;enviarBtn.disabled=true;
+    mostrarTyping();
+    try{
+      const resp=await fetch('/api/chat',{
+        method:'POST',
+        headers:{'content-type':'application/json'},
+        body:JSON.stringify({mensajes:historial}),
+      });
+      quitarTyping();
+      const datos=await resp.json().catch(function(){return null;});
+      if(!resp.ok||!datos){
+        mensajeError();
+      }else if(datos.tipo==='resumen'){
+        if(datos.texto){burbuja(datos.texto,'ld-msg-bot');historial.push({role:'assistant',content:datos.texto});}
+        tarjetaResumen(datos.resumen);
+      }else{
+        const texto2=datos.texto||'No tengo una respuesta clara para eso, ¿puedes contarme un poco mas?';
+        burbuja(texto2,'ld-msg-bot');
+        historial.push({role:'assistant',content:texto2});
+      }
+      guardarHistorial();
+    }catch(e){
+      quitarTyping();
+      mensajeError();
+    }finally{
+      input.disabled=false;enviarBtn.disabled=false;input.focus();
+    }
+  }
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    const texto=input.value.trim();
+    if(!texto||input.disabled)return;
+    enviar(texto);
+  });
+
+  rapidas.querySelectorAll('.ld-chat-chip').forEach(function(chip){
+    chip.addEventListener('click',function(){enviar(chip.textContent.trim());});
+  });
+
+  let abierto=false;
+  function abrir(){
+    abierto=true;
+    raiz.classList.add('activo');
+    panel.hidden=false;
+    fab.setAttribute('aria-expanded','true');
+    fab.setAttribute('aria-label','Cerrar el asistente virtual de Landing Digital');
+    if(lista.children.length===0){
+      burbuja('¡Hola! 👋 Soy el asistente de Landing Digital. Hacemos landing pages profesionales hechas a la medida.\n\n¿A que se dedica tu negocio y que te gustaria lograr con tu pagina web?','ld-msg-bot');
+    }
+    setTimeout(function(){input.focus();},350);
+  }
+  function cerrarChat(){
+    abierto=false;
+    raiz.classList.remove('activo');
+    fab.setAttribute('aria-expanded','false');
+    fab.setAttribute('aria-label','Abrir el asistente virtual de Landing Digital');
+    setTimeout(function(){if(!abierto)panel.hidden=true;},300);
+    fab.focus();
+  }
+  fab.addEventListener('click',function(){abierto?cerrarChat():abrir();});
+  cerrarBtn.addEventListener('click',cerrarChat);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&abierto)cerrarChat();});
+
+  // Si ya habia una conversacion guardada en esta pestaña (sessionStorage),
+  // se vuelve a pintar sin llamar a la API, para no perderla al recargar.
+  if(historial.length){
+    historial.forEach(function(m){burbuja(m.content,m.role==='user'?'ld-msg-user':'ld-msg-bot');});
+    rapidas.hidden=true;
+  }
 })();
 </script>
 
